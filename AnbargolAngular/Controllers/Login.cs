@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,9 +13,19 @@ namespace AnbargolAngular
     {
         // GET: api/<controller>
         [HttpGet("/api/Login")]
-        public IEnumerable<string> Get()
+        public JsonResult Get()
         {
-            return new string[] { "value1", "value2" };
+          return new JsonResult(new Items()
+          {
+            Id = 1,
+            Name = "somthing"
+          });
         }
+    }
+
+    public class Items
+    {
+      public int Id { get; set; }
+      public string Name { get; set; }
     }
 }

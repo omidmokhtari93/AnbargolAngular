@@ -1,1 +1,8 @@
-<p>search works!</p>
+<div class="search-input" [style.width]="width" [style.z-index]="zindex" #parentdiv>
+  <input name="search-field" autocomplete="off" [placeholder]="placeholder" [(ngModel)]="searchField" (input)="search()"/>
+  <div name="result-area" #resultWidth>
+    <ul #ul>
+      <li *ngFor="let item of liItems" (click)="addItem(item.id , item.name)">{{item.name}}</li>
+    </ul>
+  </div>
+</div>

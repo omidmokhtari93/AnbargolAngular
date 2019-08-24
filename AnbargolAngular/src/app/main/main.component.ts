@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.less']
 })
 export class MainComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  golSearchConfig = {
+    placeholder: 'جستجوی سریع گل ...',
+    width: '300px',
+    api: '/api/SearchGol',
+    zindex: '600',
+    arg: 'golName'
   }
+  constructor(private route: Router) { }
 
+  ngOnInit() { }
+  createGolList(e) {
+    this.route.navigate(['flowerinfo', e.id]);
+  }
 }

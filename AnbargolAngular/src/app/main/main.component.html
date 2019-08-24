@@ -1,5 +1,5 @@
 <div class="container sans">
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg py-1 px-1">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav pr-0 w-100">
         <li class="nav-item">
@@ -26,6 +26,9 @@
         <li class="nav-item mr-3">
           <a class="nav-link" href="#">ویرایش کنترل ها</a>
         </li>
+        <li class="mr-5 my-auto">
+          <app-search [config]="golSearchConfig" (output)="createGolList($event)"></app-search>
+        </li>
         <li class="nav-item mr-auto">
           <a class="nav-link" href="#">خروج</a>
         </li>
@@ -34,7 +37,8 @@
   </nav>
   <div class="card rounded-0">
     <div class="card-body rounded-0 rtl text-right">
-      123
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
+
