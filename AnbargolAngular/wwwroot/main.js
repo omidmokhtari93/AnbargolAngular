@@ -41,7 +41,7 @@ module.exports = "<app-main></app-main>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "{{flowerId}}\r\n"
+module.exports = "<div class=\"card\">\r\n  <div class=\"card-header bg-primary text-white\">{{fData.gol?.name}}</div>\r\n  <div class=\"card-body\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-5\">\r\n        <p>کد : {{fData.gol?.code}}</p>\r\n        <p>رنگ : {{fData.gol?.color}}</p>\r\n        <p>نوع رنگ : {{fData.gol?.colorType}}</p>\r\n        <p>قالب : {{fData.gol?.format}}</p>\r\n      </div>\r\n      <div class=\"col-md-5 border-right\">\r\n        <p>تاریخ ورود به انبار : {{fData.gol?.enterDate}}</p>\r\n        <p>مشتری : {{fData.gol?.customer}}</p>\r\n        <p>شرکت : {{fData.gol?.company}}</p>\r\n        <p>توضیحات : {{fData.gol?.comment}}</p>\r\n      </div>\r\n      <div class=\"col-md-2\">\r\n        <a target=\"_blank\" [href]=\"fData.gol?.imagePath\">\r\n          <img class=\"img-fluid float-left\" [src]=\"fData.gol?.imagePath\" style=\"width: 115px; height: 115px;\" alt=\"بدون عکس\">\r\n        </a>\r\n      </div>\r\n    </div>\r\n    <div class=\"card-header bg-primary text-white mt-3\">فرم ها</div>\r\n    <select class=\"form-control mt-2 w-25 mx-auto\" (change)=\"changeFormAction($event)\">\r\n      <option *ngFor=\"let form of fData.forms\" value=\"{{form?.id}}\">{{form?.formName}}</option>\r\n    </select>\r\n    <div class=\"my-3 text-center\" id=\"forminfo\">\r\n      <label>نوع چیدمان : {{fData.forms && fData.forms[0].arrangeType}}</label>\r\n      <label>ابعاد : {{fData.forms && fData.forms[0].dimension}}</label>\r\n      <label>تعداد برگ : {{fData.forms && fData.forms[0].count}}</label>\r\n      <label>نوع مارک : {{fData.forms && fData.forms[0].mark}}</label>\r\n      <label>تاریخ ورود : {{fData.forms && fData.forms[0].enterDate}}</label>\r\n      <label>توضیحات : {{fData.forms && fData.forms[0].comment}}</label>\r\n    </div>\r\n    <div class=\"text-center\">\r\n      <table class=\"table table-bordered\">\r\n        <tr>\r\n          <th>نام آیتم</th>\r\n          <th>تعداد آیتم در برگ</th>\r\n          <th>تعداد لنت آیتم</th>\r\n          <th>مجموع\t</th>\r\n          <th>توضیحات</th>\r\n        </tr>\r\n        <tr *ngFor=\"let item of fData.formItems\">\r\n          <td>{{item.name}}</td>\r\n          <td>{{item.itemInSheet}}</td>\r\n          <td>{{item.lentInSheet}}</td>\r\n          <td>{{item.sum}}</td>\r\n          <td>{{item.comment}}</td>\r\n        </tr>\r\n      </table>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -205,7 +205,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21haW4vZmxvd2VyLWluZm8vZmxvd2VyLWluZm8uY29tcG9uZW50Lmxlc3MifQ== */"
+module.exports = ".row .col-md-5 p,\n.row .col-md-2 p {\n  margin-bottom: 5px;\n}\n.row .col-md-5 p:last-child,\n.row .col-md-2 p:last-child {\n  margin-bottom: 0;\n}\n#forminfo label {\n  margin-left: 10px;\n  border-left: 1px solid #808080;\n  padding-left: 5px;\n  margin-bottom: 0;\n  font-size: 12px;\n}\n#forminfo label:last-child {\n  border-left: 0;\n}\ntable {\n  display: inline-block;\n  margin: auto;\n}\ntable tr td,\ntable tr th {\n  padding: 5px 7px !important;\n  text-align: center;\n}\ntable tr th {\n  background-color: #007bff;\n  color: white;\n}\ntable tr:nth-child(even) {\n  background-color: aliceblue;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWFpbi9mbG93ZXItaW5mby9DOi9Vc2Vycy9JVDIvc291cmNlL3JlcG9zL0FuYmFyZ29sQW5ndWxhci9BbmJhcmdvbEFuZ3VsYXIvc3JjL2FwcC9tYWluL2Zsb3dlci1pbmZvL2Zsb3dlci1pbmZvLmNvbXBvbmVudC5sZXNzIiwic3JjL2FwcC9tYWluL2Zsb3dlci1pbmZvL2Zsb3dlci1pbmZvLmNvbXBvbmVudC5sZXNzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBOztFQUVJLGtCQUFBO0FDREo7QUREQTs7RUFNSSxnQkFBQTtBQ0RKO0FES0E7RUFFSSxpQkFBQTtFQUNBLDhCQUFBO0VBQ0EsaUJBQUE7RUFDQSxnQkFBQTtFQUNBLGVBQUE7QUNKSjtBREZBO0VBVUksY0FBQTtBQ0xKO0FEU0E7RUFDRSxxQkFBQTtFQUNBLFlBQUE7QUNQRjtBREtBOztFQUtJLDJCQUFBO0VBQ0Esa0JBQUE7QUNOSjtBREFBO0VBVUkseUJBQUE7RUFDQSxZQUFBO0FDUEo7QURKQTtFQWVJLDJCQUFBO0FDUkoiLCJmaWxlIjoic3JjL2FwcC9tYWluL2Zsb3dlci1pbmZvL2Zsb3dlci1pbmZvLmNvbXBvbmVudC5sZXNzIiwic291cmNlc0NvbnRlbnQiOlsiQEJsdWVDb2xvcjogIzAwN2JmZjtcblxuLnJvdyB7XG4gIC5jb2wtbWQtNSBwLCAuY29sLW1kLTIgcCB7XG4gICAgbWFyZ2luLWJvdHRvbTogNXB4O1xuICB9XG5cbiAgLmNvbC1tZC01IHA6bGFzdC1jaGlsZCwgLmNvbC1tZC0yIHA6bGFzdC1jaGlsZCB7XG4gICAgbWFyZ2luLWJvdHRvbTogMDtcbiAgfVxufVxuXG4jZm9ybWluZm8ge1xuICBsYWJlbCB7XG4gICAgbWFyZ2luLWxlZnQ6IDEwcHg7XG4gICAgYm9yZGVyLWxlZnQ6IDFweCBzb2xpZCAjODA4MDgwO1xuICAgIHBhZGRpbmctbGVmdDogNXB4O1xuICAgIG1hcmdpbi1ib3R0b206IDA7XG4gICAgZm9udC1zaXplOiAxMnB4O1xuICB9XG5cbiAgbGFiZWw6bGFzdC1jaGlsZCB7XG4gICAgYm9yZGVyLWxlZnQ6IDA7XG4gIH1cbn1cblxudGFibGUge1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIG1hcmdpbjogYXV0bztcblxuICB0ciB0ZCwgdHIgdGgge1xuICAgIHBhZGRpbmc6IDVweCA3cHggIWltcG9ydGFudDtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIH1cblxuICB0ciB0aCB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogQEJsdWVDb2xvcjtcbiAgICBjb2xvcjogd2hpdGU7XG4gIH1cblxuICB0cjpudGgtY2hpbGQoZXZlbikge1xuICAgIGJhY2tncm91bmQtY29sb3I6IGFsaWNlYmx1ZTtcbiAgfVxufVxuIiwiLnJvdyAuY29sLW1kLTUgcCxcbi5yb3cgLmNvbC1tZC0yIHAge1xuICBtYXJnaW4tYm90dG9tOiA1cHg7XG59XG4ucm93IC5jb2wtbWQtNSBwOmxhc3QtY2hpbGQsXG4ucm93IC5jb2wtbWQtMiBwOmxhc3QtY2hpbGQge1xuICBtYXJnaW4tYm90dG9tOiAwO1xufVxuI2Zvcm1pbmZvIGxhYmVsIHtcbiAgbWFyZ2luLWxlZnQ6IDEwcHg7XG4gIGJvcmRlci1sZWZ0OiAxcHggc29saWQgIzgwODA4MDtcbiAgcGFkZGluZy1sZWZ0OiA1cHg7XG4gIG1hcmdpbi1ib3R0b206IDA7XG4gIGZvbnQtc2l6ZTogMTJweDtcbn1cbiNmb3JtaW5mbyBsYWJlbDpsYXN0LWNoaWxkIHtcbiAgYm9yZGVyLWxlZnQ6IDA7XG59XG50YWJsZSB7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgbWFyZ2luOiBhdXRvO1xufVxudGFibGUgdHIgdGQsXG50YWJsZSB0ciB0aCB7XG4gIHBhZGRpbmc6IDVweCA3cHggIWltcG9ydGFudDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxudGFibGUgdHIgdGgge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMDA3YmZmO1xuICBjb2xvcjogd2hpdGU7XG59XG50YWJsZSB0cjpudGgtY2hpbGQoZXZlbikge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiBhbGljZWJsdWU7XG59XG4iXX0= */"
 
 /***/ }),
 
@@ -222,24 +222,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm2015/http.js");
+
 
 
 
 let FlowerInfoComponent = class FlowerInfoComponent {
-    constructor(router) {
+    constructor(router, http) {
         this.router = router;
+        this.http = http;
+        this.fData = [];
     }
     ngOnInit() {
-        this.paramSubscription = this.router.params.subscribe((params) => {
-            this.flowerId = params['fid'];
+        this.paramSubscription = this.router.params.subscribe((p) => {
+            this.httpSubscription = this.http.get('/api/GetFlowerData', { params: { flowerId: p['fid'] } }).subscribe(e => {
+                this.fData = e.json();
+                console.log(this.fData);
+            });
         });
     }
     ngOnDestroy() {
         this.paramSubscription.unsubscribe();
+        this.httpSubscription.unsubscribe();
+    }
+    changeFormAction(e) {
+        console.log(e.target.value);
     }
 };
 FlowerInfoComponent.ctorParameters = () => [
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
+    { type: _angular_http__WEBPACK_IMPORTED_MODULE_3__["Http"] }
 ];
 FlowerInfoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({

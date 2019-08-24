@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-flower-info',
@@ -8,17 +9,25 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./flower-info.component.less']
 })
 export class FlowerInfoComponent implements OnInit, OnDestroy {
-  flowerId: number;
+  fData: string[] = [];
   paramSubscription: Subscription
-  constructor(private router: ActivatedRoute) { }
+  httpSubscription: Subscription
+  constructor(private router: ActivatedRoute, private http: Http) { }
 
   ngOnInit() {
-    this.paramSubscription = this.router.params.subscribe((params: Params) => {
-      this.flowerId = params['fid'];
-    })
+    this.paramSubscription = this.router.params.subscribe((p: Params) => {
+      this.httpSubscription = this.http.get('/api/GetFlowerData', { params: { flowerId: p['fid'] } }).subscribe(e => {
+        this.fData = e.json();
+        console.log(this.fData);
+      });
+    });
   }
   ngOnDestroy() {
     this.paramSubscription.unsubscribe();
+    this.httpSubscription.unsubscribe();
+  }
+  changeFormAction(e) {
+    console.log(e.target.value);
   }
 
 }

@@ -21,6 +21,7 @@
     <Folder Include="src\app\shared\" />
     <Folder Include="src\assets\css\" />
     <Folder Include="src\assets\js\" />
+    <Folder Include="src\assets\flower_images\" />
   </ItemGroup>
 
 </Project>

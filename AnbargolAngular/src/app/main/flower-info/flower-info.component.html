@@ -1,1 +1,54 @@
-{{flowerId}}
+<div class="card">
+  <div class="card-header bg-primary text-white">{{fData.gol?.name}}</div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-5">
+        <p>کد : {{fData.gol?.code}}</p>
+        <p>رنگ : {{fData.gol?.color}}</p>
+        <p>نوع رنگ : {{fData.gol?.colorType}}</p>
+        <p>قالب : {{fData.gol?.format}}</p>
+      </div>
+      <div class="col-md-5 border-right">
+        <p>تاریخ ورود به انبار : {{fData.gol?.enterDate}}</p>
+        <p>مشتری : {{fData.gol?.customer}}</p>
+        <p>شرکت : {{fData.gol?.company}}</p>
+        <p>توضیحات : {{fData.gol?.comment}}</p>
+      </div>
+      <div class="col-md-2">
+        <a target="_blank" [href]="fData.gol?.imagePath">
+          <img class="img-fluid float-left" [src]="fData.gol?.imagePath" style="width: 115px; height: 115px;" alt="بدون عکس">
+        </a>
+      </div>
+    </div>
+    <div class="card-header bg-primary text-white mt-3">فرم ها</div>
+    <select class="form-control mt-2 w-25 mx-auto" (change)="changeFormAction($event)">
+      <option *ngFor="let form of fData.forms" value="{{form?.id}}">{{form?.formName}}</option>
+    </select>
+    <div class="my-3 text-center" id="forminfo">
+      <label>نوع چیدمان : {{fData.forms && fData.forms[0].arrangeType}}</label>
+      <label>ابعاد : {{fData.forms && fData.forms[0].dimension}}</label>
+      <label>تعداد برگ : {{fData.forms && fData.forms[0].count}}</label>
+      <label>نوع مارک : {{fData.forms && fData.forms[0].mark}}</label>
+      <label>تاریخ ورود : {{fData.forms && fData.forms[0].enterDate}}</label>
+      <label>توضیحات : {{fData.forms && fData.forms[0].comment}}</label>
+    </div>
+    <div class="text-center">
+      <table class="table table-bordered">
+        <tr>
+          <th>نام آیتم</th>
+          <th>تعداد آیتم در برگ</th>
+          <th>تعداد لنت آیتم</th>
+          <th>مجموع	</th>
+          <th>توضیحات</th>
+        </tr>
+        <tr *ngFor="let item of fData.formItems">
+          <td>{{item.name}}</td>
+          <td>{{item.itemInSheet}}</td>
+          <td>{{item.lentInSheet}}</td>
+          <td>{{item.sum}}</td>
+          <td>{{item.comment}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
