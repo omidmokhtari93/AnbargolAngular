@@ -77,18 +77,32 @@ namespace AnbargolAngular.Controllers
       }
       con.Close();
       con.Open();
-      var forms = new List<Forms>();
-      cmd = new SqlCommand("SELECT dbo.flower_forms_entry.id, dbo.flower_forms_entry.flower_id, dbo.flower_forms_entry.form_number, " +
+      var formNumbers = new List<Items>();
+      cmd = new SqlCommand("select id , form_number from flower_forms_entry where flower_id = " + flowerId + " " +
+                           "order by flower_forms_entry.form_number", con);
+      rd = cmd.ExecuteReader();
+      while (rd.Read())
+      {
+        formNumbers.Add(new Items()
+        {
+          Id = Convert.ToInt32(rd["id"]),
+          Name = rd["form_number"].ToString()
+        });
+      }
+      con.Close();
+      con.Open();
+      var forms = new Forms();
+      cmd = new SqlCommand("SELECT top(1) dbo.flower_forms_entry.id, dbo.flower_forms_entry.flower_id, dbo.flower_forms_entry.form_number, " +
                            "dbo.flower_forms_entry.sheetcount, dbo.flower_forms_entry.last_enter_date, " +
                            "dbo.flower_forms_entry.mark_type, dbo.flower_forms_entry.comment, dbo.arrange_type.arrange_type, " +
                            "dbo.flower_dimensions.flow_dimension FROM dbo.flower_forms_entry INNER JOIN " +
                            "dbo.arrange_type ON dbo.flower_forms_entry.arrange_type = dbo.arrange_type.arrange_id INNER JOIN " +
                            "dbo.flower_dimensions ON dbo.flower_forms_entry.dimension = dbo.flower_dimensions.dimension_id " +
-                           "where flower_id = " + flowerId + " ", con);
+                           "where flower_id = " + flowerId + " order by flower_forms_entry.form_number", con);
       rd = cmd.ExecuteReader();
       while (rd.Read())
       {
-        forms.Add(new Forms()
+        forms = new Forms()
         {
           Id = Convert.ToInt32(rd["id"]),
           FormName = rd["form_number"].ToString(),
@@ -98,18 +112,81 @@ namespace AnbargolAngular.Controllers
           Mark = rd["mark_type"].ToString(),
           Comment = rd["comment"].ToString(),
           EnterDate = rd["last_enter_date"].ToString()
-        });
+        };
       }
       con.Close();
       con.Open();
       var formItems = new List<FormItems>();
-      cmd = new SqlCommand("SELECT dbo.items.item_name, dbo.flower_arrange_items.lent_of_item, dbo.flower_forms_entry.id, "+
+      cmd = new SqlCommand("SELECT dbo.items.item_name, dbo.flower_arrange_items.lent_of_item, dbo.flower_forms_entry.id, " +
                            "dbo.flower_arrange_items.item_insheet_count * dbo.flower_forms_entry.sheetcount AS sum, " +
                            "dbo.flower_arrange_items.item_insheet_count, dbo.flower_arrange_items.comment" +
                            " FROM dbo.flower_arrange_items INNER JOIN " +
                            "dbo.items ON dbo.flower_arrange_items.item_name = dbo.items.item_id INNER JOIN " +
                            "dbo.flower_forms_entry ON dbo.flower_arrange_items.form_id = dbo.flower_forms_entry.id" +
-                           " where form_id = " + forms.ElementAt(0).Id + " ", con);
+                           " where form_id = " + forms.Id + " order by items.item_name", con);
+      rd = cmd.ExecuteReader();
+      while (rd.Read())
+      {
+        formItems.Add(new FormItems()
+        {
+          Name = rd["item_name"].ToString(),
+          ItemInSheet = Convert.ToDecimal(rd["item_insheet_count"]),
+          LentInSheet = Convert.ToDecimal(rd["lent_of_item"]),
+          Sum = Convert.ToDecimal(rd["sum"]),
+          Comment = rd["comment"].ToString()
+        });
+      }
+      con.Close();
+      con.Open();
+      cmd = new SqlCommand("SELECT order_type.order_type,orders.order_enter_date,orders.order_complete_date,orders.order_remain, " +
+                           "orders.comment, orders.flower_id, orders.id, orders.order_count, order_type.order_id FROM orders INNER JOIN " +
+                           "order_type ON orders.order_type = order_type.order_id WHERE(orders.flower_id = " + flowerId + ") order by orders.id desc", con);
+      return new JsonResult(new
+      {
+        formNumbers,
+        gol,
+        forms,
+        formItems
+      });
+    }
+
+    [HttpGet("/api/GetFlowForm")]
+    public JsonResult GetFlowForm(int formId)
+    {
+      con.Open();
+      var form = new Forms();
+      var cmd = new SqlCommand("SELECT dbo.flower_forms_entry.id, dbo.flower_forms_entry.flower_id, dbo.flower_forms_entry.form_number, " +
+                               "dbo.flower_forms_entry.sheetcount, dbo.flower_forms_entry.last_enter_date, " +
+                               "dbo.flower_forms_entry.mark_type, dbo.flower_forms_entry.comment, dbo.arrange_type.arrange_type, " +
+                               "dbo.flower_dimensions.flow_dimension FROM dbo.flower_forms_entry INNER JOIN " +
+                               "dbo.arrange_type ON dbo.flower_forms_entry.arrange_type = dbo.arrange_type.arrange_id INNER JOIN " +
+                               "dbo.flower_dimensions ON dbo.flower_forms_entry.dimension = dbo.flower_dimensions.dimension_id " +
+                               "where id = " + formId + " order by flower_forms_entry.form_number", con);
+      var rd = cmd.ExecuteReader();
+      while (rd.Read())
+      {
+        form = new Forms()
+        {
+          Id = Convert.ToInt32(rd["id"]),
+          FormName = rd["form_number"].ToString(),
+          ArrangeType = rd["arrange_type"].ToString(),
+          Dimension = rd["flow_dimension"].ToString(),
+          Count = Convert.ToInt32(rd["sheetcount"]),
+          Mark = rd["mark_type"].ToString(),
+          Comment = rd["comment"].ToString(),
+          EnterDate = rd["last_enter_date"].ToString()
+        };
+      }
+      con.Close();
+      con.Open();
+      var formItems = new List<FormItems>();
+      cmd = new SqlCommand("SELECT dbo.items.item_name, dbo.flower_arrange_items.lent_of_item, dbo.flower_forms_entry.id, " +
+                           "dbo.flower_arrange_items.item_insheet_count * dbo.flower_forms_entry.sheetcount AS sum, " +
+                           "dbo.flower_arrange_items.item_insheet_count, dbo.flower_arrange_items.comment" +
+                           " FROM dbo.flower_arrange_items INNER JOIN " +
+                           "dbo.items ON dbo.flower_arrange_items.item_name = dbo.items.item_id INNER JOIN " +
+                           "dbo.flower_forms_entry ON dbo.flower_arrange_items.form_id = dbo.flower_forms_entry.id" +
+                           " where form_id = " + formId + " order by items.item_name", con);
       rd = cmd.ExecuteReader();
       while (rd.Read())
       {
@@ -125,8 +202,7 @@ namespace AnbargolAngular.Controllers
       con.Close();
       return new JsonResult(new
       {
-        gol,
-        forms,
+        form,
         formItems
       });
     }

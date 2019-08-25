@@ -109,12 +109,10 @@
 .loading-md {
   width: 25px;
   height: 25px;
-  display: none;
 }
 .loading-sm {
   width: 15px;
   height: 15px;
-  display: none;
 }
 .notifier__notification-message {
   font-family: sans;
