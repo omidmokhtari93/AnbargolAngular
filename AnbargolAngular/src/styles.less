@@ -1,19 +1,20 @@
-@font-face {
-  font-family: 'sans';
-  src: url('src/assets/fonts/sans/IRANSans.woff2')
-}
+@BlueColor: #007bff;
 
-@font-face {
-  font-family: 'light_sans';
-  src: url('src/assets/fonts/sans/IRANSansWeb_Light.woff2')
-}
+table {
+  display: inline-block;
+  margin: auto;
 
-@font-face {
-  font-family: 'medium_sans';
-  src: url('src/assets/fonts/sans/IRANSansWeb_Medium.woff2')
-}
+  tr td, tr th {
+    padding: 5px 7px !important;
+    text-align: center;
+  }
 
-@font-face {
-  font-family: 'bold_sans';
-  src: url('src/assets/fonts/sans/IRANSansWeb_Bold.woff2')
+  tr th {
+    background-color: @BlueColor;
+    color: white;
+  }
+
+  tr:nth-child(even) {
+    background-color: aliceblue;
+  }
 }
