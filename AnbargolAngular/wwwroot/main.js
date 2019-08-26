@@ -41,7 +41,7 @@ module.exports = "<app-main></app-main>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\">\r\n  <div class=\"card-header bg-primary text-white\">\r\n    {{gol?.name}}\r\n    <img src=\"/assets/images/loading.gif\" class=\"loading-md float-left\" *ngIf=\"loading\"/>\r\n  </div>\r\n  <div class=\"card-body\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-5\">\r\n        <p>کد : {{gol?.code}}</p>\r\n        <p>رنگ : {{gol?.color}}</p>\r\n        <p>نوع رنگ : {{gol?.colorType}}</p>\r\n        <p>قالب : {{gol?.format}}</p>\r\n      </div>\r\n      <div class=\"col-md-5 border-right\">\r\n        <p>تاریخ ورود به انبار : {{gol?.enterDate}}</p>\r\n        <p>مشتری : {{gol?.customer}}</p>\r\n        <p>شرکت : {{gol?.company}}</p>\r\n        <p>توضیحات : {{gol?.comment}}</p>\r\n      </div>\r\n      <div class=\"col-md-2\">\r\n        <a target=\"_blank\" [href]=\"gol?.imagePath\">\r\n          <img class=\"img-fluid float-left\" [src]=\"gol?.imagePath\" style=\"width: 115px; height: 115px;\" alt=\"بدون عکس\">\r\n        </a>\r\n      </div>\r\n    </div>\r\n    <div class=\"card bg-primary text-white mt-3 rounded-0 p-2\">فرم ها</div>\r\n    <select class=\"form-control mt-2 w-25 mx-auto\" (change)=\"changeFormAction($event)\">\r\n      <option *ngFor=\"let form of formNumbers\" [value]=\"form?.id\">{{form?.name}}</option>\r\n    </select>\r\n    <div class=\"my-3 text-center\" id=\"forminfo\">\r\n      <label>نوع چیدمان : {{forms?.arrangeType}}</label>\r\n      <label>ابعاد : {{forms?.dimension}}</label>\r\n      <label>تعداد برگ : {{forms?.count}}</label>\r\n      <label>نوع مارک : {{forms?.mark}}</label>\r\n      <label>تاریخ ورود : {{forms?.enterDate}}</label>\r\n      <label>توضیحات : {{forms?.comment}}</label>\r\n    </div>\r\n    <div class=\"text-center\">\r\n      <table class=\"table table-bordered\" *ngIf=\"formItems.length\">\r\n        <tr>\r\n          <th>نام آیتم</th>\r\n          <th>تعداد آیتم در برگ</th>\r\n          <th>تعداد لنت آیتم</th>\r\n          <th>مجموع\t</th>\r\n          <th>توضیحات</th>\r\n        </tr>\r\n        <tr *ngFor=\"let item of formItems\">\r\n          <td>{{item.name}}</td>\r\n          <td>{{item.itemInSheet}}</td>\r\n          <td>{{item.lentInSheet}}</td>\r\n          <td>{{item.sum}}</td>\r\n          <td>{{item.comment}}</td>\r\n        </tr>\r\n      </table>\r\n    </div>\r\n    <div class=\"card bg-primary text-white mt-3 rounded-0 p-2\">سفارشات</div>\r\n    <div class=\"row mt-2\">\r\n      <div class=\"col-md-9\">\r\n        <table class=\"table table-bordered\">\r\n          <tr>\r\n            <th>نوع سفارش</th>\r\n            <th>تعداد سفارش</th>\r\n            <th>تاریخ سفارش</th>\r\n            <th>تاریخ تکمیل سفارش</th>\r\n            <th>باقیمانده</th>\r\n            <th>توضیحات</th>\r\n            <th></th>\r\n          </tr>\r\n          <tr>\r\n            <td></td>\r\n            <td></td>\r\n            <td></td>\r\n            <td></td>\r\n            <td></td>\r\n            <td></td>\r\n            <td><a href=\"#\">مشاهده فرم ها</a></td>\r\n          </tr>\r\n        </table>\r\n      </div>\r\n      <div class=\"col-md-3\">\r\n\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"card\">\r\n  <div class=\"card-header bg-primary text-white\">\r\n    {{gol?.name}}\r\n    <img src=\"/assets/images/loading.gif\" class=\"loading-md float-left\" *ngIf=\"loading\"/>\r\n  </div>\r\n  <div class=\"card-body\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-5\">\r\n        <p>کد : {{gol?.code}}</p>\r\n        <p>رنگ : {{gol?.color}}</p>\r\n        <p>نوع رنگ : {{gol?.colorType}}</p>\r\n        <p>قالب : {{gol?.format}}</p>\r\n      </div>\r\n      <div class=\"col-md-5 border-right\">\r\n        <p>تاریخ ورود به انبار : {{gol?.enterDate}}</p>\r\n        <p>مشتری : {{gol?.customer}}</p>\r\n        <p>شرکت : {{gol?.company}}</p>\r\n        <p>توضیحات : {{gol?.comment}}</p>\r\n      </div>\r\n      <div class=\"col-md-2\">\r\n        <a target=\"_blank\" [href]=\"gol?.imagePath\">\r\n          <img class=\"img-fluid float-left\" [src]=\"gol?.imagePath\" style=\"width: 115px; height: 115px;\" alt=\"بدون عکس\">\r\n        </a>\r\n      </div>\r\n    </div>\r\n    <div class=\"card bg-primary text-white mt-3 rounded-0 p-2\">فرم ها</div>\r\n    <select class=\"form-control mt-2 w-25 mx-auto\" (change)=\"changeFormAction($event)\">\r\n      <option *ngFor=\"let form of formNumbers\" [value]=\"form?.id\">{{form?.name}}</option>\r\n    </select>\r\n    <div class=\"my-3 text-center\" id=\"forminfo\">\r\n      <label>نوع چیدمان : {{forms?.arrangeType}}</label>\r\n      <label>ابعاد : {{forms?.dimension}}</label>\r\n      <label>تعداد برگ : {{forms?.count}}</label>\r\n      <label>نوع مارک : {{forms?.mark}}</label>\r\n      <label>تاریخ ورود : {{forms?.enterDate}}</label>\r\n      <label>توضیحات : {{forms?.comment}}</label>\r\n    </div>\r\n    <div class=\"text-center\">\r\n      <table class=\"table table-bordered\" *ngIf=\"formItems.length\">\r\n        <tr>\r\n          <th>نام آیتم</th>\r\n          <th>تعداد آیتم در برگ</th>\r\n          <th>تعداد لنت آیتم</th>\r\n          <th>مجموع\t</th>\r\n          <th>توضیحات</th>\r\n        </tr>\r\n        <tr *ngFor=\"let item of formItems\">\r\n          <td>{{item.name}}</td>\r\n          <td>{{item.itemInSheet}}</td>\r\n          <td>{{item.lentInSheet}}</td>\r\n          <td>{{item.sum}}</td>\r\n          <td>{{item.comment}}</td>\r\n        </tr>\r\n      </table>\r\n    </div>\r\n    <div class=\"card bg-primary text-white mt-3 rounded-0 p-2\">سفارشات</div>\r\n    <div class=\"row mt-2\">\r\n      <div class=\"col-md-9\">\r\n        <table class=\"table table-bordered sans-small\">\r\n          <tr>\r\n            <th>نوع سفارش</th>\r\n            <th>تعداد سفارش</th>\r\n            <th>تاریخ سفارش</th>\r\n            <th>تاریخ تکمیل سفارش</th>\r\n            <th>باقیمانده</th>\r\n            <th>توضیحات</th>\r\n            <th></th>\r\n          </tr>\r\n          <tr *ngFor=\"let order of orders\">\r\n            <td>{{order?.orderType}}</td>\r\n            <td>{{order?.count}}</td>\r\n            <td>{{order?.orderDate}}</td>\r\n            <td>{{order?.orderCompleteDate}}</td>\r\n            <td>{{order?.remain}}</td>\r\n            <td>{{order?.comment}}</td>\r\n            <td><a (click)=\"showOrderForms(order.id)\">مشاهده فرم ها</a></td>\r\n          </tr>\r\n          <footer>\r\n            <span *ngFor=\"let page of pages\" (click)=\"paginateOrderTable(page.index , page.size)\">{{page.index + 1}}</span>\r\n          </footer>\r\n        </table>\r\n      </div>\r\n      <div class=\"col-md-3\">\r\n\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -231,6 +231,9 @@ let FlowerInfoComponent = class FlowerInfoComponent {
     constructor(router, http) {
         this.router = router;
         this.http = http;
+        this.pageSize = 10;
+        this.pages = [];
+        this.orders = [];
         this.forms = [];
         this.gol = [];
         this.formItems = [];
@@ -240,14 +243,21 @@ let FlowerInfoComponent = class FlowerInfoComponent {
     ngOnInit() {
         this.loading = true;
         this.paramSubscription = this.router.params.subscribe((p) => {
-            this.httpSubscription = this.http.get('/api/GetFlowerData', { params: { flowerId: p['fid'] } }).subscribe(e => {
+            this.httpSubscription = this.http.get('/api/GetFlowerData', {
+                params: {
+                    flowerId: p['fid'],
+                    pageSize: this.pageSize
+                }
+            }).subscribe(e => {
                 let data = e.json();
                 this.forms = data['forms'];
                 this.gol = data['gol'];
                 this.formItems = data['formItems'];
                 this.formNumbers = data['formNumbers'];
+                this.orders = data['orders'];
                 this.loading = false;
-                //console.log(this.gol);
+                this.flowerId = p['fid'];
+                this.pageCountCalcualte(this.pageSize, p['fid']);
             });
         });
     }
@@ -264,6 +274,28 @@ let FlowerInfoComponent = class FlowerInfoComponent {
             this.forms = data['form'];
             this.loading = false;
         });
+    }
+    pageCountCalcualte(pageSize, flowerId) {
+        this.http.get('/api/OrderPagesCount', {
+            params: { pageSize: pageSize, flowerId: flowerId }
+        }).subscribe(e => {
+            this.pages = [];
+            for (var i = 0; i < e.json(); i++) {
+                this.pages.push({ size: pageSize, index: i });
+            }
+        });
+    }
+    paginateOrderTable(index, size) {
+        this.http.get('/api/Orders', {
+            params: {
+                flowerId: this.flowerId, take: index * size, skip: size * (index + 1)
+            }
+        }).subscribe(e => {
+            this.orders = e.json();
+        });
+    }
+    showOrderForms(id) {
+        console.log(id);
     }
 };
 FlowerInfoComponent.ctorParameters = () => [

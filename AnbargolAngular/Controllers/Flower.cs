@@ -45,7 +45,7 @@ namespace AnbargolAngular.Controllers
     }
 
     [HttpGet("/api/GetFlowerData")]
-    public JsonResult GetFlowerData(int flowerId)
+    public JsonResult GetFlowerData(int flowerId, int pageSize)
     {
       con.Open();
       string imgFilePath = "/assets/flower_images/" + flowerId + ".JPG" + "?" + new Random().Next();
@@ -138,15 +138,34 @@ namespace AnbargolAngular.Controllers
       }
       con.Close();
       con.Open();
-      cmd = new SqlCommand("SELECT order_type.order_type,orders.order_enter_date,orders.order_complete_date,orders.order_remain, " +
-                           "orders.comment, orders.flower_id, orders.id, orders.order_count, order_type.order_id FROM orders INNER JOIN " +
-                           "order_type ON orders.order_type = order_type.order_id WHERE(orders.flower_id = " + flowerId + ") order by orders.id desc", con);
+      var orders = new List<Order>();
+      cmd = new SqlCommand("select * from (SELECT ROW_NUMBER() over (order by id)as rn , " +
+                           "[id],[flower_id], ot.order_type,[order_count],[order_enter_date] " +
+                           ",[order_complete_date],[order_remain],[comment] FROM[dbo].[orders] " +
+                           "inner join order_type ot on orders.order_type = ot.order_id where flower_id = " + flowerId + ")i " +
+                           "where i.rn <= " + pageSize + " ", con);
+      rd = cmd.ExecuteReader();
+      while (rd.Read())
+      {
+        orders.Add(new Order()
+        {
+          Id = Convert.ToInt32(rd["id"]),
+          OrderType = rd["order_type"].ToString(),
+          Count = rd["order_count"].ToString(),
+          OrderDate = rd["order_enter_date"].ToString(),
+          OrderCompleteDate = rd["order_complete_date"].ToString(),
+          Comment = rd["comment"].ToString(),
+          Remain = rd["order_remain"].ToString()
+        });
+      }
+      con.Close();
       return new JsonResult(new
       {
         formNumbers,
         gol,
         forms,
-        formItems
+        formItems,
+        orders
       });
     }
 
