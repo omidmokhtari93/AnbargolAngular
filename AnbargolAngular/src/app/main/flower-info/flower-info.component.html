@@ -56,7 +56,7 @@
     <div class="card bg-primary text-white mt-3 rounded-0 p-2">سفارشات</div>
     <div class="row mt-2">
       <div class="col-md-9">
-        <table class="table table-bordered sans-small">
+        <table class="table table-bordered" *ngIf="orders.length">
           <tr>
             <th>نوع سفارش</th>
             <th>تعداد سفارش</th>
@@ -81,7 +81,18 @@
         </table>
       </div>
       <div class="col-md-3">
-
+        <table class="table table-bordered" *ngIf="ordreForms.length">
+          <tr>
+            <th>شماره فرم</th>
+            <th>تاریخ تحویل</th>
+            <th>تعداد برگ</th>
+          </tr>
+          <tr *ngFor="let orderForm of ordreForms">
+            <td>{{orderForm.formName}}</td>
+            <td>{{orderForm.receiveDate}}</td>
+            <td>{{orderForm.sheetCount}}</td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>

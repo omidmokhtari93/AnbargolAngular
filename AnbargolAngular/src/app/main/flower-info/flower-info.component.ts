@@ -12,11 +12,12 @@ export class FlowerInfoComponent implements OnInit, OnDestroy {
   pageSize = 10;
   flowerId: any;
   pages = [];
-  orders: string[] = [];
-  forms: string[] = [];
-  gol: string[] = [];
-  formItems: string[] = [];
-  formNumbers: string[] = [];
+  orders = [];
+  ordreForms = [];
+  forms = [];
+  gol = [];
+  formItems = [];
+  formNumbers = [];
   loading: boolean = false;
   paramSubscription: Subscription
   httpSubscription: Subscription
@@ -39,6 +40,7 @@ export class FlowerInfoComponent implements OnInit, OnDestroy {
         this.orders = data['orders']
         this.loading = false;
         this.flowerId = p['fid'];
+        this.ordreForms = [];
         this.pageCountCalcualte(this.pageSize, p['fid']);
       });
     });
@@ -51,8 +53,7 @@ export class FlowerInfoComponent implements OnInit, OnDestroy {
 
   changeFormAction(e) {
     this.loading = true;
-    this.http.get('/api/GetFlowForm', { params: { formId: e.target.value } }).subscribe(e => {
-      console.log(e.json());
+    this.httpSubscription = this.http.get('/api/GetFlowForm', { params: { formId: e.target.value } }).subscribe(e => {
       let data = e.json();
       this.formItems = data['formItems'];
       this.forms = data['form'];
@@ -61,7 +62,7 @@ export class FlowerInfoComponent implements OnInit, OnDestroy {
   }
 
   pageCountCalcualte(pageSize, flowerId) {
-    this.http.get('/api/OrderPagesCount',
+    this.httpSubscription = this.http.get('/api/OrderPagesCount',
       {
         params: { pageSize: pageSize, flowerId: flowerId }
       }).subscribe(e => {
@@ -71,8 +72,9 @@ export class FlowerInfoComponent implements OnInit, OnDestroy {
         }
       })
   }
+
   paginateOrderTable(index, size) {
-    this.http.get('/api/Orders', {
+    this.httpSubscription = this.http.get('/api/Orders', {
       params: {
         flowerId: this.flowerId, take: index * size, skip: size * (index + 1)
       }
@@ -80,7 +82,13 @@ export class FlowerInfoComponent implements OnInit, OnDestroy {
       this.orders = e.json();
     })
   }
+
   showOrderForms(id) {
-    console.log(id);
+    this.httpSubscription = this.http.get('/api/GetOrderForms',
+      {
+        params: { orderId: id }
+      }).subscribe(e => {
+        this.ordreForms = e.json();
+      })
   }
 }

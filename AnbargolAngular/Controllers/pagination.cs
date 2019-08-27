@@ -56,15 +56,3 @@ namespace AnbargolAngular.Controllers
 
   }
 }
-
-public class Order
-{
-  public int Id { get; set; }
-  public int FlowerId { get; set; }
-  public string OrderType { get; set; }
-  public string Count { get; set; }
-  public string OrderDate { get; set; }
-  public string OrderCompleteDate { get; set; }
-  public string Remain { get; set; }
-  public string Comment { get; set; }
-}

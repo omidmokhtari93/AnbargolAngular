@@ -143,7 +143,8 @@ namespace AnbargolAngular.Controllers
                            "[id],[flower_id], ot.order_type,[order_count],[order_enter_date] " +
                            ",[order_complete_date],[order_remain],[comment] FROM[dbo].[orders] " +
                            "inner join order_type ot on orders.order_type = ot.order_id where flower_id = " + flowerId + ")i " +
-                           "where i.rn <= " + pageSize + " ", con);
+                           "where i.rn <= " + pageSize + " " +
+                           "order by i.order_complete_date desc", con);
       rd = cmd.ExecuteReader();
       while (rd.Read())
       {
@@ -225,49 +226,25 @@ namespace AnbargolAngular.Controllers
         formItems
       });
     }
-  }
-  public class Gols
-  {
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public string Code { get; set; }
-    public string Color { get; set; }
-    public int ColorId { get; set; }
-    public string ColorType { get; set; }
-    public int ColorTypeId { get; set; }
-    public string Format { get; set; }
-    public int FormatId { get; set; }
-    public string Customer { get; set; }
-    public int CustomerId { get; set; }
-    public string Company { get; set; }
-    public int CompanyId { get; set; }
-    public string EnterDate { get; set; }
-    public string Comment { get; set; }
-    public string ImagePath { get; set; }
-  }
 
-  public class Forms
-  {
-    public int Id { get; set; }
-    public int FormId { get; set; }
-    public string FormName { get; set; }
-    public int ArrangeTypeId { get; set; }
-    public string ArrangeType { get; set; }
-    public int DimensionId { get; set; }
-    public string Dimension { get; set; }
-    public int Count { get; set; }
-    public string Mark { get; set; }
-    public string EnterDate { get; set; }
-    public string Comment { get; set; }
+    [HttpGet("/api/GetOrderForms")]
+    public JsonResult GetOrderForms(int orderId)
+    {
+      con.Open();
+      var list = new List<OrderForms>();
+      var cmd = new SqlCommand("SELECT form_number, recieve_date, sheet_count FROM order_sheet_count WHERE (order_id = " + orderId + ")", con);
+      var rd = cmd.ExecuteReader();
+      while (rd.Read())
+      {
+        list.Add(new OrderForms()
+        {
+          FormName = rd["form_number"].ToString(),
+          ReceiveDate = rd["recieve_date"].ToString(),
+          SheetCount = rd["sheet_count"].ToString(),
+        });
+      }
+      con.Close();
+      return new JsonResult(list);
+    }
   }
-  public class FormItems
-  {
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public decimal ItemInSheet { get; set; }
-    public decimal LentInSheet { get; set; }
-    public decimal Sum { get; set; }
-    public string Comment { get; set; }
-  }
-
 }
