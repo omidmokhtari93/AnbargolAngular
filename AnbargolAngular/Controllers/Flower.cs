@@ -247,80 +247,37 @@ namespace AnbargolAngular.Controllers
       return new JsonResult(list);
     }
 
-    [HttpGet("/api/Cutted")]
-    public JsonResult GetCutted(int flowerId)
+    [HttpGet("/api/GetFlowerMainInfo")]
+    public JsonResult Get(int flowerId)
     {
-      CaculateCutted(flowerId);
       con.Open();
-      var list = new List<Cutted>();
-      var cmd = new SqlCommand("SELECT cutted_and_remain.ID, cutted_and_remain.flower_id, cutted_and_remain.total, " +
-                               "cutted_and_remain.cutted, cutted_and_remain.falleh, cutted_and_remain.service, " +
-                               "cutted_and_remain.comment, cutted_and_remain.record1, cutted_and_remain.record2, " +
-                               "cutted_and_remain.record3, cutted_and_remain.record4, items.item_name, cutted_and_remain.td1, " +
-                               "cutted_and_remain.td2, cutted_and_remain.td3, cutted_and_remain.td4 FROM cutted_and_remain " +
-                               "INNER JOIN items ON cutted_and_remain.item_name = items.item_id WHERE(cutted_and_remain.flower_id = " + flowerId + ") " +
-                               "ORDER BY items.item_name", con);
+      var gol = new Gols();
+      var cmd = new SqlCommand("SELECT dbo.flower_colors.flow_color, dbo.flower_colortypes.flow_colortype, flower_entry.id, " +
+                               "dbo.flower_formats.flow_format, dbo.flower_customers.customer_name, dbo.flower_companies.company_name " +
+                               ", flower_entry.flower_name, flower_entry.flower_code, flower_entry.enter_date " +
+                               ", flower_entry.comment FROM dbo.flower_entry INNER JOIN " +
+                               "dbo.flower_colors ON dbo.flower_entry.flower_color = dbo.flower_colors.flowcolor_id INNER JOIN " +
+                               "dbo.flower_colortypes ON dbo.flower_entry.flower_colortype = dbo.flower_colortypes.colortype_id INNER JOIN " +
+                               "dbo.flower_formats ON dbo.flower_entry.flower_format = dbo.flower_formats.flowformat_id INNER JOIN " +
+                               "dbo.flower_customers ON dbo.flower_entry.customer_name = dbo.flower_customers.customer_id INNER JOIN " +
+                               "dbo.flower_companies ON dbo.flower_entry.company_name = dbo.flower_companies.company_id " +
+                               " where flower_entry.id = " + flowerId + " ", con);
       var rd = cmd.ExecuteReader();
       while (rd.Read())
       {
-        list.Add(new Cutted()
-        {
-          Id = rd["ID"].ToString(),
-          FlowerId = rd["flower_id"].ToString(),
-          Total = rd["total"].ToString(),
-          Cuttedd = rd["cutted"].ToString(),
-          Falleh = rd["falleh"].ToString(),
-          Service = rd["service"].ToString(),
-          Comment = rd["comment"].ToString(),
-          Record1 = rd["record1"].ToString(),
-          Record2 = rd["record2"].ToString(),
-          Record3 = rd["record3"].ToString(),
-          Record4 = rd["record4"].ToString(),
-          ItemName = rd["item_name"].ToString(),
-          ChangeTimeDate1 = rd["td1"].ToString(),
-          ChangeTimeDate2 = rd["td2"].ToString(),
-          ChangeTimeDate3 = rd["td3"].ToString(),
-          ChangeTimeDate4 = rd["td4"].ToString()
-        });
+        gol.Id = Convert.ToInt32(rd["id"]);
+        gol.Name = rd["flower_name"].ToString();
+        gol.Color = rd["flow_color"].ToString();
+        gol.ColorType = rd["flow_colortype"].ToString();
+        gol.Format = rd["flow_format"].ToString();
+        gol.Code = rd["flower_code"].ToString();
+        gol.EnterDate = rd["enter_date"].ToString();
+        gol.Customer = rd["customer_name"].ToString();
+        gol.Company = rd["company_name"].ToString();
+        gol.Comment = rd["comment"].ToString();
       }
       con.Close();
-      return new JsonResult(list);
-    }
-    public void CaculateCutted(int flowerId)
-    {
-      con.Open();
-      var cmd = new SqlCommand("update cutted_and_remain set falleh = j.falleh ,service = j.service from " +
-                               "(select item,case when[1] is null then 0 else [1] end as service " +
-                               ",case when[2] is null then 0 else [2] end as falleh from " +
-                               "((select item, arrange_type, (count * tedad) as tedad from new_halfcut " +
-                               "inner join new_halfcutRiz on new_halfcut.id = new_halfcutRiz.hid " +
-                               "inner join flower_forms_entry on new_halfcut.formid = flower_forms_entry.id " +
-                               "where flowid = " + flowerId + ") union all " +
-                               "(select fai.item_name as item, ffe.arrange_type, " +
-                               "(fai.item_insheet_count * ffe.sheetcount) as tedad " +
-                               "from flower_arrange_items as fai inner join flower_forms_entry as ffe " +
-                               "on fai.form_id = ffe.id where fai.flower_id = " + flowerId + ")) as src " +
-                               "pivot(sum(tedad) for arrange_type in ([1],[2]))as piv)j " +
-                               "where j.item = cutted_and_remain.item_name and cutted_and_remain.flower_id = " + flowerId + "" +
-                               " " +
-                               "insert into cutted_and_remain (flower_id, item_name, service, falleh) " +
-                               "select " + flowerId + ", j.item, j.service, j.falleh from " +
-                               "(select item,case when[1] is null then 0 else [1] end as service " +
-                               ",case when[2] is null then 0 else [2] end as falleh from " +
-                               "((select item, arrange_type, (count * tedad) as tedad from new_halfcut " +
-                               "inner join new_halfcutRiz on new_halfcut.id = new_halfcutRiz.hid " +
-                               "inner join flower_forms_entry on new_halfcut.formid = flower_forms_entry.id " +
-                               "where flowid = " + flowerId + ") union all(select fai.item_name as item, ffe.arrange_type, " +
-                               "(fai.item_insheet_count * ffe.sheetcount) as tedad " +
-                               "from flower_arrange_items as fai inner join flower_forms_entry as ffe " +
-                               "on fai.form_id = ffe.id where fai.flower_id = " + flowerId + ")) as src " +
-                               "pivot(sum(tedad) for arrange_type in ([1],[2]))as piv)j " +
-                               "where j.item not in(select item_name as item from " +
-                               "cutted_and_remain where flower_id = " + flowerId + ")" +
-                               " " +
-                               "update cutted_and_remain set total = falleh + service + cutted  where flower_id = " + flowerId + " ", con);
-      cmd.ExecuteNonQuery();
-      con.Close();
+      return new JsonResult(gol);
     }
   }
 }

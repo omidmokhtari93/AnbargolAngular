@@ -8,6 +8,7 @@ import { SearchComponent } from './shared/search/search.component';
 import { HttpModule } from '@angular/http';
 import { FlowerInfoComponent } from './main/flower-info/flower-info.component';
 import { CuttedComponent } from './main/cutted/cutted.component';
+import { FlowerMainInfoComponent } from './shared/flower-main-info/flower-main-info.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { CuttedComponent } from './main/cutted/cutted.component';
     MainComponent,
     SearchComponent,
     FlowerInfoComponent,
-    CuttedComponent
+    CuttedComponent,
+    FlowerMainInfoComponent
   ],
   imports: [
     BrowserModule,

@@ -41,7 +41,7 @@ module.exports = "<app-main></app-main>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\">\r\n  <div class=\"card-header bg-primary text-white\">\r\n    برش خورده ها\r\n    <img src=\"/assets/images/loading.gif\" class=\"loading-md float-left\" *ngIf=\"loading\" />\r\n  </div>\r\n  <div class=\"card-body text-center\">\r\n    <table class=\"table table-bordered\">\r\n      <tr>\r\n        <th scope=\"col\">4</th>\r\n        <th scope=\"col\">3</th>\r\n        <th scope=\"col\">2</th>\r\n        <th scope=\"col\">آخرین تغییر</th>\r\n        <th scope=\"col\">مقدار تغییر</th>\r\n        <th scope=\"col\">نام آیتم</th>\r\n        <th scope=\"col\">برش خورده</th>\r\n        <th scope=\"col\">آیتم فله</th>\r\n        <th scope=\"col\">آیتم سرویسی</th>\r\n        <th scope=\"col\">موجودی کل</th>\r\n        <th scope=\"col\">توضیحات</th>\r\n        <th scope=\"col\">&nbsp;</th>\r\n        <th scope=\"col\">&nbsp;</th>\r\n      </tr>\r\n      <tr *ngFor=\"let d of data\">\r\n        <td [title]=\"d.changeTimeDate4\">{{d.record4}}</td>\r\n        <td [title]=\"d.changeTimeDate3\">{{d.record3}}</td>\r\n        <td [title]=\"d.changeTimeDate2\">{{d.record2}}</td>\r\n        <td [title]=\"d.changeTimeDate1\">{{d.record1}}</td>\r\n        <td>\r\n          <input type=\"button\" value=\"-\"/>\r\n          <input type=\"number\" class=\"text-center\"/>\r\n          <input type=\"button\" value=\"+\"/>\r\n        </td>\r\n        <td>{{d.itemName}}</td>\r\n        <td>{{d.cuttedd}}</td>\r\n        <td>{{d.falleh}}</td>\r\n        <td>{{d.service}}</td>\r\n        <td>{{d.total}}</td>\r\n        <td>{{d.comment}}</td>\r\n        <td><a>ویرایش</a></td>\r\n        <td><a>حذف</a></td>\r\n      </tr>\r\n    </table>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"card\">\r\n  <div class=\"card-header bg-primary text-white\">\r\n    برش خورده ها\r\n    <img src=\"/assets/images/loading.gif\" class=\"loading-md float-left\" *ngIf=\"loading\" />\r\n  </div>\r\n  <div class=\"card-body text-center\">\r\n    <app-flower-main-info [flowerid]=\"flowerId\"></app-flower-main-info>\r\n    <table class=\"table table-bordered\">\r\n      <tr>\r\n        <th scope=\"col\">4</th>\r\n        <th scope=\"col\">3</th>\r\n        <th scope=\"col\">2</th>\r\n        <th scope=\"col\">آخرین تغییر</th>\r\n        <th scope=\"col\">مقدار تغییر</th>\r\n        <th scope=\"col\">نام آیتم</th>\r\n        <th scope=\"col\">برش خورده</th>\r\n        <th scope=\"col\">آیتم فله</th>\r\n        <th scope=\"col\">آیتم سرویسی</th>\r\n        <th scope=\"col\">موجودی کل</th>\r\n        <th scope=\"col\">توضیحات</th>\r\n        <th scope=\"col\">&nbsp;</th>\r\n        <th scope=\"col\">&nbsp;</th>\r\n      </tr>\r\n      <tr *ngFor=\"let d of data\">\r\n        <td [title]=\"d.changeTimeDate4\">{{d.record4}}</td>\r\n        <td [title]=\"d.changeTimeDate3\">{{d.record3}}</td>\r\n        <td [title]=\"d.changeTimeDate2\">{{d.record2}}</td>\r\n        <td [title]=\"d.changeTimeDate1\">{{d.record1}}</td>\r\n        <td>\r\n          <input type=\"button\" value=\"-\" (click)=\"minus(change.value , data.id)\"/>\r\n          <input type=\"number\" class=\"text-center\" #change/>\r\n          <input type=\"button\" value=\"+\" (click)=\"plus(change.value , d.id)\"/>\r\n        </td>\r\n        <td>{{d.itemName}}</td>\r\n        <td>{{d.cuttedd}}</td>\r\n        <td>{{d.falleh}}</td>\r\n        <td>{{d.service}}</td>\r\n        <td>{{d.total}}</td>\r\n        <td>{{d.comment}}</td>\r\n        <td><a>ویرایش</a></td>\r\n        <td><a>حذف</a></td>\r\n      </tr>\r\n    </table>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -64,6 +64,17 @@ module.exports = "<div class=\"card\">\r\n  <div class=\"card-header bg-primary 
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"container sans rtl\">\r\n  <nav class=\"navbar navbar-expand-lg py-1 px-1\">\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n      <ul class=\"navbar-nav pr-0 w-100\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" href=\"#\">برنامه</a>\r\n        </li>\r\n        <li class=\"nav-item dropdown mr-3\">\r\n          <a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n            ثبت\r\n          </a>\r\n          <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\r\n            <a class=\"dropdown-item\" href=\"#\">گل جدید</a>\r\n            <a class=\"dropdown-item\" href=\"#\">برگ خروج</a>\r\n            <a class=\"dropdown-item\" href=\"#\">سرویس ها</a>\r\n            <a class=\"dropdown-item\" href=\"#\">کپی آیتم ها</a>\r\n            <a class=\"dropdown-item\" href=\"#\">معادل سازی</a>\r\n          </div>\r\n        </li>\r\n        <li class=\"nav-item mr-3\">\r\n          <a class=\"nav-link\" href=\"#\">جستجوی گل</a>\r\n        </li>\r\n        <li class=\"nav-item mr-3\">\r\n          <a class=\"nav-link\" href=\"#\">گزارشات</a>\r\n        </li>\r\n        <li class=\"nav-item mr-3\">\r\n          <a class=\"nav-link\" href=\"#\">ویرایش کنترل ها</a>\r\n        </li>\r\n        <li class=\"mr-5 my-auto\">\r\n          <app-search [config]=\"golSearchConfig\" (output)=\"createGolList($event)\"></app-search>\r\n        </li>\r\n        <li class=\"nav-item mr-auto\">\r\n          <a class=\"nav-link\" href=\"#\">خروج</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </nav>\r\n  <div class=\"card rounded-0\">\r\n    <div class=\"card-body rounded-0 rtl text-right\">\r\n      <router-outlet></router-outlet>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/shared/flower-main-info/flower-main-info.component.html":
+/*!***************************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/shared/flower-main-info/flower-main-info.component.html ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div>\r\n  <div class=\"text-center sans-small my-2 border d-inline-block p-2\">\r\n    نام :\r\n    <span>{{gol.name}}</span>&nbsp;&nbsp;&nbsp;&nbsp;\r\n    کد :\r\n    <span>{{gol.code}}</span>&nbsp;&nbsp;&nbsp;&nbsp;\r\n    رنگ :\r\n    <span>{{gol.color}}</span>&nbsp;&nbsp;&nbsp;&nbsp;\r\n    نوع رنگ :\r\n    <span>{{gol.colorType}}</span>&nbsp;&nbsp;&nbsp;&nbsp;\r\n    قالب :\r\n    <span>{{gol.format}}</span>&nbsp;&nbsp;&nbsp;&nbsp;\r\n    مشتری :\r\n    <span>{{gol.customer}}</span>&nbsp;&nbsp;&nbsp;&nbsp;\r\n    سازنده :\r\n    <span>{{gol.company}}</span>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -178,6 +189,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm2015/http.js");
 /* harmony import */ var _main_flower_info_flower_info_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./main/flower-info/flower-info.component */ "./src/app/main/flower-info/flower-info.component.ts");
 /* harmony import */ var _main_cutted_cutted_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./main/cutted/cutted.component */ "./src/app/main/cutted/cutted.component.ts");
+/* harmony import */ var _shared_flower_main_info_flower_main_info_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./shared/flower-main-info/flower-main-info.component */ "./src/app/shared/flower-main-info/flower-main-info.component.ts");
+
 
 
 
@@ -198,7 +211,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _main_main_component__WEBPACK_IMPORTED_MODULE_6__["MainComponent"],
             _shared_search_search_component__WEBPACK_IMPORTED_MODULE_7__["SearchComponent"],
             _main_flower_info_flower_info_component__WEBPACK_IMPORTED_MODULE_9__["FlowerInfoComponent"],
-            _main_cutted_cutted_component__WEBPACK_IMPORTED_MODULE_10__["CuttedComponent"]
+            _main_cutted_cutted_component__WEBPACK_IMPORTED_MODULE_10__["CuttedComponent"],
+            _shared_flower_main_info_flower_main_info_component__WEBPACK_IMPORTED_MODULE_11__["FlowerMainInfoComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -254,11 +268,17 @@ let CuttedComponent = class CuttedComponent {
     ngOnInit() {
         this.loading = true;
         this.routeSubscription = this.route.params.subscribe((p) => {
+            this.flowerId = p['fid'];
             this.httpSubscription = this.http.get('/api/Cutted', { params: { flowerId: p['fid'] } }).subscribe(e => {
                 this.data = e.json();
                 this.loading = false;
             });
         });
+    }
+    plus(change, id) {
+        console.log(change, id);
+    }
+    minus(change, id) {
     }
 };
 CuttedComponent.ctorParameters = () => [
@@ -451,6 +471,64 @@ MainComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [__webpack_require__(/*! ./main.component.less */ "./src/app/main/main.component.less")]
     })
 ], MainComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/shared/flower-main-info/flower-main-info.component.less":
+/*!*************************************************************************!*\
+  !*** ./src/app/shared/flower-main-info/flower-main-info.component.less ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "span {\n  background-color: #007bff;\n  padding: 1px 3px;\n  color: white;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hhcmVkL2Zsb3dlci1tYWluLWluZm8vQzovVXNlcnMvSVQyL3NvdXJjZS9yZXBvcy9BbmJhcmdvbEFuZ3VsYXIvQW5iYXJnb2xBbmd1bGFyL3NyYy9hcHAvc2hhcmVkL2Zsb3dlci1tYWluLWluZm8vZmxvd2VyLW1haW4taW5mby5jb21wb25lbnQubGVzcyIsInNyYy9hcHAvc2hhcmVkL2Zsb3dlci1tYWluLWluZm8vZmxvd2VyLW1haW4taW5mby5jb21wb25lbnQubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFFQTtFQUNFLHlCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxZQUFBO0FDREYiLCJmaWxlIjoic3JjL2FwcC9zaGFyZWQvZmxvd2VyLW1haW4taW5mby9mbG93ZXItbWFpbi1pbmZvLmNvbXBvbmVudC5sZXNzIiwic291cmNlc0NvbnRlbnQiOlsiQEJsdWVDb2xvcjogIzAwN2JmZjtcblxuc3BhbiB7XG4gIGJhY2tncm91bmQtY29sb3I6IEBCbHVlQ29sb3I7XG4gIHBhZGRpbmc6IDFweCAzcHg7XG4gIGNvbG9yOiB3aGl0ZTtcbn1cbiIsInNwYW4ge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMDA3YmZmO1xuICBwYWRkaW5nOiAxcHggM3B4O1xuICBjb2xvcjogd2hpdGU7XG59XG4iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/shared/flower-main-info/flower-main-info.component.ts":
+/*!***********************************************************************!*\
+  !*** ./src/app/shared/flower-main-info/flower-main-info.component.ts ***!
+  \***********************************************************************/
+/*! exports provided: FlowerMainInfoComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FlowerMainInfoComponent", function() { return FlowerMainInfoComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm2015/http.js");
+
+
+
+let FlowerMainInfoComponent = class FlowerMainInfoComponent {
+    constructor(http) {
+        this.http = http;
+        this.id = 0;
+        this.gol = [];
+    }
+    ngOnInit() {
+        this.http.get('/api/GetFlowerMainInfo', { params: { flowerId: this.id } }).subscribe(e => {
+            console.log(e.json());
+            this.gol = e.json();
+        });
+    }
+};
+FlowerMainInfoComponent.ctorParameters = () => [
+    { type: _angular_http__WEBPACK_IMPORTED_MODULE_2__["Http"] }
+];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])('flowerid')
+], FlowerMainInfoComponent.prototype, "id", void 0);
+FlowerMainInfoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-flower-main-info',
+        template: __webpack_require__(/*! raw-loader!./flower-main-info.component.html */ "./node_modules/raw-loader/index.js!./src/app/shared/flower-main-info/flower-main-info.component.html"),
+        styles: [__webpack_require__(/*! ./flower-main-info.component.less */ "./src/app/shared/flower-main-info/flower-main-info.component.less")]
+    })
+], FlowerMainInfoComponent);
 
 
 

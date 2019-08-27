@@ -9,6 +9,7 @@ import { ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./cutted.component.less']
 })
 export class CuttedComponent implements OnInit {
+  flowerId: number;
   loading = false;
   data = [];
   httpSubscription: Subscription
@@ -18,6 +19,7 @@ export class CuttedComponent implements OnInit {
   ngOnInit() {
     this.loading = true;
     this.routeSubscription = this.route.params.subscribe((p: Params) => {
+      this.flowerId = p['fid'];
       this.httpSubscription = this.http.get('/api/Cutted', { params: { flowerId: p['fid'] } }).subscribe(e => {
         this.data = e.json();
         this.loading = false;
@@ -25,4 +27,10 @@ export class CuttedComponent implements OnInit {
     })
   }
 
+  plus(change, id) {
+    console.log(change, id);
+  }
+  minus(change, id) {
+
+  }
 }
