@@ -7,13 +7,15 @@ import { MainComponent } from './main/main.component';
 import { SearchComponent } from './shared/search/search.component';
 import { HttpModule } from '@angular/http';
 import { FlowerInfoComponent } from './main/flower-info/flower-info.component';
+import { CuttedComponent } from './main/cutted/cutted.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     SearchComponent,
-    FlowerInfoComponent
+    FlowerInfoComponent,
+    CuttedComponent
   ],
   imports: [
     BrowserModule,

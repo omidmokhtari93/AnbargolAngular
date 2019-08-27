@@ -1,0 +1,44 @@
+<div class="card">
+  <div class="card-header bg-primary text-white">
+    برش خورده ها
+    <img src="/assets/images/loading.gif" class="loading-md float-left" *ngIf="loading" />
+  </div>
+  <div class="card-body text-center">
+    <table class="table table-bordered">
+      <tr>
+        <th scope="col">4</th>
+        <th scope="col">3</th>
+        <th scope="col">2</th>
+        <th scope="col">آخرین تغییر</th>
+        <th scope="col">مقدار تغییر</th>
+        <th scope="col">نام آیتم</th>
+        <th scope="col">برش خورده</th>
+        <th scope="col">آیتم فله</th>
+        <th scope="col">آیتم سرویسی</th>
+        <th scope="col">موجودی کل</th>
+        <th scope="col">توضیحات</th>
+        <th scope="col">&nbsp;</th>
+        <th scope="col">&nbsp;</th>
+      </tr>
+      <tr *ngFor="let d of data">
+        <td [title]="d.changeTimeDate4">{{d.record4}}</td>
+        <td [title]="d.changeTimeDate3">{{d.record3}}</td>
+        <td [title]="d.changeTimeDate2">{{d.record2}}</td>
+        <td [title]="d.changeTimeDate1">{{d.record1}}</td>
+        <td>
+          <input type="button" value="-"/>
+          <input type="number" class="text-center"/>
+          <input type="button" value="+"/>
+        </td>
+        <td>{{d.itemName}}</td>
+        <td>{{d.cuttedd}}</td>
+        <td>{{d.falleh}}</td>
+        <td>{{d.service}}</td>
+        <td>{{d.total}}</td>
+        <td>{{d.comment}}</td>
+        <td><a>ویرایش</a></td>
+        <td><a>حذف</a></td>
+      </tr>
+    </table>
+  </div>
+</div>

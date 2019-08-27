@@ -34,6 +34,17 @@ module.exports = "<app-main></app-main>\r\n"
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/index.js!./src/app/main/cutted/cutted.component.html":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/main/cutted/cutted.component.html ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"card\">\r\n  <div class=\"card-header bg-primary text-white\">\r\n    برش خورده ها\r\n    <img src=\"/assets/images/loading.gif\" class=\"loading-md float-left\" *ngIf=\"loading\" />\r\n  </div>\r\n  <div class=\"card-body text-center\">\r\n    <table class=\"table table-bordered\">\r\n      <tr>\r\n        <th scope=\"col\">4</th>\r\n        <th scope=\"col\">3</th>\r\n        <th scope=\"col\">2</th>\r\n        <th scope=\"col\">آخرین تغییر</th>\r\n        <th scope=\"col\">مقدار تغییر</th>\r\n        <th scope=\"col\">نام آیتم</th>\r\n        <th scope=\"col\">برش خورده</th>\r\n        <th scope=\"col\">آیتم فله</th>\r\n        <th scope=\"col\">آیتم سرویسی</th>\r\n        <th scope=\"col\">موجودی کل</th>\r\n        <th scope=\"col\">توضیحات</th>\r\n        <th scope=\"col\">&nbsp;</th>\r\n        <th scope=\"col\">&nbsp;</th>\r\n      </tr>\r\n      <tr *ngFor=\"let d of data\">\r\n        <td [title]=\"d.changeTimeDate4\">{{d.record4}}</td>\r\n        <td [title]=\"d.changeTimeDate3\">{{d.record3}}</td>\r\n        <td [title]=\"d.changeTimeDate2\">{{d.record2}}</td>\r\n        <td [title]=\"d.changeTimeDate1\">{{d.record1}}</td>\r\n        <td>\r\n          <input type=\"button\" value=\"-\"/>\r\n          <input type=\"number\" class=\"text-center\"/>\r\n          <input type=\"button\" value=\"+\"/>\r\n        </td>\r\n        <td>{{d.itemName}}</td>\r\n        <td>{{d.cuttedd}}</td>\r\n        <td>{{d.falleh}}</td>\r\n        <td>{{d.service}}</td>\r\n        <td>{{d.total}}</td>\r\n        <td>{{d.comment}}</td>\r\n        <td><a>ویرایش</a></td>\r\n        <td><a>حذف</a></td>\r\n      </tr>\r\n    </table>\r\n  </div>\r\n</div>\r\n"
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/index.js!./src/app/main/flower-info/flower-info.component.html":
 /*!***************************************************************************************!*\
   !*** ./node_modules/raw-loader!./src/app/main/flower-info/flower-info.component.html ***!
@@ -41,7 +52,7 @@ module.exports = "<app-main></app-main>\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\">\r\n  <div class=\"card-header bg-primary text-white\">\r\n    {{gol?.name}}\r\n    <img src=\"/assets/images/loading.gif\" class=\"loading-md float-left\" *ngIf=\"loading\"/>\r\n  </div>\r\n  <div class=\"card-body\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-5\">\r\n        <p>کد : {{gol?.code}}</p>\r\n        <p>رنگ : {{gol?.color}}</p>\r\n        <p>نوع رنگ : {{gol?.colorType}}</p>\r\n        <p>قالب : {{gol?.format}}</p>\r\n      </div>\r\n      <div class=\"col-md-5 border-right\">\r\n        <p>تاریخ ورود به انبار : {{gol?.enterDate}}</p>\r\n        <p>مشتری : {{gol?.customer}}</p>\r\n        <p>شرکت : {{gol?.company}}</p>\r\n        <p>توضیحات : {{gol?.comment}}</p>\r\n      </div>\r\n      <div class=\"col-md-2\">\r\n        <a target=\"_blank\" [href]=\"gol?.imagePath\">\r\n          <img class=\"img-fluid float-left\" [src]=\"gol?.imagePath\" style=\"width: 115px; height: 115px;\" alt=\"بدون عکس\">\r\n        </a>\r\n      </div>\r\n    </div>\r\n    <div class=\"card bg-primary text-white mt-3 rounded-0 p-2\">فرم ها</div>\r\n    <select class=\"form-control mt-2 w-25 mx-auto\" (change)=\"changeFormAction($event)\">\r\n      <option *ngFor=\"let form of formNumbers\" [value]=\"form?.id\">{{form?.name}}</option>\r\n    </select>\r\n    <div class=\"my-3 text-center\" id=\"forminfo\">\r\n      <label>نوع چیدمان : {{forms?.arrangeType}}</label>\r\n      <label>ابعاد : {{forms?.dimension}}</label>\r\n      <label>تعداد برگ : {{forms?.count}}</label>\r\n      <label>نوع مارک : {{forms?.mark}}</label>\r\n      <label>تاریخ ورود : {{forms?.enterDate}}</label>\r\n      <label>توضیحات : {{forms?.comment}}</label>\r\n    </div>\r\n    <div class=\"text-center\">\r\n      <table class=\"table table-bordered\" *ngIf=\"formItems.length\">\r\n        <tr>\r\n          <th>نام آیتم</th>\r\n          <th>تعداد آیتم در برگ</th>\r\n          <th>تعداد لنت آیتم</th>\r\n          <th>مجموع\t</th>\r\n          <th>توضیحات</th>\r\n        </tr>\r\n        <tr *ngFor=\"let item of formItems\">\r\n          <td>{{item.name}}</td>\r\n          <td>{{item.itemInSheet}}</td>\r\n          <td>{{item.lentInSheet}}</td>\r\n          <td>{{item.sum}}</td>\r\n          <td>{{item.comment}}</td>\r\n        </tr>\r\n      </table>\r\n    </div>\r\n    <div class=\"card bg-primary text-white mt-3 rounded-0 p-2\">سفارشات</div>\r\n    <div class=\"row mt-2\">\r\n      <div class=\"col-md-9\">\r\n        <table class=\"table table-bordered\" *ngIf=\"orders.length\">\r\n          <tr>\r\n            <th>نوع سفارش</th>\r\n            <th>تعداد سفارش</th>\r\n            <th>تاریخ سفارش</th>\r\n            <th>تاریخ تکمیل سفارش</th>\r\n            <th>باقیمانده</th>\r\n            <th>توضیحات</th>\r\n            <th></th>\r\n          </tr>\r\n          <tr *ngFor=\"let order of orders\">\r\n            <td>{{order?.orderType}}</td>\r\n            <td>{{order?.count}}</td>\r\n            <td>{{order?.orderDate}}</td>\r\n            <td>{{order?.orderCompleteDate}}</td>\r\n            <td>{{order?.remain}}</td>\r\n            <td>{{order?.comment}}</td>\r\n            <td><a (click)=\"showOrderForms(order.id)\">مشاهده فرم ها</a></td>\r\n          </tr>\r\n          <footer>\r\n            <span *ngFor=\"let page of pages\" (click)=\"paginateOrderTable(page.index , page.size)\">{{page.index + 1}}</span>\r\n          </footer>\r\n        </table>\r\n      </div>\r\n      <div class=\"col-md-3\">\r\n        <table class=\"table table-bordered\" *ngIf=\"ordreForms.length\">\r\n          <tr>\r\n            <th>شماره فرم</th>\r\n            <th>تاریخ تحویل</th>\r\n            <th>تعداد برگ</th>\r\n          </tr>\r\n          <tr *ngFor=\"let orderForm of ordreForms\">\r\n            <td>{{orderForm.formName}}</td>\r\n            <td>{{orderForm.receiveDate}}</td>\r\n            <td>{{orderForm.sheetCount}}</td>\r\n          </tr>\r\n        </table>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"card\">\r\n  <div class=\"card-header bg-primary text-white\">\r\n    {{gol?.name}}\r\n    <img src=\"/assets/images/loading.gif\" class=\"loading-md float-left\" *ngIf=\"loading\"/>\r\n  </div>\r\n  <div class=\"card-body\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-5\">\r\n        <p>کد : {{gol?.code}}</p>\r\n        <p>رنگ : {{gol?.color}}</p>\r\n        <p>نوع رنگ : {{gol?.colorType}}</p>\r\n        <p>قالب : {{gol?.format}}</p>\r\n      </div>\r\n      <div class=\"col-md-5 border-right\">\r\n        <p>تاریخ ورود به انبار : {{gol?.enterDate}}</p>\r\n        <p>مشتری : {{gol?.customer}}</p>\r\n        <p>شرکت : {{gol?.company}}</p>\r\n        <p>توضیحات : {{gol?.comment}}</p>\r\n      </div>\r\n      <div class=\"col-md-2\">\r\n        <a target=\"_blank\" [href]=\"gol?.imagePath\">\r\n          <img class=\"img-fluid float-left\" [src]=\"gol?.imagePath\" style=\"width: 115px; height: 115px;\" alt=\"بدون عکس\">\r\n        </a>\r\n      </div>\r\n    </div>\r\n    <div class=\"card bg-primary text-white mt-3 rounded-0 p-2\">فرم ها</div>\r\n    <select class=\"form-control mt-2 w-25 mx-auto\" (change)=\"changeFormAction($event)\">\r\n      <option *ngFor=\"let form of formNumbers\" [value]=\"form?.id\">{{form?.name}}</option>\r\n    </select>\r\n    <div class=\"my-3 text-center\" id=\"forminfo\">\r\n      <label>نوع چیدمان : {{forms?.arrangeType}}</label>\r\n      <label>ابعاد : {{forms?.dimension}}</label>\r\n      <label>تعداد برگ : {{forms?.count}}</label>\r\n      <label>نوع مارک : {{forms?.mark}}</label>\r\n      <label>تاریخ ورود : {{forms?.enterDate}}</label>\r\n      <label>توضیحات : {{forms?.comment}}</label>\r\n    </div>\r\n    <div class=\"text-center\">\r\n      <table class=\"table table-bordered\" *ngIf=\"formItems.length\">\r\n        <tr>\r\n          <th>نام آیتم</th>\r\n          <th>تعداد آیتم در برگ</th>\r\n          <th>تعداد لنت آیتم</th>\r\n          <th>مجموع\t</th>\r\n          <th>توضیحات</th>\r\n        </tr>\r\n        <tr *ngFor=\"let item of formItems\">\r\n          <td>{{item.name}}</td>\r\n          <td>{{item.itemInSheet}}</td>\r\n          <td>{{item.lentInSheet}}</td>\r\n          <td>{{item.sum}}</td>\r\n          <td>{{item.comment}}</td>\r\n        </tr>\r\n      </table>\r\n    </div>\r\n    <div class=\"text-center\">\r\n      <button type=\"button\" class=\"btn btn-primary\" [routerLink]=\"['/cutted' , flowerId]\">برش خورده ها</button>\r\n      <button type=\"button\" class=\"btn btn-primary\">نیم برش ها</button>\r\n      <button type=\"button\" class=\"btn btn-primary\">فرم ها</button>\r\n      <button type=\"button\" class=\"btn btn-primary\">آیتم ها</button>\r\n    </div>\r\n    <div class=\"card bg-primary text-white mt-3 rounded-0 p-2\">سفارشات</div>\r\n    <div class=\"row mt-2\">\r\n      <div class=\"col-md-9\">\r\n        <table class=\"table table-bordered\" *ngIf=\"orders.length\">\r\n          <tr>\r\n            <th>نوع سفارش</th>\r\n            <th>تعداد سفارش</th>\r\n            <th>تاریخ سفارش</th>\r\n            <th>تاریخ تکمیل سفارش</th>\r\n            <th>باقیمانده</th>\r\n            <th>توضیحات</th>\r\n            <th></th>\r\n          </tr>\r\n          <tr *ngFor=\"let order of orders\">\r\n            <td>{{order?.orderType}}</td>\r\n            <td>{{order?.count}}</td>\r\n            <td>{{order?.orderDate}}</td>\r\n            <td>{{order?.orderCompleteDate}}</td>\r\n            <td>{{order?.remain}}</td>\r\n            <td>{{order?.comment}}</td>\r\n            <td><a (click)=\"showOrderForms(order.id)\">مشاهده فرم ها</a></td>\r\n          </tr>\r\n          <footer>\r\n            <span *ngFor=\"let page of pages\" (click)=\"paginateOrderTable(page.index , page.size)\">{{page.index + 1}}</span>\r\n          </footer>\r\n        </table>\r\n      </div>\r\n      <div class=\"col-md-3\">\r\n        <table class=\"table table-bordered\" *ngIf=\"ordreForms.length\">\r\n          <tr>\r\n            <th>شماره فرم</th>\r\n            <th>تاریخ تحویل</th>\r\n            <th>تعداد برگ</th>\r\n          </tr>\r\n          <tr *ngFor=\"let orderForm of ordreForms\">\r\n            <td>{{orderForm.formName}}</td>\r\n            <td>{{orderForm.receiveDate}}</td>\r\n            <td>{{orderForm.sheetCount}}</td>\r\n          </tr>\r\n        </table>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -81,12 +92,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _main_flower_info_flower_info_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./main/flower-info/flower-info.component */ "./src/app/main/flower-info/flower-info.component.ts");
+/* harmony import */ var _main_cutted_cutted_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./main/cutted/cutted.component */ "./src/app/main/cutted/cutted.component.ts");
+
 
 
 
 
 const routes = [
-    { path: 'flowerinfo/:fid', component: _main_flower_info_flower_info_component__WEBPACK_IMPORTED_MODULE_3__["FlowerInfoComponent"] }
+    { path: 'flowerinfo/:fid', component: _main_flower_info_flower_info_component__WEBPACK_IMPORTED_MODULE_3__["FlowerInfoComponent"] },
+    { path: 'cutted/:fid', component: _main_cutted_cutted_component__WEBPACK_IMPORTED_MODULE_4__["CuttedComponent"] },
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -163,6 +177,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_search_search_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./shared/search/search.component */ "./src/app/shared/search/search.component.ts");
 /* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm2015/http.js");
 /* harmony import */ var _main_flower_info_flower_info_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./main/flower-info/flower-info.component */ "./src/app/main/flower-info/flower-info.component.ts");
+/* harmony import */ var _main_cutted_cutted_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./main/cutted/cutted.component */ "./src/app/main/cutted/cutted.component.ts");
+
 
 
 
@@ -181,7 +197,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
             _main_main_component__WEBPACK_IMPORTED_MODULE_6__["MainComponent"],
             _shared_search_search_component__WEBPACK_IMPORTED_MODULE_7__["SearchComponent"],
-            _main_flower_info_flower_info_component__WEBPACK_IMPORTED_MODULE_9__["FlowerInfoComponent"]
+            _main_flower_info_flower_info_component__WEBPACK_IMPORTED_MODULE_9__["FlowerInfoComponent"],
+            _main_cutted_cutted_component__WEBPACK_IMPORTED_MODULE_10__["CuttedComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -193,6 +210,68 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
     })
 ], AppModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/main/cutted/cutted.component.less":
+/*!***************************************************!*\
+  !*** ./src/app/main/cutted/cutted.component.less ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "table tr td input[type=button] {\n  width: 25px;\n  height: 25px;\n}\ntable tr td input[type=number] {\n  width: 100px;\n  margin-left: 2px;\n  margin-right: 2px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWFpbi9jdXR0ZWQvQzovVXNlcnMvSVQyL3NvdXJjZS9yZXBvcy9BbmJhcmdvbEFuZ3VsYXIvQW5iYXJnb2xBbmd1bGFyL3NyYy9hcHAvbWFpbi9jdXR0ZWQvY3V0dGVkLmNvbXBvbmVudC5sZXNzIiwic3JjL2FwcC9tYWluL2N1dHRlZC9jdXR0ZWQuY29tcG9uZW50Lmxlc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFFSSxXQUFBO0VBQ0EsWUFBQTtBQ0FKO0FESEE7RUFPSSxZQUFBO0VBQ0EsZ0JBQUE7RUFDQSxpQkFBQTtBQ0RKIiwiZmlsZSI6InNyYy9hcHAvbWFpbi9jdXR0ZWQvY3V0dGVkLmNvbXBvbmVudC5sZXNzIiwic291cmNlc0NvbnRlbnQiOlsidGFibGUge1xuICB0ciB0ZCBpbnB1dFt0eXBlPWJ1dHRvbl0ge1xuICAgIHdpZHRoOiAyNXB4O1xuICAgIGhlaWdodDogMjVweDtcbiAgfVxuXG4gIHRyIHRkIGlucHV0W3R5cGU9bnVtYmVyXSB7XG4gICAgd2lkdGg6IDEwMHB4O1xuICAgIG1hcmdpbi1sZWZ0OiAycHg7XG4gICAgbWFyZ2luLXJpZ2h0OiAycHg7XG4gIH1cbn1cbiIsInRhYmxlIHRyIHRkIGlucHV0W3R5cGU9YnV0dG9uXSB7XG4gIHdpZHRoOiAyNXB4O1xuICBoZWlnaHQ6IDI1cHg7XG59XG50YWJsZSB0ciB0ZCBpbnB1dFt0eXBlPW51bWJlcl0ge1xuICB3aWR0aDogMTAwcHg7XG4gIG1hcmdpbi1sZWZ0OiAycHg7XG4gIG1hcmdpbi1yaWdodDogMnB4O1xufVxuIl19 */"
+
+/***/ }),
+
+/***/ "./src/app/main/cutted/cutted.component.ts":
+/*!*************************************************!*\
+  !*** ./src/app/main/cutted/cutted.component.ts ***!
+  \*************************************************/
+/*! exports provided: CuttedComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CuttedComponent", function() { return CuttedComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm2015/http.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
+
+
+
+let CuttedComponent = class CuttedComponent {
+    constructor(http, route) {
+        this.http = http;
+        this.route = route;
+        this.loading = false;
+        this.data = [];
+    }
+    ngOnInit() {
+        this.loading = true;
+        this.routeSubscription = this.route.params.subscribe((p) => {
+            this.httpSubscription = this.http.get('/api/Cutted', { params: { flowerId: p['fid'] } }).subscribe(e => {
+                this.data = e.json();
+                this.loading = false;
+            });
+        });
+    }
+};
+CuttedComponent.ctorParameters = () => [
+    { type: _angular_http__WEBPACK_IMPORTED_MODULE_2__["Http"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] }
+];
+CuttedComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-cutted',
+        template: __webpack_require__(/*! raw-loader!./cutted.component.html */ "./node_modules/raw-loader/index.js!./src/app/main/cutted/cutted.component.html"),
+        styles: [__webpack_require__(/*! ./cutted.component.less */ "./src/app/main/cutted/cutted.component.less")]
+    })
+], CuttedComponent);
 
 
 

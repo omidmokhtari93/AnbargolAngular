@@ -75,4 +75,24 @@ namespace AnbargolAngular.Controllers
     public string ReceiveDate { get; set; }
     public string SheetCount { get; set; }
   }
+
+  public class Cutted
+  {
+    public string Id { get; set; }
+    public string FlowerId { get; set; }
+    public string Total { get; set; }
+    public string Cuttedd { get; set; }
+    public string Falleh { get; set; }
+    public string Service { get; set; }
+    public string Record1 { get; set; }
+    public string Record2 { get; set; }
+    public string Record3 { get; set; }
+    public string Record4 { get; set; }
+    public string ChangeTimeDate1 { get; set; }
+    public string ChangeTimeDate2 { get; set; }
+    public string ChangeTimeDate3 { get; set; }
+    public string ChangeTimeDate4 { get; set; }
+    public string ItemName { get; set; }
+    public string Comment { get; set; }
+  }
 }
