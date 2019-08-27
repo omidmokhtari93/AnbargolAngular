@@ -87,6 +87,7 @@
         </table>
       </div>
       <div class="col-md-3">
+        <p class="sans-small rtl" *ngIf="orderId != 0 && !ordreForms.length">در این سفارش فرمی ثبت نشده است.</p>
         <table class="table table-bordered" *ngIf="ordreForms.length">
           <tr>
             <th>شماره فرم</th>

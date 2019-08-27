@@ -9,6 +9,7 @@ import { Http } from '@angular/http';
   styleUrls: ['./flower-info.component.less']
 })
 export class FlowerInfoComponent implements OnInit, OnDestroy {
+  orderId = 0;
   pageSize = 10;
   flowerId: any;
   pages = [];
@@ -42,6 +43,7 @@ export class FlowerInfoComponent implements OnInit, OnDestroy {
         this.flowerId = p['fid'];
         this.ordreForms = [];
         this.pageCountCalcualte(this.pageSize, p['fid']);
+        this.orderId = 0;
       });
     });
   }
@@ -88,6 +90,7 @@ export class FlowerInfoComponent implements OnInit, OnDestroy {
       {
         params: { orderId: id }
       }).subscribe(e => {
+        this.orderId = id;
         this.ordreForms = e.json();
       })
   }

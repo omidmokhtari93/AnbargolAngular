@@ -20,7 +20,6 @@
           <th scope="col">موجودی کل</th>
           <th scope="col">توضیحات</th>
           <th scope="col">&nbsp;</th>
-          <th scope="col">&nbsp;</th>
         </tr>
         <tr *ngFor="let d of data">
           <td [title]="d.changeTimeDate4">{{d.record4}}</td>
@@ -28,7 +27,7 @@
           <td [title]="d.changeTimeDate2">{{d.record2}}</td>
           <td [title]="d.changeTimeDate1">{{d.record1}}</td>
           <td>
-            <input type="button" value="-" (click)="minus(change.value , data.id)" />
+            <input type="button" value="-" (click)="minus(change.value , d.id)" />
             <input type="number" class="text-center" #change />
             <input type="button" value="+" (click)="plus(change.value , d.id)" />
           </td>
@@ -37,8 +36,12 @@
           <td>{{d.falleh}}</td>
           <td>{{d.service}}</td>
           <td>{{d.total}}</td>
-          <td>{{d.comment}}</td>
-          <td><a>ویرایش</a></td>
+          <td>
+            <input type="text" id="editfield" [value]="d.comment"
+                   (input)="btnSave.style.display = 'inline-block'" #editData/>
+            <a class="text-danger" #btnSave style="display: none;"
+               (click)="saveComment(d.id , editData.value);btnSave.style.display = 'none'">ذخیره</a>
+          </td>
           <td><a>حذف</a></td>
         </tr>
       </table>
@@ -46,3 +49,4 @@
     <button class="btn btn-primary" type="button" [routerLink]="['/flowerinfo' , flowerId]">بازگشت</button>
   </div>
 </div>
+<notifier-container></notifier-container>

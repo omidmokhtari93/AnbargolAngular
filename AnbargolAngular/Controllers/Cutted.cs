@@ -52,5 +52,40 @@ namespace AnbargolAngular.Controllers
       con.Close();
       return new JsonResult(list);
     }
+
+    [HttpGet("/api/UpdateComment")]
+    public void UpdateComment(int id, string comment)
+    {
+      con.Open();
+      var cmd = new SqlCommand("UPDATE [dbo].[cutted_and_remain] SET [comment] = '" + comment + "' " +
+                               "where ID = " + id + " ", con);
+      cmd.ExecuteNonQuery();
+      con.Close();
+    }
+
+    [HttpGet("/api/UpdateCutted")]
+    public JsonResult UpdateCutted(int id, int change, bool plus)
+    {
+      con.Open();
+      if (!plus)
+      {
+        var cmd = new SqlCommand("if (select cutted from cutted_and_remain where id = " + id + ") < " + change + " " +
+                                 "select N'خطا در مقدار وارد شده' else " +
+                                 "UPDATE [dbo].[cutted_and_remain] SET [cutted] = [cutted] - " + change + " " +
+                                 "where ID = " + id + " ", con);
+        var messege = cmd.ExecuteScalar().ToString();
+        con.Close();
+        return string.IsNullOrEmpty(messege) ? new JsonResult(new { type = "success", message = "با موفقیت ثبت شد" })
+          : new JsonResult(new { type = "error", message = messege });
+      }
+      else
+      {
+        var cmd = new SqlCommand("UPDATE [dbo].[cutted_and_remain] SET [cutted] = [cutted] + " + change + " " +
+                                 "where ID = " + id + " ", con);
+        cmd.ExecuteNonQuery();
+        con.Close();
+        return new JsonResult(new { type = "success", message = "با موفقیت ثبت شد" });
+      }
+    }
   }
 }
