@@ -13,9 +13,7 @@ export class FlowerMainInfoComponent implements OnInit {
 
   ngOnInit() {
     this.http.get('/api/GetFlowerMainInfo', { params: { flowerId: this.id } }).subscribe(e => {
-      console.log(e.json());
       this.gol = e.json();
     })
   }
-
 }

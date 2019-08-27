@@ -5,41 +5,44 @@
   </div>
   <div class="card-body text-center">
     <app-flower-main-info [flowerid]="flowerId"></app-flower-main-info>
-    <table class="table table-bordered">
-      <tr>
-        <th scope="col">4</th>
-        <th scope="col">3</th>
-        <th scope="col">2</th>
-        <th scope="col">آخرین تغییر</th>
-        <th scope="col">مقدار تغییر</th>
-        <th scope="col">نام آیتم</th>
-        <th scope="col">برش خورده</th>
-        <th scope="col">آیتم فله</th>
-        <th scope="col">آیتم سرویسی</th>
-        <th scope="col">موجودی کل</th>
-        <th scope="col">توضیحات</th>
-        <th scope="col">&nbsp;</th>
-        <th scope="col">&nbsp;</th>
-      </tr>
-      <tr *ngFor="let d of data">
-        <td [title]="d.changeTimeDate4">{{d.record4}}</td>
-        <td [title]="d.changeTimeDate3">{{d.record3}}</td>
-        <td [title]="d.changeTimeDate2">{{d.record2}}</td>
-        <td [title]="d.changeTimeDate1">{{d.record1}}</td>
-        <td>
-          <input type="button" value="-" (click)="minus(change.value , data.id)"/>
-          <input type="number" class="text-center" #change/>
-          <input type="button" value="+" (click)="plus(change.value , d.id)"/>
-        </td>
-        <td>{{d.itemName}}</td>
-        <td>{{d.cuttedd}}</td>
-        <td>{{d.falleh}}</td>
-        <td>{{d.service}}</td>
-        <td>{{d.total}}</td>
-        <td>{{d.comment}}</td>
-        <td><a>ویرایش</a></td>
-        <td><a>حذف</a></td>
-      </tr>
-    </table>
+    <div>
+      <table class="table table-bordered">
+        <tr>
+          <th scope="col">4</th>
+          <th scope="col">3</th>
+          <th scope="col">2</th>
+          <th scope="col">آخرین تغییر</th>
+          <th scope="col">مقدار تغییر</th>
+          <th scope="col">نام آیتم</th>
+          <th scope="col">برش خورده</th>
+          <th scope="col">آیتم فله</th>
+          <th scope="col">آیتم سرویسی</th>
+          <th scope="col">موجودی کل</th>
+          <th scope="col">توضیحات</th>
+          <th scope="col">&nbsp;</th>
+          <th scope="col">&nbsp;</th>
+        </tr>
+        <tr *ngFor="let d of data">
+          <td [title]="d.changeTimeDate4">{{d.record4}}</td>
+          <td [title]="d.changeTimeDate3">{{d.record3}}</td>
+          <td [title]="d.changeTimeDate2">{{d.record2}}</td>
+          <td [title]="d.changeTimeDate1">{{d.record1}}</td>
+          <td>
+            <input type="button" value="-" (click)="minus(change.value , data.id)" />
+            <input type="number" class="text-center" #change />
+            <input type="button" value="+" (click)="plus(change.value , d.id)" />
+          </td>
+          <td>{{d.itemName}}</td>
+          <td>{{d.cuttedd}}</td>
+          <td>{{d.falleh}}</td>
+          <td>{{d.service}}</td>
+          <td>{{d.total}}</td>
+          <td>{{d.comment}}</td>
+          <td><a>ویرایش</a></td>
+          <td><a>حذف</a></td>
+        </tr>
+      </table>
+    </div>
+    <button class="btn btn-primary" type="button" [routerLink]="['/flowerinfo' , flowerId]">بازگشت</button>
   </div>
 </div>
