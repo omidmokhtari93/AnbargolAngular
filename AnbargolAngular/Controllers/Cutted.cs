@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -13,10 +14,21 @@ namespace AnbargolAngular.Controllers
   public class CuttedAndRemain : Controller
   {
     private readonly SqlConnection con = new SqlConnection(connectionString: "Data Source=.;Initial Catalog=flower_depot;Integrated Security=True");
-    [HttpGet("/api/Cutted")]
-    public JsonResult GetCutted(int flowerId)
+
+    public string GetTimeAndDate()
     {
-      CalculateCutted.calc(flowerId);
+      var pc = new PersianCalendar();
+      var PDate = pc.GetYear(DateTime.Now) + "/" + pc.GetMonth(DateTime.Now) + "/" + pc.GetDayOfMonth(DateTime.Now);
+      return DateTime.Now.ToString("h:mm") + " - " + PDate;
+    }
+
+    [HttpGet("/api/Cutted")]
+    public JsonResult GetCutted(int flowerId, bool update)
+    {
+      if (update)
+      {
+        CalculateCutted.calc(flowerId);
+      }
       con.Open();
       var list = new List<Cutted>();
       var cmd = new SqlCommand("SELECT cutted_and_remain.ID, cutted_and_remain.flower_id, cutted_and_remain.total, " +
@@ -25,7 +37,7 @@ namespace AnbargolAngular.Controllers
                                "cutted_and_remain.record3, cutted_and_remain.record4, items.item_name, cutted_and_remain.td1, " +
                                "cutted_and_remain.td2, cutted_and_remain.td3, cutted_and_remain.td4 FROM cutted_and_remain " +
                                "INNER JOIN items ON cutted_and_remain.item_name = items.item_id WHERE(cutted_and_remain.flower_id = " + flowerId + ") " +
-                               "ORDER BY items.item_name", con);
+                               "ORDER BY items.item_name ", con);
       var rd = cmd.ExecuteReader();
       while (rd.Read())
       {
@@ -70,9 +82,19 @@ namespace AnbargolAngular.Controllers
       if (!plus)
       {
         var cmd = new SqlCommand("if (select cutted from cutted_and_remain where id = " + id + ") < " + change + " " +
-                                 "select N'خطا در مقدار وارد شده' else " +
-                                 "UPDATE [dbo].[cutted_and_remain] SET [cutted] = [cutted] - " + change + " " +
-                                 "where ID = " + id + " ", con);
+                                 "begin select N'خطا در مقدار وارد شده' end else begin " +
+                                 "select '' UPDATE [dbo].[cutted_and_remain] SET [cutted] = [cutted] - " + change + " " +
+                                 ",[record4] = [record3] " +
+                                 ",[td4] = [td3]" +
+                                 ",[record3] = [record2] " +
+                                 ",[td3] = [td2]" +
+                                 ",[record2] = [record1] " +
+                                 ",[td2] = [td1]" +
+                                 ",[record1] = '" + change + "' + '-' " +
+                                 ",[td1] = '" + GetTimeAndDate() + "' " +
+                                 "where ID = " + id + " " +
+                                 " update cutted_and_remain set total = falleh + service + cutted  where id = " + id + " " +
+                                 "end", con);
         var messege = cmd.ExecuteScalar().ToString();
         con.Close();
         return string.IsNullOrEmpty(messege) ? new JsonResult(new { type = "success", message = "با موفقیت ثبت شد" })
@@ -81,11 +103,29 @@ namespace AnbargolAngular.Controllers
       else
       {
         var cmd = new SqlCommand("UPDATE [dbo].[cutted_and_remain] SET [cutted] = [cutted] + " + change + " " +
-                                 "where ID = " + id + " ", con);
+                                 ",[record4] = [record3] " +
+                                 ",[td4] = [td3]" +
+                                 ",[record3] = [record2] " +
+                                 ",[td3] = [td2]" +
+                                 ",[record2] = [record1] " +
+                                 ",[td2] = [td1]" +
+                                 ",[record1] = '" + change + "' + '+' " +
+                                 ",[td1] = '" + GetTimeAndDate() + "' " +
+                                 "where ID = " + id + "  " +
+                                 "update cutted_and_remain set total = falleh + service + cutted  where id = " + id + " ", con);
         cmd.ExecuteNonQuery();
         con.Close();
         return new JsonResult(new { type = "success", message = "با موفقیت ثبت شد" });
       }
+    }
+
+    [HttpGet("/api/DeleteCutted")]
+    public JsonResult DeleteCutted(int id)
+    {
+      con.Open();
+      var cmd = new SqlCommand("delete from cutted_and_remain where id =" + id + " ", con);
+      cmd.ExecuteNonQuery();
+      return new JsonResult(new { type = "success", message = "با موفقیت حذف شد" });
     }
   }
 }

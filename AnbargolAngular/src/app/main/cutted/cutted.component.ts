@@ -18,10 +18,14 @@ export class CuttedComponent implements OnInit {
   constructor(private http: Http, private route: ActivatedRoute, private notifier: NotifierService) { }
 
   ngOnInit() {
+    this.getCuttedData(true);
+  }
+
+  getCuttedData(update: boolean) {
     this.loading = true;
     this.routeSubscription = this.route.params.subscribe((p: Params) => {
       this.flowerId = p['fid'];
-      this.httpSubscription = this.http.get('/api/Cutted', { params: { flowerId: p['fid'] } }).subscribe(e => {
+      this.httpSubscription = this.http.get('/api/Cutted', { params: { flowerId: p['fid'], update: update } }).subscribe(e => {
         this.data = e.json();
         this.loading = false;
       })
@@ -33,9 +37,10 @@ export class CuttedComponent implements OnInit {
       {
         params: { change: change, id: id, plus: true }
       }).subscribe(e => {
-      let message = e.json();
-      this.notifier.notify(message.type, message.message);
-    })
+        let message = e.json();
+        this.notifier.notify(message.type, message.message);
+        this.getCuttedData(false);
+      })
   }
 
   minus(change, id) {
@@ -45,12 +50,13 @@ export class CuttedComponent implements OnInit {
         params: { change: change, id: id, plus: false }
       }).subscribe(e => {
         let message = e.json();
-        this.notifier.notify(message.type, message.message);
+        if (message.type == 'error') {
+          this.notifier.notify(message.type, message.message);
+        } else {
+          this.getCuttedData(false);
+          this.notifier.notify(message.type, message.message);
+        }
       })
-  }
-
-  editCutted(change, id) {
-   
   }
 
   saveComment(id, comment) {
@@ -59,6 +65,17 @@ export class CuttedComponent implements OnInit {
         params: { id: id, comment: comment }
       }).subscribe(e => {
         this.notifier.notify('success', 'ذخیره شد');
+      })
+  }
+
+  deleteCutted(id) {
+    this.httpSubscription = this.http.get('/api/DeleteCutted',
+      {
+        params: { id: id }
+      }).subscribe(e => {
+        let message = e.json();
+        this.notifier.notify(message.type, message.message);
+        this.getCuttedData(false);
       })
   }
 }

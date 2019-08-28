@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-header bg-primary text-white">
     {{gol?.name}}
-    <img src="/assets/images/loading.gif" class="loading-md float-left" *ngIf="loading"/>
+    <img src="/assets/images/loading.gif" class="loading-md float-left" *ngIf="loading" />
   </div>
   <div class="card-body">
     <div class="row">
@@ -82,7 +82,7 @@
             <td><a (click)="showOrderForms(order.id)">مشاهده فرم ها</a></td>
           </tr>
           <footer>
-            <span *ngFor="let page of pages" (click)="paginateOrderTable(page.index , page.size)">{{page.index + 1}}</span>
+            <span *ngFor="let page of pages" (click)="paginateOrderTable(page.index , page.size , BtnPage);" #BtnPage>{{page.index + 1}}</span>
           </footer>
         </table>
       </div>

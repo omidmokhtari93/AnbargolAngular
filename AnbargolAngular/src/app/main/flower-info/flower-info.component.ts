@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Http } from '@angular/http';
@@ -9,6 +9,7 @@ import { Http } from '@angular/http';
   styleUrls: ['./flower-info.component.less']
 })
 export class FlowerInfoComponent implements OnInit, OnDestroy {
+  pageinationButton: any;
   orderId = 0;
   pageSize = 10;
   flowerId: any;
@@ -75,7 +76,15 @@ export class FlowerInfoComponent implements OnInit, OnDestroy {
       })
   }
 
-  paginateOrderTable(index, size) {
+  paginateOrderTable(index, size, button) {
+    if (this.pageinationButton == undefined) {
+      this.pageinationButton = button;
+      button.style.color = 'red';
+    } else {
+      this.pageinationButton.style.color = '';
+      this.pageinationButton = button;
+      button.style.color = 'red';
+    }
     this.httpSubscription = this.http.get('/api/Orders', {
       params: {
         flowerId: this.flowerId, take: index * size, skip: size * (index + 1)

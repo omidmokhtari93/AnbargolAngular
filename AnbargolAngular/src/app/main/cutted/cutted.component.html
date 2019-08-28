@@ -6,7 +6,7 @@
   <div class="card-body text-center">
     <app-flower-main-info [flowerid]="flowerId"></app-flower-main-info>
     <div>
-      <table class="table table-bordered">
+      <table class="table table-bordered" *ngIf="data.length">
         <tr>
           <th scope="col">4</th>
           <th scope="col">3</th>
@@ -38,11 +38,21 @@
           <td>{{d.total}}</td>
           <td>
             <input type="text" id="editfield" [value]="d.comment"
-                   (input)="btnSave.style.display = 'inline-block'" #editData/>
+                   (input)="btnSave.style.display = 'inline-block'" #editData />
             <a class="text-danger" #btnSave style="display: none;"
                (click)="saveComment(d.id , editData.value);btnSave.style.display = 'none'">ذخیره</a>
           </td>
-          <td><a>حذف</a></td>
+          <td>
+            <a (click)="yes.style.display = 'inline-block';
+               no.style.display = 'inline-block';
+               delete.style.display = 'none'" #delete>حذف</a>
+            <a (click)="yes.style.display = 'none';
+               no.style.display = 'none';delete.style.display = 'inline-block';deleteCutted(d.id);" #yes
+               style="display: none;" class="btn btn-primary p-1 text-white ml-1">بله</a>
+            <a (click)="no.style.display = 'none';
+               yes.style.display = 'none';delete.style.display = 'inline-block'" #no
+               style="display: none;" class="btn btn-primary p-1 text-white">خیر</a>
+          </td>
         </tr>
       </table>
     </div>

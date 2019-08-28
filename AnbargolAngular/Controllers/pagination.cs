@@ -34,7 +34,7 @@ namespace AnbargolAngular.Controllers
                                "[id],[flower_id], ot.order_type,[order_count],[order_enter_date] " +
                                ",[order_complete_date],[order_remain],[comment] FROM[dbo].[orders] " +
                                "inner join order_type ot on orders.order_type = ot.order_id where flower_id = " + flowerId + ")i " +
-                               "where i.rn > " + take + " and i.rn <= " + skip + " ", con);
+                               "where i.rn > " + take + " and i.rn <= " + skip + " order by i.order_complete_date desc", con);
       var rd = cmd.ExecuteReader();
       while (rd.Read())
       {
