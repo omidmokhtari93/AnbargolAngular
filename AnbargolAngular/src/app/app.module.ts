@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
@@ -10,6 +10,7 @@ import { FlowerInfoComponent } from './main/flower-info/flower-info.component';
 import { CuttedComponent } from './main/cutted/cutted.component';
 import { FlowerMainInfoComponent } from './shared/flower-main-info/flower-main-info.component';
 import { NotifierModule } from 'angular-notifier';
+import { NewFlowerComponent } from './main/new-flower/new-flower.component';
 
 @
   NgModule({
@@ -19,9 +20,11 @@ import { NotifierModule } from 'angular-notifier';
       SearchComponent,
       FlowerInfoComponent,
       CuttedComponent,
-      FlowerMainInfoComponent
+      FlowerMainInfoComponent,
+      NewFlowerComponent
     ],
     imports: [
+      ReactiveFormsModule,
       BrowserModule,
       AppRoutingModule,
       FormsModule,

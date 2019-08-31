@@ -63,7 +63,18 @@ module.exports = "<div class=\"card\">\r\n  <div class=\"card-header bg-primary 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container sans rtl\">\r\n  <nav class=\"navbar navbar-expand-lg grey lighten-5 py-1 px-1\">\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n      <ul class=\"navbar-nav pr-0 w-100\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" href=\"#\">برنامه</a>\r\n        </li>\r\n        <li class=\"nav-item dropdown mr-3\">\r\n          <a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n            ثبت\r\n          </a>\r\n          <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\r\n            <a class=\"dropdown-item\" href=\"#\">گل جدید</a>\r\n            <a class=\"dropdown-item\" href=\"#\">برگ خروج</a>\r\n            <a class=\"dropdown-item\" href=\"#\">سرویس ها</a>\r\n            <a class=\"dropdown-item\" href=\"#\">کپی آیتم ها</a>\r\n            <a class=\"dropdown-item\" href=\"#\">معادل سازی</a>\r\n          </div>\r\n        </li>\r\n        <li class=\"nav-item mr-3\">\r\n          <a class=\"nav-link\" href=\"#\">جستجوی گل</a>\r\n        </li>\r\n        <li class=\"nav-item mr-3\">\r\n          <a class=\"nav-link\" href=\"#\">گزارشات</a>\r\n        </li>\r\n        <li class=\"nav-item mr-3\">\r\n          <a class=\"nav-link\" href=\"#\">ویرایش کنترل ها</a>\r\n        </li>\r\n        <li class=\"mr-5 my-auto\">\r\n          <app-search [config]=\"golSearchConfig\" (output)=\"createGolList($event)\"></app-search>\r\n        </li>\r\n        <li class=\"nav-item mr-auto\">\r\n          <a class=\"nav-link\" href=\"#\">خروج</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </nav>\r\n  <div class=\"card rounded-0\">\r\n    <div class=\"card-body rounded-0 rtl p-2 text-right\">\r\n      <router-outlet></router-outlet>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n"
+module.exports = "<div class=\"container sans rtl\">\r\n  <nav class=\"navbar navbar-expand-lg grey lighten-5 py-1 px-1\">\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n      <ul class=\"navbar-nav pr-0 w-100\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" href=\"#\">برنامه</a>\r\n        </li>\r\n        <li class=\"nav-item dropdown mr-3\">\r\n          <a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n            ثبت\r\n          </a>\r\n          <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\r\n            <a class=\"dropdown-item\" [routerLink]=\"['/newflower']\">طرح جدید</a>\r\n            <a class=\"dropdown-item\" href=\"#\">برگ خروج</a>\r\n            <a class=\"dropdown-item\" href=\"#\">سرویس ها</a>\r\n            <a class=\"dropdown-item\" href=\"#\">کپی آیتم ها</a>\r\n            <a class=\"dropdown-item\" href=\"#\">معادل سازی</a>\r\n          </div>\r\n        </li>\r\n        <li class=\"nav-item mr-3\">\r\n          <a class=\"nav-link\" href=\"#\">جستجوی طرح</a>\r\n        </li>\r\n        <li class=\"nav-item mr-3\">\r\n          <a class=\"nav-link\" href=\"#\">گزارشات</a>\r\n        </li>\r\n        <li class=\"nav-item mr-3\">\r\n          <a class=\"nav-link\" href=\"#\">ویرایش کنترل ها</a>\r\n        </li>\r\n        <li class=\"mr-5 my-auto\">\r\n          <app-search [config]=\"golSearchConfig\" (output)=\"createGolList($event)\"></app-search>\r\n        </li>\r\n        <li class=\"nav-item mr-auto\">\r\n          <a class=\"nav-link\" href=\"#\">خروج</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </nav>\r\n  <div class=\"card rounded-0\">\r\n    <div class=\"card-body rounded-0 rtl p-2 text-right\">\r\n      <router-outlet></router-outlet>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/main/new-flower/new-flower.component.html":
+/*!*************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/main/new-flower/new-flower.component.html ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"card\">\r\n  <div class=\"card-header bg-primary text-white\">ثبت طرح جدید</div>\r\n  <div class=\"card-body\">\r\n    <form [formGroup]=\"newGolForm\" (ngSubmit)=\"sabtGol()\">\r\n      <div class=\"row\">\r\n        <div class=\"col-md-4 d-flex justify-content-between\">\r\n          <div class=\"my-auto text-nowrap ml-2\">نام طرح : </div>\r\n          <input class=\"form-control\" formControlName=\"name\" />\r\n        </div>\r\n        <div class=\"col-md-4 d-flex justify-content-between\">\r\n          <div class=\"my-auto text-nowrap ml-2\">کد طرح : </div>\r\n          <input class=\"form-control\" formControlName=\"code\"/>\r\n        </div>\r\n        <div class=\"col-md-4 d-flex justify-content-between\">\r\n          <div class=\"my-auto text-nowrap ml-2\">قالب : </div>\r\n          <select class=\"form-control\" formControlName=\"format\">\r\n            <option>123</option>\r\n          </select>\r\n        </div>\r\n      </div>\r\n      <div class=\"row mt-3\">\r\n        <div class=\"col-md-4 d-flex justify-content-between\">\r\n          <div class=\"my-auto text-nowrap ml-2\">رنگ : </div>\r\n          <select class=\"form-control\" formControlName=\"color\">\r\n            <option>123</option>\r\n          </select>\r\n        </div>\r\n        <div class=\"col-md-4 d-flex justify-content-between\">\r\n          <div class=\"my-auto text-nowrap ml-2\">نوع رنگ : </div>\r\n          <select class=\"form-control\" formControlName=\"colorType\">\r\n            <option>123</option>\r\n          </select>\r\n        </div>\r\n        <div class=\"col-md-4 d-flex justify-content-between\">\r\n          <div class=\"my-auto text-nowrap ml-2\">مشتری : </div>\r\n          <select class=\"form-control\" formControlName=\"customer\">\r\n            <option>123</option>\r\n          </select>\r\n        </div>\r\n      </div>\r\n      <div class=\"row mt-3\">\r\n        <div class=\"col-md-4 d-flex justify-content-between\">\r\n          <div class=\"my-auto text-nowrap ml-2\">شرکت سازنده : </div>\r\n          <select class=\"form-control\" formControlName=\"company\">\r\n            <option>123</option>\r\n          </select>\r\n        </div>\r\n        <div class=\"col-md-4 d-flex justify-content-between\">\r\n          <div class=\"my-auto text-nowrap ml-2\">تاریخ ورود : </div>\r\n          <select class=\"form-control\" formControlName=\"enterDate\">\r\n            <option>123</option>\r\n          </select>\r\n        </div>\r\n        <div class=\"col-md-4 d-flex justify-content-between\">\r\n          <div class=\"my-auto text-nowrap ml-2\">توضیحات : </div>\r\n          <input class=\"form-control\" formControlName=\"comment\"/>\r\n        </div>\r\n      </div>\r\n      <div class=\"row mt-4\">\r\n        <div class=\"col-md-12 d-flex justify-content-start\">\r\n          <div class=\"my-auto text-nowrap ml-2\">انتخاب تصویر طرح</div>\r\n          <input type=\"file\" />\r\n        </div>\r\n      </div>\r\n      <div class=\"mt-3 text-left\">\r\n        <button type=\"submit\" class=\"btn btn-primary\" >ثبت</button>\r\n      </div>\r\n    </form>\r\n    <div class=\"row mt-3\">\r\n      <div class=\"col-md-12 text-center\">\r\n        <table class=\"table table-bordered\">\r\n          <tr>\r\n            <th scope=\"col\">نام گل</th>\r\n            <th scope=\"col\">کد گل</th>\r\n            <th scope=\"col\">رنگ گل</th>\r\n            <th scope=\"col\">نوع رنگ</th>\r\n            <th scope=\"col\">قالب</th>\r\n            <th scope=\"col\">نام مشتری</th>\r\n            <th scope=\"col\">سازنده</th>\r\n            <th scope=\"col\">تاریخ ورود</th>\r\n            <th scope=\"col\">توضیحات</th>\r\n            <th scope=\"col\"></th>\r\n            <th scope=\"col\"></th>\r\n          </tr>\r\n        </table>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -104,6 +115,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _main_flower_info_flower_info_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./main/flower-info/flower-info.component */ "./src/app/main/flower-info/flower-info.component.ts");
 /* harmony import */ var _main_cutted_cutted_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./main/cutted/cutted.component */ "./src/app/main/cutted/cutted.component.ts");
+/* harmony import */ var _main_new_flower_new_flower_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./main/new-flower/new-flower.component */ "./src/app/main/new-flower/new-flower.component.ts");
+
 
 
 
@@ -112,6 +125,7 @@ __webpack_require__.r(__webpack_exports__);
 const routes = [
     { path: 'flowerinfo/:fid', component: _main_flower_info_flower_info_component__WEBPACK_IMPORTED_MODULE_3__["FlowerInfoComponent"] },
     { path: 'cutted/:fid', component: _main_cutted_cutted_component__WEBPACK_IMPORTED_MODULE_4__["CuttedComponent"] },
+    { path: 'newflower', component: _main_new_flower_new_flower_component__WEBPACK_IMPORTED_MODULE_5__["NewFlowerComponent"] },
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -191,6 +205,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _main_cutted_cutted_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./main/cutted/cutted.component */ "./src/app/main/cutted/cutted.component.ts");
 /* harmony import */ var _shared_flower_main_info_flower_main_info_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./shared/flower-main-info/flower-main-info.component */ "./src/app/shared/flower-main-info/flower-main-info.component.ts");
 /* harmony import */ var angular_notifier__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! angular-notifier */ "./node_modules/angular-notifier/esm2015/angular-notifier.js");
+/* harmony import */ var _main_new_flower_new_flower_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./main/new-flower/new-flower.component */ "./src/app/main/new-flower/new-flower.component.ts");
+
 
 
 
@@ -214,9 +230,11 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _shared_search_search_component__WEBPACK_IMPORTED_MODULE_7__["SearchComponent"],
             _main_flower_info_flower_info_component__WEBPACK_IMPORTED_MODULE_9__["FlowerInfoComponent"],
             _main_cutted_cutted_component__WEBPACK_IMPORTED_MODULE_10__["CuttedComponent"],
-            _shared_flower_main_info_flower_main_info_component__WEBPACK_IMPORTED_MODULE_11__["FlowerMainInfoComponent"]
+            _shared_flower_main_info_flower_main_info_component__WEBPACK_IMPORTED_MODULE_11__["FlowerMainInfoComponent"],
+            _main_new_flower_new_flower_component__WEBPACK_IMPORTED_MODULE_13__["NewFlowerComponent"]
         ],
         imports: [
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
             _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
@@ -362,7 +380,7 @@ CuttedComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".row .col-md-5 p,\n.row .col-md-2 p {\n  margin-bottom: 5px;\n}\n.row .col-md-5 p:last-child,\n.row .col-md-2 p:last-child {\n  margin-bottom: 0;\n}\n#forminfo label {\n  margin-left: 10px;\n  border-left: 1px solid #808080;\n  padding-left: 5px;\n  margin-bottom: 0;\n  font-size: 12px;\n}\n#forminfo label:last-child {\n  border-left: 0;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWFpbi9mbG93ZXItaW5mby9DOi9Vc2Vycy9JVDIvc291cmNlL3JlcG9zL0FuYmFyZ29sQW5ndWxhci9BbmJhcmdvbEFuZ3VsYXIvc3JjL2FwcC9tYWluL2Zsb3dlci1pbmZvL2Zsb3dlci1pbmZvLmNvbXBvbmVudC5sZXNzIiwic3JjL2FwcC9tYWluL2Zsb3dlci1pbmZvL2Zsb3dlci1pbmZvLmNvbXBvbmVudC5sZXNzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBOztFQUVJLGtCQUFBO0FDREo7QUREQTs7RUFNSSxnQkFBQTtBQ0RKO0FES0E7RUFFSSxpQkFBQTtFQUNBLDhCQUFBO0VBQ0EsaUJBQUE7RUFDQSxnQkFBQTtFQUNBLGVBQUE7QUNKSjtBREZBO0VBVUksY0FBQTtBQ0xKIiwiZmlsZSI6InNyYy9hcHAvbWFpbi9mbG93ZXItaW5mby9mbG93ZXItaW5mby5jb21wb25lbnQubGVzcyIsInNvdXJjZXNDb250ZW50IjpbIkBCbHVlQ29sb3I6ICMwMDdiZmY7XG5cbi5yb3cge1xuICAuY29sLW1kLTUgcCwgLmNvbC1tZC0yIHAge1xuICAgIG1hcmdpbi1ib3R0b206IDVweDtcbiAgfVxuXG4gIC5jb2wtbWQtNSBwOmxhc3QtY2hpbGQsIC5jb2wtbWQtMiBwOmxhc3QtY2hpbGQge1xuICAgIG1hcmdpbi1ib3R0b206IDA7XG4gIH1cbn1cblxuI2Zvcm1pbmZvIHtcbiAgbGFiZWwge1xuICAgIG1hcmdpbi1sZWZ0OiAxMHB4O1xuICAgIGJvcmRlci1sZWZ0OiAxcHggc29saWQgIzgwODA4MDtcbiAgICBwYWRkaW5nLWxlZnQ6IDVweDtcbiAgICBtYXJnaW4tYm90dG9tOiAwO1xuICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgfVxuXG4gIGxhYmVsOmxhc3QtY2hpbGQge1xuICAgIGJvcmRlci1sZWZ0OiAwO1xuICB9XG59XG4iLCIucm93IC5jb2wtbWQtNSBwLFxuLnJvdyAuY29sLW1kLTIgcCB7XG4gIG1hcmdpbi1ib3R0b206IDVweDtcbn1cbi5yb3cgLmNvbC1tZC01IHA6bGFzdC1jaGlsZCxcbi5yb3cgLmNvbC1tZC0yIHA6bGFzdC1jaGlsZCB7XG4gIG1hcmdpbi1ib3R0b206IDA7XG59XG4jZm9ybWluZm8gbGFiZWwge1xuICBtYXJnaW4tbGVmdDogMTBweDtcbiAgYm9yZGVyLWxlZnQ6IDFweCBzb2xpZCAjODA4MDgwO1xuICBwYWRkaW5nLWxlZnQ6IDVweDtcbiAgbWFyZ2luLWJvdHRvbTogMDtcbiAgZm9udC1zaXplOiAxMnB4O1xufVxuI2Zvcm1pbmZvIGxhYmVsOmxhc3QtY2hpbGQge1xuICBib3JkZXItbGVmdDogMDtcbn1cbiJdfQ== */"
+module.exports = ".row .col-md-5 p,\n.row .col-md-2 p {\n  margin-bottom: 5px;\n}\n.row .col-md-5 p:last-child,\n.row .col-md-2 p:last-child {\n  margin-bottom: 0;\n}\n#forminfo label {\n  margin-left: 10px;\n  border-left: 1px solid #808080;\n  padding-left: 5px;\n  margin-bottom: 0;\n  font-size: 12px;\n}\n#forminfo label:last-child {\n  border-left: 0;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWFpbi9mbG93ZXItaW5mby9DOi9Vc2Vycy9JVDIvc291cmNlL3JlcG9zL0FuYmFyZ29sQW5ndWxhci9BbmJhcmdvbEFuZ3VsYXIvc3JjL2FwcC9tYWluL2Zsb3dlci1pbmZvL2Zsb3dlci1pbmZvLmNvbXBvbmVudC5sZXNzIiwic3JjL2FwcC9tYWluL2Zsb3dlci1pbmZvL2Zsb3dlci1pbmZvLmNvbXBvbmVudC5sZXNzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBOztFQUVJLGtCQUFBO0FDREo7QUREQTs7RUFNSSxnQkFBQTtBQ0RKO0FES0E7RUFFSSxpQkFBQTtFQUNBLDhCQUFBO0VBQ0EsaUJBQUE7RUFDQSxnQkFBQTtFQUNBLGVBQUE7QUNKSjtBRE1JO0VBQ0UsY0FBQTtBQ0pOIiwiZmlsZSI6InNyYy9hcHAvbWFpbi9mbG93ZXItaW5mby9mbG93ZXItaW5mby5jb21wb25lbnQubGVzcyIsInNvdXJjZXNDb250ZW50IjpbIkBCbHVlQ29sb3I6ICMwMDdiZmY7XG5cbi5yb3cge1xuICAuY29sLW1kLTUgcCwgLmNvbC1tZC0yIHAge1xuICAgIG1hcmdpbi1ib3R0b206IDVweDtcbiAgfVxuXG4gIC5jb2wtbWQtNSBwOmxhc3QtY2hpbGQsIC5jb2wtbWQtMiBwOmxhc3QtY2hpbGQge1xuICAgIG1hcmdpbi1ib3R0b206IDA7XG4gIH1cbn1cblxuI2Zvcm1pbmZvIHtcbiAgbGFiZWwge1xuICAgIG1hcmdpbi1sZWZ0OiAxMHB4O1xuICAgIGJvcmRlci1sZWZ0OiAxcHggc29saWQgIzgwODA4MDtcbiAgICBwYWRkaW5nLWxlZnQ6IDVweDtcbiAgICBtYXJnaW4tYm90dG9tOiAwO1xuICAgIGZvbnQtc2l6ZTogMTJweDtcblxuICAgICY6bGFzdC1jaGlsZCB7XG4gICAgICBib3JkZXItbGVmdDogMDtcbiAgICB9XG4gIH1cbn1cbiIsIi5yb3cgLmNvbC1tZC01IHAsXG4ucm93IC5jb2wtbWQtMiBwIHtcbiAgbWFyZ2luLWJvdHRvbTogNXB4O1xufVxuLnJvdyAuY29sLW1kLTUgcDpsYXN0LWNoaWxkLFxuLnJvdyAuY29sLW1kLTIgcDpsYXN0LWNoaWxkIHtcbiAgbWFyZ2luLWJvdHRvbTogMDtcbn1cbiNmb3JtaW5mbyBsYWJlbCB7XG4gIG1hcmdpbi1sZWZ0OiAxMHB4O1xuICBib3JkZXItbGVmdDogMXB4IHNvbGlkICM4MDgwODA7XG4gIHBhZGRpbmctbGVmdDogNXB4O1xuICBtYXJnaW4tYm90dG9tOiAwO1xuICBmb250LXNpemU6IDEycHg7XG59XG4jZm9ybWluZm8gbGFiZWw6bGFzdC1jaGlsZCB7XG4gIGJvcmRlci1sZWZ0OiAwO1xufVxuIl19 */"
 
 /***/ }),
 
@@ -541,6 +559,66 @@ MainComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [__webpack_require__(/*! ./main.component.less */ "./src/app/main/main.component.less")]
     })
 ], MainComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/main/new-flower/new-flower.component.less":
+/*!***********************************************************!*\
+  !*** ./src/app/main/new-flower/new-flower.component.less ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".form-control {\n  max-width: 260px !important;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbWFpbi9uZXctZmxvd2VyL0M6L1VzZXJzL0lUMi9zb3VyY2UvcmVwb3MvQW5iYXJnb2xBbmd1bGFyL0FuYmFyZ29sQW5ndWxhci9zcmMvYXBwL21haW4vbmV3LWZsb3dlci9uZXctZmxvd2VyLmNvbXBvbmVudC5sZXNzIiwic3JjL2FwcC9tYWluL25ldy1mbG93ZXIvbmV3LWZsb3dlci5jb21wb25lbnQubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLDJCQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9tYWluL25ldy1mbG93ZXIvbmV3LWZsb3dlci5jb21wb25lbnQubGVzcyIsInNvdXJjZXNDb250ZW50IjpbIi5mb3JtLWNvbnRyb2wge1xuICBtYXgtd2lkdGg6IDI2MHB4ICFpbXBvcnRhbnQ7XG59XG4iLCIuZm9ybS1jb250cm9sIHtcbiAgbWF4LXdpZHRoOiAyNjBweCAhaW1wb3J0YW50O1xufVxuIl19 */"
+
+/***/ }),
+
+/***/ "./src/app/main/new-flower/new-flower.component.ts":
+/*!*********************************************************!*\
+  !*** ./src/app/main/new-flower/new-flower.component.ts ***!
+  \*********************************************************/
+/*! exports provided: NewFlowerComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NewFlowerComponent", function() { return NewFlowerComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+
+
+
+let NewFlowerComponent = class NewFlowerComponent {
+    constructor() {
+        this.newGolForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
+            name: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required),
+            code: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required),
+            format: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required),
+            color: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required),
+            colorType: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required),
+            customer: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required),
+            company: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required),
+            enterDate: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required),
+            comment: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"](''),
+        });
+    }
+    ngOnInit() {
+        //console.log(this.newGolForm);
+    }
+    sabtGol() {
+        console.log(this.newGolForm);
+    }
+};
+NewFlowerComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-new-flower',
+        template: __webpack_require__(/*! raw-loader!./new-flower.component.html */ "./node_modules/raw-loader/index.js!./src/app/main/new-flower/new-flower.component.html"),
+        styles: [__webpack_require__(/*! ./new-flower.component.less */ "./src/app/main/new-flower/new-flower.component.less")]
+    })
+], NewFlowerComponent);
 
 
 
