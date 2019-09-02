@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class MainComponent implements OnInit {
   golSearchConfig = {
-    placeholder: 'جستجوی سریع گل ...',
+    placeholder: 'جستجوی سریع طرح ...',
     width: '300px',
     api: '/api/SearchGol',
     zindex: '600',

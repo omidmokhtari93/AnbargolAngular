@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -12,6 +13,11 @@ namespace AnbargolAngular.Controllers
   [Route("api/[controller]")]
   public class Flower : Controller
   {
+    private readonly IHostingEnvironment _hostingEnv;
+    public Flower(IHostingEnvironment environment)
+    {
+      _hostingEnv = environment;
+    }
     private readonly SqlConnection con = new SqlConnection(connectionString: "Data Source=.;Initial Catalog=flower_depot;Integrated Security=True");
     // GET: api/<controller>
     [HttpGet("/api/SearchGol")]
@@ -48,7 +54,7 @@ namespace AnbargolAngular.Controllers
     public JsonResult GetFlowerData(int flowerId, int pageSize)
     {
       con.Open();
-      string imgFilePath = "/assets/flower_images/" + flowerId + ".JPG" + "?" + new Random().Next();
+      string imgFilePath = "/flower_images/" + flowerId + ".JPG" + "?" + new Random().Next();
       var gol = new Gols();
       var cmd = new SqlCommand("SELECT dbo.flower_colors.flow_color, dbo.flower_colortypes.flow_colortype, flower_entry.id, " +
                                "dbo.flower_formats.flow_format, dbo.flower_customers.customer_name, dbo.flower_companies.company_name " +

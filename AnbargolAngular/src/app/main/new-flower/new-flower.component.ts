@@ -17,7 +17,7 @@ export class NewFlowerComponent implements OnInit, OnDestroy {
   formats = [];
   companies = [];
   customers = [];
-  fileToUpload: File = null;
+  fileToUpload = new FormData();
   httpSubscription: Subscription;
   newGolForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -29,6 +29,7 @@ export class NewFlowerComponent implements OnInit, OnDestroy {
     company: new FormControl('', Validators.required),
     enterDate: new FormControl('', Validators.required),
     comment: new FormControl(''),
+    file: new FormControl('')
   })
   constructor(private http: Http, private notifier: NotifierService) { }
 
@@ -47,6 +48,12 @@ export class NewFlowerComponent implements OnInit, OnDestroy {
     this.httpSubscription.unsubscribe();
   }
 
+  handleFileInput(file: FileList) {
+    const formData = new FormData();
+    formData.append('flower-image', file.item(0));
+    this.fileToUpload = formData;
+  }
+
   sabtGol() {
     if (this.newGolForm.status == 'INVALID') {
       this.notifier.notify('error', 'لطفا فیلد های خالی را تمکیل نمایید');
@@ -62,7 +69,8 @@ export class NewFlowerComponent implements OnInit, OnDestroy {
         EnterDate: this.newGolForm.get('enterDate').value,
         Comment: this.newGolForm.get('comment').value,
       }
-      this.httpSubscription = this.http.post('/api/NewFlower', obj).subscribe(e => {
+      this.fileToUpload.append('flower-data', JSON.stringify(obj))
+      this.httpSubscription = this.http.post('/api/NewFlower', this.fileToUpload).subscribe(e => {
         let m = e.json();
         this.notifier.notify(m.type, m.message);
         this.newGolForm.reset();

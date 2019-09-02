@@ -65,7 +65,7 @@
       <div class="row mt-4">
         <div class="col-md-12 d-flex justify-content-start">
           <div class="my-auto text-nowrap ml-2">انتخاب تصویر طرح</div>
-          <input type="file" (change)="handleFileInput($event.target.files)"/>
+          <input type="file" formControlName="file" (change)="handleFileInput($event.target.files)"/>
         </div>
       </div>
       <div class="mt-3 text-left">
