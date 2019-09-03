@@ -38,16 +38,18 @@ namespace AnbargolAngular.Controllers
           "" + obj.Company + " , '" + obj.EnterDate + "' , '" + obj.Comment + "') SELECT CAST(scope_identity() AS int)", con);
       var fileName = cmd.ExecuteScalar().ToString();
       con.Close();
-
-      var file = Request.Form.Files[0];
-      var flowerImagesDirectory = Path.Combine(_hostingEnv.WebRootPath, "flower_images");
-      var filePath = Path.Combine(flowerImagesDirectory, fileName + ".jpg");
-      file.CopyTo(new FileStream(filePath, FileMode.Create));
+      if (Request.Form.Files.Count != 0)
+      {
+        var file = Request.Form.Files[0];
+        var flowerImagesDirectory = Path.Combine(_hostingEnv.WebRootPath, "flower_images");
+        var filePath = Path.Combine(flowerImagesDirectory, fileName + ".jpg");
+        file.CopyTo(new FileStream(filePath, FileMode.Create));
+      }
       return new JsonResult(new { type = "success", message = "با موفقیت ثبت شد" });
     }
 
     [HttpGet("/api/GetAllFlowers")]
-    public JsonResult GetAllFlowers(int take , int skip)
+    public JsonResult GetAllFlowers(int take, int skip)
     {
       con.Open();
       var cmd = new SqlCommand("", con);

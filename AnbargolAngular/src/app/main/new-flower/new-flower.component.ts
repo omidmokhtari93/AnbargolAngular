@@ -31,6 +31,7 @@ export class NewFlowerComponent implements OnInit, OnDestroy {
     comment: new FormControl(''),
     file: new FormControl('')
   })
+
   constructor(private http: Http, private notifier: NotifierService) { }
 
   ngOnInit() {
