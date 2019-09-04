@@ -49,11 +49,43 @@ namespace AnbargolAngular.Controllers
     }
 
     [HttpGet("/api/GetAllFlowers")]
-    public JsonResult GetAllFlowers(int take, int skip)
+    public JsonResult GetAllFlowers()
     {
       con.Open();
-      var cmd = new SqlCommand("", con);
-      return new JsonResult("");
+      var gol = new List<Gol>();
+      var cmd = new SqlCommand("SELECT top 10 ROW_NUMBER()over(order by id) as row,flower_entry.flower_name, flower_entry.flower_code, " +
+"flower_colors.flow_color, flower_colortypes.flow_colortype, " +
+"flower_formats.flow_format, flower_customers.customer_name, " +
+"flower_companies.company_name, flower_entry.enter_date, " +
+"flower_entry.comment, flower_colors.flowcolor_id, " +
+"flower_colortypes.colortype_id, flower_formats.flowformat_id, " +
+"flower_customers.customer_id, flower_companies.company_id, " +
+"flower_entry.id FROM flower_entry INNER JOIN flower_colortypes  " +
+"ON flower_entry.flower_colortype = flower_colortypes.colortype_id  " +
+"INNER JOIN flower_formats ON flower_entry.flower_format = flower_formats.flowformat_id  " +
+"INNER JOIN flower_customers ON flower_entry.customer_name = flower_customers.customer_id  " +
+"INNER JOIN flower_companies ON flower_entry.company_name = flower_companies.company_id  " +
+"INNER JOIN flower_colors ON flower_entry.flower_color = flower_colors.flowcolor_id  " +
+"ORDER BY flower_entry.id DESC", con);
+      var rd = cmd.ExecuteReader();
+      while (rd.Read())
+      {
+        gol.Add(new Gol()
+        {
+          Id = Convert.ToInt32(rd["id"]),
+          Name = rd["flower_name"].ToString(),
+          Color = rd["flow_color"].ToString(),
+          ColorType = rd["flow_colortype"].ToString(),
+          Format = rd["flow_format"].ToString(),
+          Code = rd["flower_code"].ToString(),
+          EnterDate = rd["enter_date"].ToString(),
+          Customer = rd["customer_name"].ToString(),
+          Company = rd["company_name"].ToString(),
+          Comment = rd["comment"].ToString()
+        });
+      }
+      con.Close();
+      return new JsonResult(gol);
     }
   }
 }

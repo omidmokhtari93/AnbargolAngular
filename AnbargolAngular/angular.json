@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/ngx-smart-modal/ngx-smart-modal.scss",
               "src/styles.less",
               "src/assets/css/bootstrap.min.css",
               "src/assets/css/mdb.min.css",

@@ -6,19 +6,22 @@
         <div class="col-md-4 d-flex justify-content-between">
           <div class="my-auto text-nowrap ml-2">نام طرح : </div>
           <input class="form-control" formControlName="name" />
-          <span class="text-danger mr-1" *ngIf="newGolForm.get('name').invalid && newGolForm.get('name').touched">*</span>
+          <span class="text-danger mr-1"
+            *ngIf="newGolForm.get('name').invalid && newGolForm.get('name').touched">*</span>
         </div>
         <div class="col-md-4 d-flex justify-content-between">
           <div class="my-auto text-nowrap ml-2">کد طرح : </div>
           <input class="form-control" formControlName="code" />
-          <span class="text-danger mr-1" *ngIf="newGolForm.get('code').invalid && newGolForm.get('code').touched">*</span>
+          <span class="text-danger mr-1"
+            *ngIf="newGolForm.get('code').invalid && newGolForm.get('code').touched">*</span>
         </div>
         <div class="col-md-4 d-flex justify-content-between">
           <div class="my-auto text-nowrap ml-2">قالب : </div>
           <select class="form-control" formControlName="format">
             <option *ngFor="let format of formats" [value]="format.id">{{format.text}}</option>
           </select>
-          <span class="text-danger mr-1" *ngIf="newGolForm.get('format').invalid && newGolForm.get('format').touched">*</span>
+          <span class="text-danger mr-1"
+            *ngIf="newGolForm.get('format').invalid && newGolForm.get('format').touched">*</span>
         </div>
       </div>
       <div class="row mt-3">
@@ -27,21 +30,24 @@
           <select class="form-control" formControlName="color">
             <option *ngFor="let color of colors" [value]="color.id">{{color.text}}</option>
           </select>
-          <span class="text-danger mr-1" *ngIf="newGolForm.get('color').invalid && newGolForm.get('color').touched">*</span>
+          <span class="text-danger mr-1"
+            *ngIf="newGolForm.get('color').invalid && newGolForm.get('color').touched">*</span>
         </div>
         <div class="col-md-4 d-flex justify-content-between">
           <div class="my-auto text-nowrap ml-2">نوع رنگ : </div>
           <select class="form-control" formControlName="colorType">
             <option *ngFor="let colorType of colorTypes" [value]="colorType.id">{{colorType.text}}</option>
           </select>
-          <span class="text-danger mr-1" *ngIf="newGolForm.get('colorType').invalid && newGolForm.get('colorType').touched">*</span>
+          <span class="text-danger mr-1"
+            *ngIf="newGolForm.get('colorType').invalid && newGolForm.get('colorType').touched">*</span>
         </div>
         <div class="col-md-4 d-flex justify-content-between">
           <div class="my-auto text-nowrap ml-2">مشتری : </div>
           <select class="form-control" formControlName="customer">
             <option *ngFor="let customer of customers" [value]="customer.id">{{customer.text}}</option>
           </select>
-          <span class="text-danger mr-1" *ngIf="newGolForm.get('customer').invalid && newGolForm.get('customer').touched">*</span>
+          <span class="text-danger mr-1"
+            *ngIf="newGolForm.get('customer').invalid && newGolForm.get('customer').touched">*</span>
         </div>
       </div>
       <div class="row mt-3">
@@ -50,12 +56,14 @@
           <select class="form-control" formControlName="company">
             <option *ngFor="let company of companies" [value]="company.id">{{company.text}}</option>
           </select>
-          <span class="text-danger mr-1" *ngIf="newGolForm.get('company').invalid && newGolForm.get('company').touched">*</span>
+          <span class="text-danger mr-1"
+            *ngIf="newGolForm.get('company').invalid && newGolForm.get('company').touched">*</span>
         </div>
         <div class="col-md-4 d-flex justify-content-between">
           <div class="my-auto text-nowrap ml-2">تاریخ ورود : </div>
           <input class="form-control" formControlName="enterDate" />
-          <span class="text-danger mr-1" *ngIf="newGolForm.get('enterDate').invalid && newGolForm.get('enterDate').touched">*</span>
+          <span class="text-danger mr-1"
+            *ngIf="newGolForm.get('enterDate').invalid && newGolForm.get('enterDate').touched">*</span>
         </div>
         <div class="col-md-4 d-flex justify-content-between">
           <div class="my-auto text-nowrap ml-2">توضیحات : </div>
@@ -65,7 +73,7 @@
       <div class="row mt-4">
         <div class="col-md-12 d-flex justify-content-start">
           <div class="my-auto text-nowrap ml-2">انتخاب تصویر طرح</div>
-          <input type="file" formControlName="file" (change)="handleFileInput($event.target.files)"/>
+          <input type="file" formControlName="file" (change)="handleFileInput($event.target.files)" />
         </div>
       </div>
       <div class="mt-3 text-left">
@@ -76,9 +84,9 @@
       <div class="col-md-12 text-center">
         <table class="table table-bordered">
           <tr>
-            <th scope="col">نام گل</th>
-            <th scope="col">کد گل</th>
-            <th scope="col">رنگ گل</th>
+            <th scope="col">نام طرح</th>
+            <th scope="col">کد</th>
+            <th scope="col">رنگ</th>
             <th scope="col">نوع رنگ</th>
             <th scope="col">قالب</th>
             <th scope="col">نام مشتری</th>
@@ -88,9 +96,33 @@
             <th scope="col"></th>
             <th scope="col"></th>
           </tr>
+          <tr *ngFor="let gol of flowers">
+            <td>{{gol.name}}</td>
+            <td>{{gol.code}}</td>
+            <td>{{gol.color}}</td>
+            <td>{{gol.colorType}}</td>
+            <td>{{gol.format}}</td>
+            <td>{{gol.customer}}</td>
+            <td>{{gol.company}}</td>
+            <td>{{gol.enterDate}}</td>
+            <td>{{gol.comment}}</td>
+            <td><a (click)="copy(gol.id)">کپی طرح</a></td>
+            <td><a (click)="arrange(gol.id)">ثبت چیدمان</a></td>
+          </tr>
         </table>
       </div>
     </div>
   </div>
 </div>
 <notifier-container></notifier-container>
+
+<ngx-smart-modal #myModal identifier="myModal">
+  <div class="mt-4 mb-2 p-2 text-center bg-primary text-white">
+    کپی طرح
+  </div>
+  <p class="text-center">آیا مطمئن هستید؟</p>
+  <div class="mt-1 text-center">
+    <button type="button" class="btn btn-success" (click)="copyflower()">بله</button>
+    <button type="button" class="btn btn-info" (click)="myModal.close()">خیر</button>
+  </div>
+</ngx-smart-modal>

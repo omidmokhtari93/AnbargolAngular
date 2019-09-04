@@ -74,7 +74,7 @@ module.exports = "<div class=\"container sans rtl\">\r\n  <nav class=\"navbar na
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\">\r\n  <div class=\"card-header bg-primary text-white\">ثبت طرح جدید</div>\r\n  <div class=\"card-body\">\r\n    <form [formGroup]=\"newGolForm\" (ngSubmit)=\"sabtGol()\">\r\n      <div class=\"row\">\r\n        <div class=\"col-md-4 d-flex justify-content-between\">\r\n          <div class=\"my-auto text-nowrap ml-2\">نام طرح : </div>\r\n          <input class=\"form-control\" formControlName=\"name\" />\r\n          <span class=\"text-danger mr-1\" *ngIf=\"newGolForm.get('name').invalid && newGolForm.get('name').touched\">*</span>\r\n        </div>\r\n        <div class=\"col-md-4 d-flex justify-content-between\">\r\n          <div class=\"my-auto text-nowrap ml-2\">کد طرح : </div>\r\n          <input class=\"form-control\" formControlName=\"code\" />\r\n          <span class=\"text-danger mr-1\" *ngIf=\"newGolForm.get('code').invalid && newGolForm.get('code').touched\">*</span>\r\n        </div>\r\n        <div class=\"col-md-4 d-flex justify-content-between\">\r\n          <div class=\"my-auto text-nowrap ml-2\">قالب : </div>\r\n          <select class=\"form-control\" formControlName=\"format\">\r\n            <option *ngFor=\"let format of formats\" [value]=\"format.id\">{{format.text}}</option>\r\n          </select>\r\n          <span class=\"text-danger mr-1\" *ngIf=\"newGolForm.get('format').invalid && newGolForm.get('format').touched\">*</span>\r\n        </div>\r\n      </div>\r\n      <div class=\"row mt-3\">\r\n        <div class=\"col-md-4 d-flex justify-content-between\">\r\n          <div class=\"my-auto text-nowrap ml-2\">رنگ : </div>\r\n          <select class=\"form-control\" formControlName=\"color\">\r\n            <option *ngFor=\"let color of colors\" [value]=\"color.id\">{{color.text}}</option>\r\n          </select>\r\n          <span class=\"text-danger mr-1\" *ngIf=\"newGolForm.get('color').invalid && newGolForm.get('color').touched\">*</span>\r\n        </div>\r\n        <div class=\"col-md-4 d-flex justify-content-between\">\r\n          <div class=\"my-auto text-nowrap ml-2\">نوع رنگ : </div>\r\n          <select class=\"form-control\" formControlName=\"colorType\">\r\n            <option *ngFor=\"let colorType of colorTypes\" [value]=\"colorType.id\">{{colorType.text}}</option>\r\n          </select>\r\n          <span class=\"text-danger mr-1\" *ngIf=\"newGolForm.get('colorType').invalid && newGolForm.get('colorType').touched\">*</span>\r\n        </div>\r\n        <div class=\"col-md-4 d-flex justify-content-between\">\r\n          <div class=\"my-auto text-nowrap ml-2\">مشتری : </div>\r\n          <select class=\"form-control\" formControlName=\"customer\">\r\n            <option *ngFor=\"let customer of customers\" [value]=\"customer.id\">{{customer.text}}</option>\r\n          </select>\r\n          <span class=\"text-danger mr-1\" *ngIf=\"newGolForm.get('customer').invalid && newGolForm.get('customer').touched\">*</span>\r\n        </div>\r\n      </div>\r\n      <div class=\"row mt-3\">\r\n        <div class=\"col-md-4 d-flex justify-content-between\">\r\n          <div class=\"my-auto text-nowrap ml-2\">شرکت سازنده : </div>\r\n          <select class=\"form-control\" formControlName=\"company\">\r\n            <option *ngFor=\"let company of companies\" [value]=\"company.id\">{{company.text}}</option>\r\n          </select>\r\n          <span class=\"text-danger mr-1\" *ngIf=\"newGolForm.get('company').invalid && newGolForm.get('company').touched\">*</span>\r\n        </div>\r\n        <div class=\"col-md-4 d-flex justify-content-between\">\r\n          <div class=\"my-auto text-nowrap ml-2\">تاریخ ورود : </div>\r\n          <input class=\"form-control\" formControlName=\"enterDate\" />\r\n          <span class=\"text-danger mr-1\" *ngIf=\"newGolForm.get('enterDate').invalid && newGolForm.get('enterDate').touched\">*</span>\r\n        </div>\r\n        <div class=\"col-md-4 d-flex justify-content-between\">\r\n          <div class=\"my-auto text-nowrap ml-2\">توضیحات : </div>\r\n          <input class=\"form-control\" formControlName=\"comment\" />\r\n        </div>\r\n      </div>\r\n      <div class=\"row mt-4\">\r\n        <div class=\"col-md-12 d-flex justify-content-start\">\r\n          <div class=\"my-auto text-nowrap ml-2\">انتخاب تصویر طرح</div>\r\n          <input type=\"file\" formControlName=\"file\" (change)=\"handleFileInput($event.target.files)\"/>\r\n        </div>\r\n      </div>\r\n      <div class=\"mt-3 text-left\">\r\n        <button type=\"submit\" class=\"btn btn-primary\">ثبت</button>\r\n      </div>\r\n    </form>\r\n    <div class=\"row mt-3\">\r\n      <div class=\"col-md-12 text-center\">\r\n        <table class=\"table table-bordered\">\r\n          <tr>\r\n            <th scope=\"col\">نام گل</th>\r\n            <th scope=\"col\">کد گل</th>\r\n            <th scope=\"col\">رنگ گل</th>\r\n            <th scope=\"col\">نوع رنگ</th>\r\n            <th scope=\"col\">قالب</th>\r\n            <th scope=\"col\">نام مشتری</th>\r\n            <th scope=\"col\">سازنده</th>\r\n            <th scope=\"col\">تاریخ ورود</th>\r\n            <th scope=\"col\">توضیحات</th>\r\n            <th scope=\"col\"></th>\r\n            <th scope=\"col\"></th>\r\n          </tr>\r\n        </table>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n<notifier-container></notifier-container>\r\n"
+module.exports = "<div class=\"card\">\r\n  <div class=\"card-header bg-primary text-white\">ثبت طرح جدید</div>\r\n  <div class=\"card-body\">\r\n    <form [formGroup]=\"newGolForm\" (ngSubmit)=\"sabtGol()\">\r\n      <div class=\"row\">\r\n        <div class=\"col-md-4 d-flex justify-content-between\">\r\n          <div class=\"my-auto text-nowrap ml-2\">نام طرح : </div>\r\n          <input class=\"form-control\" formControlName=\"name\" />\r\n          <span class=\"text-danger mr-1\"\r\n            *ngIf=\"newGolForm.get('name').invalid && newGolForm.get('name').touched\">*</span>\r\n        </div>\r\n        <div class=\"col-md-4 d-flex justify-content-between\">\r\n          <div class=\"my-auto text-nowrap ml-2\">کد طرح : </div>\r\n          <input class=\"form-control\" formControlName=\"code\" />\r\n          <span class=\"text-danger mr-1\"\r\n            *ngIf=\"newGolForm.get('code').invalid && newGolForm.get('code').touched\">*</span>\r\n        </div>\r\n        <div class=\"col-md-4 d-flex justify-content-between\">\r\n          <div class=\"my-auto text-nowrap ml-2\">قالب : </div>\r\n          <select class=\"form-control\" formControlName=\"format\">\r\n            <option *ngFor=\"let format of formats\" [value]=\"format.id\">{{format.text}}</option>\r\n          </select>\r\n          <span class=\"text-danger mr-1\"\r\n            *ngIf=\"newGolForm.get('format').invalid && newGolForm.get('format').touched\">*</span>\r\n        </div>\r\n      </div>\r\n      <div class=\"row mt-3\">\r\n        <div class=\"col-md-4 d-flex justify-content-between\">\r\n          <div class=\"my-auto text-nowrap ml-2\">رنگ : </div>\r\n          <select class=\"form-control\" formControlName=\"color\">\r\n            <option *ngFor=\"let color of colors\" [value]=\"color.id\">{{color.text}}</option>\r\n          </select>\r\n          <span class=\"text-danger mr-1\"\r\n            *ngIf=\"newGolForm.get('color').invalid && newGolForm.get('color').touched\">*</span>\r\n        </div>\r\n        <div class=\"col-md-4 d-flex justify-content-between\">\r\n          <div class=\"my-auto text-nowrap ml-2\">نوع رنگ : </div>\r\n          <select class=\"form-control\" formControlName=\"colorType\">\r\n            <option *ngFor=\"let colorType of colorTypes\" [value]=\"colorType.id\">{{colorType.text}}</option>\r\n          </select>\r\n          <span class=\"text-danger mr-1\"\r\n            *ngIf=\"newGolForm.get('colorType').invalid && newGolForm.get('colorType').touched\">*</span>\r\n        </div>\r\n        <div class=\"col-md-4 d-flex justify-content-between\">\r\n          <div class=\"my-auto text-nowrap ml-2\">مشتری : </div>\r\n          <select class=\"form-control\" formControlName=\"customer\">\r\n            <option *ngFor=\"let customer of customers\" [value]=\"customer.id\">{{customer.text}}</option>\r\n          </select>\r\n          <span class=\"text-danger mr-1\"\r\n            *ngIf=\"newGolForm.get('customer').invalid && newGolForm.get('customer').touched\">*</span>\r\n        </div>\r\n      </div>\r\n      <div class=\"row mt-3\">\r\n        <div class=\"col-md-4 d-flex justify-content-between\">\r\n          <div class=\"my-auto text-nowrap ml-2\">شرکت سازنده : </div>\r\n          <select class=\"form-control\" formControlName=\"company\">\r\n            <option *ngFor=\"let company of companies\" [value]=\"company.id\">{{company.text}}</option>\r\n          </select>\r\n          <span class=\"text-danger mr-1\"\r\n            *ngIf=\"newGolForm.get('company').invalid && newGolForm.get('company').touched\">*</span>\r\n        </div>\r\n        <div class=\"col-md-4 d-flex justify-content-between\">\r\n          <div class=\"my-auto text-nowrap ml-2\">تاریخ ورود : </div>\r\n          <input class=\"form-control\" formControlName=\"enterDate\" />\r\n          <span class=\"text-danger mr-1\"\r\n            *ngIf=\"newGolForm.get('enterDate').invalid && newGolForm.get('enterDate').touched\">*</span>\r\n        </div>\r\n        <div class=\"col-md-4 d-flex justify-content-between\">\r\n          <div class=\"my-auto text-nowrap ml-2\">توضیحات : </div>\r\n          <input class=\"form-control\" formControlName=\"comment\" />\r\n        </div>\r\n      </div>\r\n      <div class=\"row mt-4\">\r\n        <div class=\"col-md-12 d-flex justify-content-start\">\r\n          <div class=\"my-auto text-nowrap ml-2\">انتخاب تصویر طرح</div>\r\n          <input type=\"file\" formControlName=\"file\" (change)=\"handleFileInput($event.target.files)\" />\r\n        </div>\r\n      </div>\r\n      <div class=\"mt-3 text-left\">\r\n        <button type=\"submit\" class=\"btn btn-primary\">ثبت</button>\r\n      </div>\r\n    </form>\r\n    <div class=\"row mt-3\">\r\n      <div class=\"col-md-12 text-center\">\r\n        <table class=\"table table-bordered\">\r\n          <tr>\r\n            <th scope=\"col\">نام طرح</th>\r\n            <th scope=\"col\">کد</th>\r\n            <th scope=\"col\">رنگ</th>\r\n            <th scope=\"col\">نوع رنگ</th>\r\n            <th scope=\"col\">قالب</th>\r\n            <th scope=\"col\">نام مشتری</th>\r\n            <th scope=\"col\">سازنده</th>\r\n            <th scope=\"col\">تاریخ ورود</th>\r\n            <th scope=\"col\">توضیحات</th>\r\n            <th scope=\"col\"></th>\r\n            <th scope=\"col\"></th>\r\n          </tr>\r\n          <tr *ngFor=\"let gol of flowers\">\r\n            <td>{{gol.name}}</td>\r\n            <td>{{gol.code}}</td>\r\n            <td>{{gol.color}}</td>\r\n            <td>{{gol.colorType}}</td>\r\n            <td>{{gol.format}}</td>\r\n            <td>{{gol.customer}}</td>\r\n            <td>{{gol.company}}</td>\r\n            <td>{{gol.enterDate}}</td>\r\n            <td>{{gol.comment}}</td>\r\n            <td><a (click)=\"copy(gol.id)\">کپی طرح</a></td>\r\n            <td><a (click)=\"arrange(gol.id)\">ثبت چیدمان</a></td>\r\n          </tr>\r\n        </table>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n<notifier-container></notifier-container>\r\n\r\n<ngx-smart-modal #myModal identifier=\"myModal\">\r\n  <div class=\"mt-4 mb-2 p-2 text-center bg-primary text-white\">\r\n    کپی طرح\r\n  </div>\r\n  <p class=\"text-center\">آیا مطمئن هستید؟</p>\r\n  <div class=\"mt-1 text-center\">\r\n    <button type=\"button\" class=\"btn btn-success\" (click)=\"copyflower()\">بله</button>\r\n    <button type=\"button\" class=\"btn btn-info\" (click)=\"myModal.close()\">خیر</button>\r\n  </div>\r\n</ngx-smart-modal>"
 
 /***/ }),
 
@@ -206,6 +206,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_flower_main_info_flower_main_info_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./shared/flower-main-info/flower-main-info.component */ "./src/app/shared/flower-main-info/flower-main-info.component.ts");
 /* harmony import */ var angular_notifier__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! angular-notifier */ "./node_modules/angular-notifier/esm2015/angular-notifier.js");
 /* harmony import */ var _main_new_flower_new_flower_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./main/new-flower/new-flower.component */ "./src/app/main/new-flower/new-flower.component.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _shared_httpService_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./shared/httpService.service */ "./src/app/shared/httpService.service.ts");
+/* harmony import */ var ngx_smart_modal__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ngx-smart-modal */ "./node_modules/ngx-smart-modal/esm2015/ngx-smart-modal.js");
+
+
+
 
 
 
@@ -239,6 +245,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
             _angular_http__WEBPACK_IMPORTED_MODULE_8__["HttpModule"],
+            _angular_common_http__WEBPACK_IMPORTED_MODULE_14__["HttpClientModule"],
+            ngx_smart_modal__WEBPACK_IMPORTED_MODULE_16__["NgxSmartModalModule"].forRoot(),
             angular_notifier__WEBPACK_IMPORTED_MODULE_12__["NotifierModule"].withConfig({
                 behaviour: {
                     autoHide: 2000,
@@ -254,7 +262,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 }
             })
         ],
-        providers: [],
+        providers: [_shared_httpService_service__WEBPACK_IMPORTED_MODULE_15__["HtttpService"]],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
     })
 ], AppModule);
@@ -590,20 +598,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
 /* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm2015/http.js");
 /* harmony import */ var angular_notifier__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! angular-notifier */ "./node_modules/angular-notifier/esm2015/angular-notifier.js");
+/* harmony import */ var src_app_shared_httpService_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/shared/httpService.service */ "./src/app/shared/httpService.service.ts");
+/* harmony import */ var ngx_smart_modal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-smart-modal */ "./node_modules/ngx-smart-modal/esm2015/ngx-smart-modal.js");
+
+
 
 
 
 
 
 let NewFlowerComponent = class NewFlowerComponent {
-    constructor(http, notifier) {
+    constructor(http, notifier, httpService, modal) {
         this.http = http;
         this.notifier = notifier;
+        this.httpService = httpService;
+        this.modal = modal;
         this.colors = [];
         this.colorTypes = [];
         this.formats = [];
         this.companies = [];
         this.customers = [];
+        this.flowers = [];
         this.fileToUpload = new FormData();
         this.newGolForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormGroup"]({
             name: new _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required),
@@ -619,13 +634,21 @@ let NewFlowerComponent = class NewFlowerComponent {
         });
     }
     ngOnInit() {
-        this.httpSubscription = this.http.get('/api/GetControls').subscribe(e => {
-            let data = e.json();
-            this.colors = data.color;
-            this.colorTypes = data.colorType;
-            this.companies = data.company;
-            this.formats = data.format;
-            this.customers = data.customer;
+        this.fillControls();
+        this.getLastFlowers();
+    }
+    fillControls() {
+        this.httpSubscription = this.httpService.get('/api/GetControls', '').subscribe((e) => {
+            this.colors = e.color;
+            this.colorTypes = e.colorType;
+            this.companies = e.company;
+            this.formats = e.format;
+            this.customers = e.customer;
+        });
+    }
+    getLastFlowers() {
+        this.httpSubscription = this.httpService.get('/api/GetAllFlowers', '').subscribe((response) => {
+            this.flowers = response;
         });
     }
     ngOnDestroy() {
@@ -637,7 +660,7 @@ let NewFlowerComponent = class NewFlowerComponent {
         this.fileToUpload = formData;
     }
     sabtGol() {
-        if (this.newGolForm.status == 'INVALID') {
+        if (this.newGolForm.status === 'INVALID') {
             this.notifier.notify('error', 'لطفا فیلد های خالی را تمکیل نمایید');
         }
         else {
@@ -653,17 +676,28 @@ let NewFlowerComponent = class NewFlowerComponent {
                 Comment: this.newGolForm.get('comment').value,
             };
             this.fileToUpload.append('flower-data', JSON.stringify(obj));
-            this.httpSubscription = this.http.post('/api/NewFlower', this.fileToUpload).subscribe(e => {
-                let m = e.json();
-                this.notifier.notify(m.type, m.message);
+            this.httpService.post('/api/NewFlower', this.fileToUpload).subscribe((response) => {
+                this.notifier.notify(response.type, response.message);
                 this.newGolForm.reset();
             });
         }
     }
+    copy(id) {
+        this.flowerId = id;
+        this.modal.getModal('myModal').open();
+    }
+    arrange(id) {
+        console.log();
+    }
+    copyflower() {
+        console.log(this.flowerId);
+    }
 };
 NewFlowerComponent.ctorParameters = () => [
     { type: _angular_http__WEBPACK_IMPORTED_MODULE_3__["Http"] },
-    { type: angular_notifier__WEBPACK_IMPORTED_MODULE_4__["NotifierService"] }
+    { type: angular_notifier__WEBPACK_IMPORTED_MODULE_4__["NotifierService"] },
+    { type: src_app_shared_httpService_service__WEBPACK_IMPORTED_MODULE_5__["HtttpService"] },
+    { type: ngx_smart_modal__WEBPACK_IMPORTED_MODULE_6__["NgxSmartModalService"] }
 ];
 NewFlowerComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -729,6 +763,46 @@ FlowerMainInfoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [__webpack_require__(/*! ./flower-main-info.component.less */ "./src/app/shared/flower-main-info/flower-main-info.component.less")]
     })
 ], FlowerMainInfoComponent);
+
+
+
+/***/ }),
+
+/***/ "./src/app/shared/httpService.service.ts":
+/*!***********************************************!*\
+  !*** ./src/app/shared/httpService.service.ts ***!
+  \***********************************************/
+/*! exports provided: HtttpService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HtttpService", function() { return HtttpService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+
+
+
+let HtttpService = class HtttpService {
+    constructor(httpClient) {
+        this.httpClient = httpClient;
+    }
+    ngOnInit() {
+    }
+    get(url, data) {
+        return this.httpClient.get(url, data);
+    }
+    post(url, data) {
+        return this.httpClient.post(url, data);
+    }
+};
+HtttpService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+];
+HtttpService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])()
+], HtttpService);
 
 
 

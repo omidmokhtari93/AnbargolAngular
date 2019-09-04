@@ -1,9 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { HttpClient } from 'selenium-webdriver/http';
+import { Response } from 'selenium-webdriver/http';
 import { Http } from '@angular/http';
 import { NotifierService } from 'angular-notifier';
 import { Subscription } from 'rxjs';
+import { HtttpService } from 'src/app/shared/httpService.service';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 
 @Component({
   selector: 'app-new-flower',
@@ -12,11 +14,13 @@ import { Subscription } from 'rxjs';
 })
 
 export class NewFlowerComponent implements OnInit, OnDestroy {
+  flowerId: number;
   colors = [];
   colorTypes = [];
   formats = [];
   companies = [];
   customers = [];
+  flowers = [];
   fileToUpload = new FormData();
   httpSubscription: Subscription;
   newGolForm = new FormGroup({
@@ -31,18 +35,29 @@ export class NewFlowerComponent implements OnInit, OnDestroy {
     comment: new FormControl(''),
     file: new FormControl('')
   })
-
-  constructor(private http: Http, private notifier: NotifierService) { }
-
+  constructor(private http: Http,
+    private notifier: NotifierService,
+    private httpService: HtttpService,
+    private modal: NgxSmartModalService) { }
   ngOnInit() {
-    this.httpSubscription = this.http.get('/api/GetControls').subscribe(e => {
-      let data = e.json();
-      this.colors = data.color
-      this.colorTypes = data.colorType
-      this.companies = data.company
-      this.formats = data.format
-      this.customers = data.customer
-    })
+    this.fillControls();
+    this.getLastFlowers();
+  }
+
+  fillControls() {
+    this.httpSubscription = this.httpService.get('/api/GetControls', '').subscribe((e: any) => {
+      this.colors = e.color;
+      this.colorTypes = e.colorType;
+      this.companies = e.company;
+      this.formats = e.format;
+      this.customers = e.customer;
+    });
+  }
+
+  getLastFlowers() {
+    this.httpSubscription = this.httpService.get('/api/GetAllFlowers', '').subscribe((response: any) => {
+      this.flowers = response;
+    });
   }
 
   ngOnDestroy() {
@@ -56,7 +71,7 @@ export class NewFlowerComponent implements OnInit, OnDestroy {
   }
 
   sabtGol() {
-    if (this.newGolForm.status == 'INVALID') {
+    if (this.newGolForm.status === 'INVALID') {
       this.notifier.notify('error', 'لطفا فیلد های خالی را تمکیل نمایید');
     } else {
       let obj = {
@@ -71,11 +86,23 @@ export class NewFlowerComponent implements OnInit, OnDestroy {
         Comment: this.newGolForm.get('comment').value,
       }
       this.fileToUpload.append('flower-data', JSON.stringify(obj))
-      this.httpSubscription = this.http.post('/api/NewFlower', this.fileToUpload).subscribe(e => {
-        let m = e.json();
-        this.notifier.notify(m.type, m.message);
+      this.httpService.post('/api/NewFlower', this.fileToUpload).subscribe((response: any) => {
+        this.notifier.notify(response.type, response.message);
         this.newGolForm.reset();
       })
     }
+  }
+
+  copy(id: number) {
+    this.flowerId = id;
+    this.modal.getModal('myModal').open();
+  }
+
+  arrange(id: number) {
+    console.log()
+  }
+
+  copyflower() {
+    console.log(this.flowerId)
   }
 }

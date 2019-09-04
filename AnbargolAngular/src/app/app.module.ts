@@ -11,6 +11,9 @@ import { CuttedComponent } from './main/cutted/cutted.component';
 import { FlowerMainInfoComponent } from './shared/flower-main-info/flower-main-info.component';
 import { NotifierModule } from 'angular-notifier';
 import { NewFlowerComponent } from './main/new-flower/new-flower.component';
+import { HttpClientModule } from '@angular/common/http'
+import { HtttpService } from './shared/httpService.service';
+import { NgxSmartModalModule } from 'ngx-smart-modal';
 
 @
   NgModule({
@@ -29,6 +32,8 @@ import { NewFlowerComponent } from './main/new-flower/new-flower.component';
       AppRoutingModule,
       FormsModule,
       HttpModule,
+      HttpClientModule,
+      NgxSmartModalModule.forRoot(),
       NotifierModule.withConfig({
         behaviour: {
           autoHide: 2000,
@@ -44,7 +49,7 @@ import { NewFlowerComponent } from './main/new-flower/new-flower.component';
         }
       })
     ],
-    providers: [],
+    providers: [HtttpService],
     bootstrap: [AppComponent]
   })
 export class AppModule { }

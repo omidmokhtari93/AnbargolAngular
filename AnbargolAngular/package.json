@@ -22,8 +22,10 @@
     "@angular/router": "~8.2.0",
     "angular-notifier": "^4.1.1",
     "less": "^3.10.2",
+    "ngx-smart-modal": "^7.1.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
+    "web-animations-js": "^2.3.2",
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
