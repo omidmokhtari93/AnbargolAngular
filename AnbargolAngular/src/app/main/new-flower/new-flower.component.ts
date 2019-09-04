@@ -21,7 +21,7 @@ export class NewFlowerComponent implements OnInit, OnDestroy {
   companies = [];
   customers = [];
   flowers = [];
-  fileToUpload = new FormData();
+  data = new FormData();
   httpSubscription: Subscription;
   newGolForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -67,7 +67,7 @@ export class NewFlowerComponent implements OnInit, OnDestroy {
   handleFileInput(file: FileList) {
     const formData = new FormData();
     formData.append('flower-image', file.item(0));
-    this.fileToUpload = formData;
+    this.data = formData;
   }
 
   sabtGol() {
@@ -85,8 +85,8 @@ export class NewFlowerComponent implements OnInit, OnDestroy {
         EnterDate: this.newGolForm.get('enterDate').value,
         Comment: this.newGolForm.get('comment').value,
       }
-      this.fileToUpload.append('flower-data', JSON.stringify(obj))
-      this.httpService.post('/api/NewFlower', this.fileToUpload).subscribe((response: any) => {
+      this.data.append('flower-data', JSON.stringify(obj))
+      this.httpService.post('/api/NewFlower', this.data).subscribe((response: any) => {
         this.notifier.notify(response.type, response.message);
         this.newGolForm.reset();
       })
@@ -95,7 +95,7 @@ export class NewFlowerComponent implements OnInit, OnDestroy {
 
   copy(id: number) {
     this.flowerId = id;
-    this.modal.getModal('myModal').open();
+    this.modal.getModal('copyModal').open();
   }
 
   arrange(id: number) {
