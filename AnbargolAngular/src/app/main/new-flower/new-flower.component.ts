@@ -6,6 +6,7 @@ import { NotifierService } from 'angular-notifier';
 import { Subscription } from 'rxjs';
 import { HtttpService } from 'src/app/shared/httpService.service';
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-flower',
@@ -38,7 +39,8 @@ export class NewFlowerComponent implements OnInit, OnDestroy {
   constructor(private http: Http,
     private notifier: NotifierService,
     private httpService: HtttpService,
-    private modal: NgxSmartModalService) { }
+    private modal: NgxSmartModalService,
+    private route: Router) { }
   ngOnInit() {
     this.fillControls();
     this.getLastFlowers();
@@ -99,10 +101,15 @@ export class NewFlowerComponent implements OnInit, OnDestroy {
   }
 
   arrange(id: number) {
+    this.route.navigate(["arranges", id]);
     console.log()
   }
 
   copyflower() {
-    console.log(this.flowerId)
+    this.httpSubscription = this.httpService.get('/api/CopyFlower', { params: { flowerId: this.flowerId } }).subscribe((e: any) => {
+      this.notifier.notify(e.type, e.message);
+      this.modal.getModal('copyModal').close();
+      this.getLastFlowers();
+    })
   }
 }

@@ -14,6 +14,8 @@ import { NewFlowerComponent } from './main/new-flower/new-flower.component';
 import { HttpClientModule } from '@angular/common/http'
 import { HtttpService } from './shared/httpService.service';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
+import { ArrangesComponent } from './main/arranges/arranges.component';
+import { ItemsComponent } from './main/items/items.component';
 
 @
   NgModule({
@@ -24,7 +26,9 @@ import { NgxSmartModalModule } from 'ngx-smart-modal';
       FlowerInfoComponent,
       CuttedComponent,
       FlowerMainInfoComponent,
-      NewFlowerComponent
+      NewFlowerComponent,
+      ArrangesComponent,
+      ItemsComponent
     ],
     imports: [
       ReactiveFormsModule,
