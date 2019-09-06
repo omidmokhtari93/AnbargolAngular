@@ -14,9 +14,10 @@ namespace AnbargolAngular
     {
         // GET: api/<controller>
         [HttpGet("/api/Login")]
-        public void Get()
+        public JsonResult Get()
         {
             Task.Delay(2000).Wait();
+            return new JsonResult("boom");
         }
     }
 
