@@ -17,3 +17,8 @@ export class Arranges {
     comment: string
     date: string
 }
+
+export class ApiAlert {
+    type: string;
+    message: string;
+}

@@ -109,9 +109,4 @@ namespace AnbargolAngular.Controllers
         }
     }
 }
-public class Controls
-{
-    public int Id { get; set; }
-    public string Text { get; set; }
 
-}

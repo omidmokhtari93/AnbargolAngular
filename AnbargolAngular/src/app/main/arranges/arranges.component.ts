@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { NotifierService } from 'angular-notifier';
-import { Arranges } from 'src/app/shared/sharedClass.service';
+import { Arranges, ApiAlert } from 'src/app/shared/sharedClass.service';
 
 @Component({
   selector: 'app-arranges',
@@ -41,11 +41,12 @@ export class ArrangesComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.routeSubscription.unsubscribe();
+    this.httpSubscription.unsubscribe();
   }
 
   saveArrange() {
     if (this.newGolArrange.status === "INVALID") {
-      this.notifier.notify('error', 'لطفا خطاهای موجود را بررسی نمایید')
+      this.notifier.notify('error', 'لطفا خطاهای موجود را بررسی نمایید');
     } else {
       this.newArrange = {
         name: this.newGolArrange.get('name').value,
@@ -56,8 +57,8 @@ export class ArrangesComponent implements OnInit, OnDestroy {
         date: this.newGolArrange.get('date').value,
         mark: this.newGolArrange.get('mark').value
       }
-      this.httpSubscription = this.http.post('/api/SaveArrange', this.newArrange).subscribe(e => {
-
+      this.httpSubscription = this.http.post('/api/SaveArrange', this.newArrange).subscribe((resp: ApiAlert) => {
+        this.notifier.notify(resp.type, resp.message);
       });
     }
   }

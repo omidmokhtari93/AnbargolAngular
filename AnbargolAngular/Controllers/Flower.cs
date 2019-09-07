@@ -37,10 +37,10 @@ namespace AnbargolAngular.Controllers
                                " flower_name like N'%" + farsiPart2 + "%' OR " +
                                "flower_name like N'" + farsiPart1 + "'  order by flower_entry.flower_color", con);
       var r = sel.ExecuteReader();
-      var list = new List<Gols>();
+      var list = new List<Gol>();
       while (r.Read())
       {
-        list.Add(new Gols()
+        list.Add(new Gol()
         {
           Id = Convert.ToInt32(r["id"]),
           Name = r["gol"].ToString()
@@ -55,7 +55,7 @@ namespace AnbargolAngular.Controllers
     {
       con.Open();
       string imgFilePath = "/flower_images/" + flowerId + ".JPG" + "?" + new Random().Next();
-      var gol = new Gols();
+      var gol = new Gol();
       var cmd = new SqlCommand("SELECT dbo.flower_colors.flow_color, dbo.flower_colortypes.flow_colortype, flower_entry.id, " +
                                "dbo.flower_formats.flow_format, dbo.flower_customers.customer_name, dbo.flower_companies.company_name " +
                                ", flower_entry.flower_name, flower_entry.flower_code, flower_entry.enter_date " +
@@ -257,7 +257,7 @@ namespace AnbargolAngular.Controllers
     public JsonResult Get(int flowerId)
     {
       con.Open();
-      var gol = new Gols();
+      var gol = new Gol();
       var cmd = new SqlCommand("SELECT dbo.flower_colors.flow_color, dbo.flower_colortypes.flow_colortype, flower_entry.id, " +
                                "dbo.flower_formats.flow_format, dbo.flower_customers.customer_name, dbo.flower_companies.company_name " +
                                ", flower_entry.flower_name, flower_entry.flower_code, flower_entry.enter_date " +
