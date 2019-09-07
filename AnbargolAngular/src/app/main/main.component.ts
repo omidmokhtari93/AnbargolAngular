@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./main.component.less']
 })
 export class MainComponent implements OnInit {
+  subjectMessage: string;
   golSearchConfig = {
     placeholder: 'جستجوی سریع طرح ...',
     width: '300px',
@@ -16,7 +17,10 @@ export class MainComponent implements OnInit {
   }
   constructor(private route: Router) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+
+  }
+
   createGolList(e) {
     this.route.navigate(['flowerinfo', e.id]);
   }

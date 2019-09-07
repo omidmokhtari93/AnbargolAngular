@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Http } from '@angular/http';
+import { FlowerInformation } from '../sharedClass.service';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-flower-main-info',
@@ -8,12 +9,14 @@ import { Http } from '@angular/http';
 })
 export class FlowerMainInfoComponent implements OnInit {
   @Input('flowerid') id: number = 0;
-  gol = [];
-  constructor(private http: Http) { }
+  gol: FlowerInformation;
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get('/api/GetFlowerMainInfo', { params: { flowerId: this.id } }).subscribe(e => {
-      this.gol = e.json();
+    this.http.get('/api/GetFlowerMainInfo', {
+      params: new HttpParams().set("flowerId", this.id + "")
+    }).subscribe((flowerInfo: FlowerInformation) => {
+      this.gol = flowerInfo;
     })
   }
-}
+} 

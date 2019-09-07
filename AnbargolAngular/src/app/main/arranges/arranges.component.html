@@ -4,7 +4,7 @@
     <div class="text-center">
       <app-flower-main-info [flowerid]="flowerId"></app-flower-main-info>
       <hr>
-      <form [formGroup]="newGolArrange">
+      <form [formGroup]="newGolArrange" (ngSubmit)="saveArrange()">
         <div class="row">
           <div class="col-md-4 d-flex justify-content-between">
             <div class="my-auto text-nowrap ml-2">شماره فرم : </div>
@@ -24,7 +24,7 @@
           <div class="col-md-4 d-flex justify-content-between">
             <div class="my-auto text-nowrap ml-2">ابعاد : </div>
             <select class="form-control" formControlName="dimension">
-              <option></option>
+              <option *ngFor="let d of dimensions" [value]="d.id">{{d.text}}</option>
             </select>
             <span class="text-danger mr-1"
               *ngIf="newGolArrange.get('dimension').invalid && newGolArrange.get('dimension').touched">*</span>
@@ -50,13 +50,20 @@
           <div class="col-md"></div>
           <div class="col-md-4 d-flex justify-content-between">
             <div class="my-auto text-nowrap ml-2">تاریخ ورود : </div>
-            <input class="form-control" formControlName="date" />
+            <div class="form-control" id="datePickerArea">
+              <input class="border-0 my-auto text-center" formControlName="date" placeholder="تاریخ"
+                [dpDayPicker]="{format: 'jYYYY/jMM/jDD'}" theme="dp-material" />
+            </div>
             <span class="text-danger mr-1"
               *ngIf="newGolArrange.get('date').invalid && newGolArrange.get('date').touched">*</span>
           </div>
           <div class="col-md"></div>
         </div>
+        <div class="p-3 text-left">
+          <button type="submit" class="btn btn-primary">ثبت</button>
+        </div>
       </form>
     </div>
   </div>
 </div>
+<notifier-container></notifier-container>

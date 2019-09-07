@@ -16,10 +16,13 @@ namespace AnbargolAngular
         [HttpGet("/api/Login")]
         public JsonResult Get()
         {
-            Task.Delay(2000).Wait();
-            return new JsonResult("boom");
+            Task.Delay(1000).Wait();
+            return new JsonResult(new
+            {
+                name = "omid",
+                family = "mokhtari",
+                prevent = false
+            });
         }
     }
-
-
 }

@@ -1,12 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Response } from 'selenium-webdriver/http';
 import { Http } from '@angular/http';
 import { NotifierService } from 'angular-notifier';
 import { Subscription } from 'rxjs';
 import { HtttpService } from 'src/app/shared/httpService.service';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { Router } from '@angular/router';
+import * as moment from 'jalali-moment';
 
 @Component({
   selector: 'app-new-flower',
@@ -15,6 +15,9 @@ import { Router } from '@angular/router';
 })
 
 export class NewFlowerComponent implements OnInit, OnDestroy {
+  datePickerConfig = {
+    format: 'jYYYY/jMM/jDD'
+  }
   flowerId: number;
   colors = [];
   colorTypes = [];
@@ -41,6 +44,7 @@ export class NewFlowerComponent implements OnInit, OnDestroy {
     private httpService: HtttpService,
     private modal: NgxSmartModalService,
     private route: Router) { }
+    
   ngOnInit() {
     this.fillControls();
     this.getLastFlowers();
@@ -73,8 +77,9 @@ export class NewFlowerComponent implements OnInit, OnDestroy {
   }
 
   sabtGol() {
+    console.log(this.newGolForm);
     if (this.newGolForm.status === 'INVALID') {
-      this.notifier.notify('error', 'لطفا فیلد های خالی را تمکیل نمایید');
+      this.notifier.notify('error', 'لطفا خطاهای موجود را بررسی نمایید');
     } else {
       let obj = {
         Name: this.newGolForm.get('name').value,
@@ -91,6 +96,7 @@ export class NewFlowerComponent implements OnInit, OnDestroy {
       this.httpService.post('/api/NewFlower', this.data).subscribe((response: any) => {
         this.notifier.notify(response.type, response.message);
         this.newGolForm.reset();
+        this.getLastFlowers();
       })
     }
   }

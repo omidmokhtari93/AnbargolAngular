@@ -16,6 +16,7 @@ import { HtttpService } from './shared/httpService.service';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
 import { ArrangesComponent } from './main/arranges/arranges.component';
 import { ItemsComponent } from './main/items/items.component';
+import { DpDatePickerModule } from 'ng2-jalali-date-picker'
 
 @
   NgModule({
@@ -37,6 +38,7 @@ import { ItemsComponent } from './main/items/items.component';
       FormsModule,
       HttpModule,
       HttpClientModule,
+      DpDatePickerModule,
       NgxSmartModalModule.forRoot(),
       NotifierModule.withConfig({
         behaviour: {

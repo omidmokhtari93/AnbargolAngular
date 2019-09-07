@@ -61,7 +61,10 @@
         </div>
         <div class="col-md-4 d-flex justify-content-between">
           <div class="my-auto text-nowrap ml-2">تاریخ ورود : </div>
-          <input class="form-control" formControlName="enterDate" />
+          <div class="form-control" id="datePickerArea">
+            <input class="border-0 my-auto text-center" formControlName="enterDate" placeholder="تاریخ"
+              [dpDayPicker]="datePickerConfig" theme="dp-material" />
+          </div>
           <span class="text-danger mr-1"
             *ngIf="newGolForm.get('enterDate').invalid && newGolForm.get('enterDate').touched">*</span>
         </div>

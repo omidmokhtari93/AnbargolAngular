@@ -9,7 +9,8 @@ table {
   margin: auto;
   margin-bottom: 0 !important;
 
-  tr td, tr th {
+  tr td,
+  tr th {
     font-size: 13px;
     padding: 3px 5px !important;
     text-align: center;
@@ -17,7 +18,7 @@ table {
   }
 
   tr td a {
-    color: @BlueColor !important;
+    color: @BlueColor  !important;
   }
 
   tr th {
@@ -26,7 +27,7 @@ table {
   }
 
   tr:nth-child(even) {
-    background-color: aliceblue;
+    background-color: rgb(225, 241, 255);
   }
 
   footer {
@@ -38,4 +39,14 @@ table {
     padding: 1px 3px;
     cursor: pointer;
   }
+}
+
+.card {
+  .card-body {
+    background-color: rgb(245, 245, 245);
+  }
+}
+
+#datePickerArea input {
+  outline: none;
 }
