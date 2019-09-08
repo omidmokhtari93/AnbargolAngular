@@ -99,21 +99,21 @@ namespace AnbargolAngular.Controllers
                                      " from flower_entry where id = " + flowerId + " " +
                                      "SELECT CAST(scope_identity() AS int)", con);
             var flowid = Convert.ToInt32(cmd.ExecuteScalar());
-            var list = new List<Arranges>();
+            var list = new List<Forms>();
             cmd = new SqlCommand("select [id],[form_number],[arrange_type],[dimension] " +
                                  ",[sheetcount],[last_enter_date],[mark_type],[comment] " +
                                  "from flower_forms_entry where flower_id = " + flowerId + " ", con);
             var rd = cmd.ExecuteReader();
             while (rd.Read())
             {
-                list.Add(new Arranges()
+                list.Add(new Forms()
                 {
                     Id = Convert.ToInt32(rd["id"]),
                     FlowerId = flowid,
-                    Form = rd["form_number"].ToString(),
-                    Type = Convert.ToInt32(rd["arrange_type"]),
-                    Dimension = Convert.ToInt32(rd["dimension"]),
-                    SheetCount = rd["sheetcount"].ToString(),
+                    FormName = rd["form_number"].ToString(),
+                    ArrangeTypeId = Convert.ToInt32(rd["arrange_type"]),
+                    DimensionId = Convert.ToInt32(rd["dimension"]),
+                    Count = Convert.ToInt32(rd["sheetcount"]),
                     EnterDate = rd["last_enter_date"].ToString(),
                     Mark = rd["mark_type"].ToString(),
                     Comment = rd["comment"].ToString()
@@ -126,8 +126,8 @@ namespace AnbargolAngular.Controllers
 
                 cmd = new SqlCommand("INSERT INTO [dbo].[flower_forms_entry]([flower_id],[form_number],[arrange_type]" +
                                      ",[dimension],[sheetcount],[last_enter_date],[mark_type],[comment]) " +
-                                     "values(" + form.FlowerId + " ,'" + form.Form + "' , " + form.Type + " , " + form.Dimension + "," +
-                                     " " + form.SheetCount + " , '" + form.EnterDate + "' , '" + form.Mark + "' , '" + form.Comment + "') " +
+                                     "values(" + form.FlowerId + " ,'" + form.FormName + "' , " + form.ArrangeTypeId + " , " + form.Dimension + "," +
+                                     " " + form.Count + " , '" + form.EnterDate + "' , '" + form.Mark + "' , '" + form.Comment + "') " +
                                      "SELECT CAST(scope_identity() AS int)", con);
                 var formid = cmd.ExecuteScalar();
                 cmd = new SqlCommand("INSERT INTO [dbo].[flower_arrange_items]([flower_id],[form_id],[form_number]," +

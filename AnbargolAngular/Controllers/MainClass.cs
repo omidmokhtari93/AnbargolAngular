@@ -55,6 +55,7 @@ namespace AnbargolAngular.Controllers
     {
         public int Id { get; set; }
         public int FormId { get; set; }
+        public int FlowerId { get; set; }
         public string FormName { get; set; }
         public int ArrangeTypeId { get; set; }
         public string ArrangeType { get; set; }
@@ -138,19 +139,6 @@ namespace AnbargolAngular.Controllers
         public string EnterDate { get; set; }
         public string Comment { get; set; }
         public string ImagePath { get; set; }
-    }
-
-    public class Arranges
-    {
-        public int Id { get; set; }
-        public int FlowerId { get; set; }
-        public string Form { get; set; }
-        public int Type { get; set; }
-        public int Dimension { get; set; }
-        public string SheetCount { get; set; }
-        public string EnterDate { get; set; }
-        public string Mark { get; set; }
-        public string Comment { get; set; }
     }
     public class OrderList
     {
