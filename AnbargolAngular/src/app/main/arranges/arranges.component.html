@@ -65,5 +65,44 @@
       </form>
     </div>
   </div>
+  <div class="card-footer">
+    <div class="row">
+      <div class="col-md-3">
+
+      </div>
+      <div class="col-md-9 text-center">
+        <table class="table table-bordered">
+          <tr>
+            <th scope="col">&nbsp;</th>
+            <th scope="col">اصلاح تعداد برگ</th>
+            <th scope="col"><a>شماره فرم</a></th>
+            <th scope="col"><a>تعداد برگ</a></th>
+            <th scope="col"><a>تاریخ ورود</a></th>
+            <th scope="col"><a>نوع چیدمان</a></th>
+            <th scope="col"><a>ابعاد</a></th>
+            <th scope="col"><a>نوع مارک و تعداد</a></th>
+            <th scope="col"><a>توضیحات</a></th>
+            <th scope="col">&nbsp;</th>
+          </tr>
+          <tr *ngFor="let arrange of arranges">
+            <td><a (click)="editArrange(arrange.id)">ویرایش</a></td>
+            <td>
+              <input type="button" value="-" (click)="editSheetCount(false , change.value , arrange.id)" />
+              <input type="number" class="text-center" #change />
+              <input type="button" value="+" (click)="editSheetCount(true , change.value , arrange.id)" />
+            </td>
+            <td>{{arrange.formName}}</td>
+            <td>{{arrange.count}}</td>
+            <td>{{arrange.enterDate}}</td>
+            <td>{{arrange.arrangeType}}</td>
+            <td>{{arrange.dimension}}</td>
+            <td>{{arrange.mark}}</td>
+            <td>{{arrange.comment}}</td>
+            <td><a (click)="deleteArrange(arrange.id)">حذف</a></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 <notifier-container></notifier-container>

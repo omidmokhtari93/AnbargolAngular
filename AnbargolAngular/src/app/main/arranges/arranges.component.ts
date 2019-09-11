@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { NotifierService } from 'angular-notifier';
 import { Arranges, ApiAlert } from 'src/app/shared/sharedClass.service';
 
@@ -13,6 +13,7 @@ import { Arranges, ApiAlert } from 'src/app/shared/sharedClass.service';
 })
 export class ArrangesComponent implements OnInit, OnDestroy {
   dimensions = [];
+  arranges: Arranges[] = [];
   flowerId: number;
   newArrange: Arranges
   routeSubscription: Subscription
@@ -36,7 +37,16 @@ export class ArrangesComponent implements OnInit, OnDestroy {
     })
     this.routeSubscription = this.route.params.subscribe((p: Params) => {
       this.flowerId = p['fid'];
+      this.getAllArranges();
     });
+  }
+
+  getAllArranges() {
+    this.httpSubscription = this.http.get('/api/GetArranges', {
+      params: new HttpParams().set('flowerId', this.flowerId + "")
+    }).subscribe((e: Arranges[]) => {
+      this.arranges = e;
+    })
   }
 
   ngOnDestroy() {
@@ -61,5 +71,17 @@ export class ArrangesComponent implements OnInit, OnDestroy {
         this.notifier.notify(resp.type, resp.message);
       });
     }
+  }
+
+  editSheetCount(plus: number, change: number, arrangeId: number) {
+    console.log(plus, change, arrangeId)
+  }
+
+  editArrange(arrageId: number) {
+    console.log(arrageId)
+  }
+
+  deleteArrange(arrangeId: number) {
+    console.log(arrangeId)
   }
 }

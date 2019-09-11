@@ -9,7 +9,7 @@ namespace AnbargolAngular.Controllers
     public class FlowerArranges : Controller
     {
         private readonly SqlConnection con = new SqlConnection(connectionString: "Data Source=.;Initial Catalog=flower_depot;Integrated Security=True");
-        [HttpGet("/api/GetArragnes")]
+        [HttpGet("/api/GetArranges")]
         public JsonResult GetArranges(int flowerId)
         {
             con.Open();
@@ -31,9 +31,15 @@ namespace AnbargolAngular.Controllers
                     Id = Convert.ToInt32(rd["id"]),
                     FormName = rd["form_number"].ToString(),
                     ArrangeType = rd["arrange_type"].ToString(),
+                    Count = Convert.ToInt32(rd["sheetcount"]),
+                    EnterDate = rd["last_enter_date"].ToString(),
+                    Dimension = rd["flow_dimension"].ToString(),
+                    Mark = rd["mark_type"].ToString(),
+                    Comment = rd["comment"].ToString()
                 });
             }
-            return new JsonResult("");
+            con.Close();
+            return new JsonResult(listArranges);
         }
 
 
