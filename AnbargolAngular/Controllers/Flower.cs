@@ -28,12 +28,12 @@ namespace AnbargolAngular.Controllers
       con.Open();
       var sel = new SqlCommand("SELECT flower_entry.flower_name,flower_entry.flower_name + ' / ' + flower_colors.flow_color + ' / '  " +
                                "+ flower_colortypes.flow_colortype + ' / ' + flower_formats.flow_format AS gol, flower_entry.id " +
-                               "FROM flower_depot.dbo.flower_entry INNER JOIN flower_depot.dbo.flower_colors ON " +
-                               "flower_depot.dbo.flower_entry.flower_color = flower_depot.dbo.flower_colors.flowcolor_id INNER JOIN " +
-                               "flower_depot.dbo.flower_colortypes ON flower_depot.dbo.flower_entry.flower_colortype = " +
-                               "flower_depot.dbo.flower_colortypes.colortype_id INNER JOIN " +
-                               "flower_depot.dbo.flower_formats ON flower_depot.dbo.flower_entry.flower_format = " +
-                               "flower_depot.dbo.flower_formats.flowformat_id where flower_name like N'%" + golName + "%' OR " +
+                               "FROM bornatek_anbar.dbo.flower_entry INNER JOIN bornatek_anbar.dbo.flower_colors ON " +
+                               "bornatek_anbar.dbo.flower_entry.flower_color = bornatek_anbar.dbo.flower_colors.flowcolor_id INNER JOIN " +
+                               "bornatek_anbar.dbo.flower_colortypes ON bornatek_anbar.dbo.flower_entry.flower_colortype = " +
+                               "bornatek_anbar.dbo.flower_colortypes.colortype_id INNER JOIN " +
+                               "bornatek_anbar.dbo.flower_formats ON bornatek_anbar.dbo.flower_entry.flower_format = " +
+                               "bornatek_anbar.dbo.flower_formats.flowformat_id where flower_name like N'%" + golName + "%' OR " +
                                " flower_name like N'%" + farsiPart2 + "%' OR " +
                                "flower_name like N'" + farsiPart1 + "'  order by flower_entry.flower_color", con);
       var r = sel.ExecuteReader();
