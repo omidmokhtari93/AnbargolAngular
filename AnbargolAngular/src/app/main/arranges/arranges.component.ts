@@ -73,7 +73,7 @@ export class ArrangesComponent implements OnInit, OnDestroy {
     }
   }
 
-  editSheetCount(plus: number, change: number, arrangeId: number) {
+  editSheetCount(plus: boolean, change: number, arrangeId: number) {
     console.log(plus, change, arrangeId)
   }
 

@@ -25,14 +25,14 @@
     </div>
     <div class="card bg-primary text-white mt-3 rounded-0 p-2">فرم ها</div>
     <select class="form-control mt-2 w-25 mx-auto" (change)="changeFormAction($event)">
-      <option *ngFor="let form of formNumbers" [value]="form?.id">{{form?.name}}</option>
+      <option *ngFor="let fo of formNumbers" [value]="fo.id">{{fo.name}}</option>
     </select>
     <div class="my-3 text-center" id="forminfo">
       <label>نوع چیدمان : {{forms?.arrangeType}}</label>
       <label>ابعاد : {{forms?.dimension}}</label>
       <label>تعداد برگ : {{forms?.count}}</label>
       <label>نوع مارک : {{forms?.mark}}</label>
-      <label>تاریخ ورود : {{forms?.enterDate}}</label>
+      <label>تاریخ ورود : {{forms?.date}}</label>
       <label>توضیحات : {{forms?.comment}}</label>
     </div>
     <div class="text-center">
@@ -45,11 +45,11 @@
           <th>توضیحات</th>
         </tr>
         <tr *ngFor="let item of formItems">
-          <td>{{item.name}}</td>
-          <td>{{item.itemInSheet}}</td>
-          <td>{{item.lentInSheet}}</td>
-          <td>{{item.sum}}</td>
-          <td>{{item.comment}}</td>
+          <td>{{item?.name}}</td>
+          <td>{{item?.itemInSheet}}</td>
+          <td>{{item?.lentInSheet}}</td>
+          <td>{{item?.sum}}</td>
+          <td>{{item?.comment}}</td>
         </tr>
       </table>
     </div>
@@ -95,9 +95,9 @@
             <th>تعداد برگ</th>
           </tr>
           <tr *ngFor="let orderForm of ordreForms">
-            <td>{{orderForm.formName}}</td>
-            <td>{{orderForm.receiveDate}}</td>
-            <td>{{orderForm.sheetCount}}</td>
+            <td>{{orderForm?.formName}}</td>
+            <td>{{orderForm?.receiveDate}}</td>
+            <td>{{orderForm?.sheetCount}}</td>
           </tr>
         </table>
       </div>

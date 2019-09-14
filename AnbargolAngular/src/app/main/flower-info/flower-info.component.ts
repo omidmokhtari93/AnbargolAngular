@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/co
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Http } from '@angular/http';
+import { FlowerInformation, Arranges } from '../../shared/sharedClass.service';
 
 @Component({
   selector: 'app-flower-info',
@@ -16,8 +17,8 @@ export class FlowerInfoComponent implements OnInit, OnDestroy {
   pages = [];
   orders = [];
   ordreForms = [];
-  forms = [];
-  gol = [];
+  forms: Arranges;
+  gol: FlowerInformation;
   formItems = [];
   formNumbers = [];
   loading: boolean = false;
