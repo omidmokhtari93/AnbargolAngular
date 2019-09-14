@@ -10,7 +10,7 @@ namespace AnbargolAngular.Controllers
     {
         public static void calc(int flowerId)
         {
-            var con = new SqlConnection(connectionString: "Data Source=.;Initial Catalog=flower_depot;Integrated Security=True");
+            var con = new SqlConnection(connectionString: "Server=.;Database=bornatek_anbar;User ID=bornatek_ir;Password=Omid1993");
             con.Open();
             var cmd = new SqlCommand("update cutted_and_remain set falleh = j.falleh ,service = j.service from " +
                                      "(select item,case when[1] is null then 0 else [1] end as service " +

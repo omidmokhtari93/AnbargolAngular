@@ -22,7 +22,7 @@ namespace AnbargolAngular.Controllers
         {
             _hostingEnv = environment;
         }
-        private readonly SqlConnection con = new SqlConnection(connectionString: "Data Source=.;Initial Catalog=flower_depot;Integrated Security=True");
+        private readonly SqlConnection con = new SqlConnection(connectionString: "Server=.;Database=bornatek_anbar;User ID=bornatek_ir;Password=Omid1993");
         [HttpPost("/api/NewFlower")]
         public JsonResult Get()
         {

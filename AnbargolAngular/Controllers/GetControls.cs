@@ -12,7 +12,7 @@ namespace AnbargolAngular.Controllers
     [Route("api/[controller]")]
     public class GetControls : Controller
     {
-        private readonly SqlConnection con = new SqlConnection(connectionString: "Data Source=.;Initial Catalog=flower_depot;Integrated Security=True");
+        private readonly SqlConnection con = new SqlConnection(connectionString: "Server=.;Database=bornatek_anbar;User ID=bornatek_ir;Password=Omid1993");
         // GET: api/<controller>
         [HttpGet("/api/GetControls")]
         public JsonResult Get()
