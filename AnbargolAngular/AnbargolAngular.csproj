@@ -1,9 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <TypeScriptToolsVersion>3.5</TypeScriptToolsVersion>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,5 +26,8 @@
     <Folder Include="src\assets\css\" />
     <Folder Include="src\assets\js\" />
   </ItemGroup>
-
+  <Target Name="build angular" Condition="'$(Configuration)'=='Release'" BeforeTargets="Build">
+    <Message Text="build in proccess" Importance="high"/>
+    <Exec Command="ng build --prod"/>
+  </Target>
 </Project>
