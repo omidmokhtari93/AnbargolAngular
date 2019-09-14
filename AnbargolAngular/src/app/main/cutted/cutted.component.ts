@@ -11,7 +11,7 @@ import { NotifierService } from 'angular-notifier';
 })
 export class CuttedComponent implements OnInit {
   flowerId: number;
-  loading = false;
+  loading : boolean = false;
   data = [];
   httpSubscription: Subscription
   routeSubscription: Subscription

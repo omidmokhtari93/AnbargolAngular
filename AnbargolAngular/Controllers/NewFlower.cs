@@ -31,7 +31,7 @@ namespace AnbargolAngular.Controllers
             con.Open();
             var cmd =
               new SqlCommand(
-                "INSERT INTO [flower_depot].[dbo].[flower_entry](flower_name , flower_code" +
+                "INSERT INTO [bornatek_anbar].[dbo].[flower_entry](flower_name , flower_code" +
                 ",flower_color,flower_colortype,flower_format,customer_name,company_name,enter_date,comment)" +
                 " values ('" + obj.Name + "', '" + obj.Code.ToUpper() + "' " +
                 " ," + obj.Color + " ," + obj.ColorType + ", " + obj.Format + "  , " + obj.Customer + " ," +
