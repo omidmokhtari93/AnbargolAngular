@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Http } from '@angular/http';
 import { FlowerInformation, Arranges } from '../../shared/sharedClass.service';
+import { LoadingBarService } from '@ngx-loading-bar/core';
 
 @Component({
   selector: 'app-flower-info',
@@ -21,13 +22,14 @@ export class FlowerInfoComponent implements OnInit, OnDestroy {
   gol: FlowerInformation;
   formItems = [];
   formNumbers = [];
-  loading: boolean = false;
   paramSubscription: Subscription
   httpSubscription: Subscription
-  constructor(private router: ActivatedRoute, private http: Http) { }
+  constructor(private router: ActivatedRoute,
+    private http: Http,
+    private loading: LoadingBarService) { }
 
   ngOnInit() {
-    this.loading = true;
+    this.loading.start();
     this.paramSubscription = this.router.params.subscribe((p: Params) => {
       this.httpSubscription = this.http.get('/api/GetFlowerData', {
         params: {
@@ -41,11 +43,11 @@ export class FlowerInfoComponent implements OnInit, OnDestroy {
         this.formItems = data['formItems'];
         this.formNumbers = data['formNumbers']
         this.orders = data['orders']
-        this.loading = false;
         this.flowerId = p['fid'];
         this.ordreForms = [];
         this.pageCountCalcualte(this.pageSize, p['fid']);
         this.orderId = 0;
+        this.loading.complete();
       });
     });
   }
@@ -56,12 +58,12 @@ export class FlowerInfoComponent implements OnInit, OnDestroy {
   }
 
   changeFormAction(e) {
-    this.loading = true;
+    this.loading.start();
     this.httpSubscription = this.http.get('/api/GetFlowForm', { params: { formId: e.target.value } }).subscribe(e => {
       let data = e.json();
       this.formItems = data['formItems'];
       this.forms = data['form'];
-      this.loading = false;
+      this.loading.complete();
     })
   }
 
