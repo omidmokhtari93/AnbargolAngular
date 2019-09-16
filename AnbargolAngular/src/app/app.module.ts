@@ -17,6 +17,7 @@ import { NgxSmartModalModule } from 'ngx-smart-modal';
 import { ArrangesComponent } from './main/arranges/arranges.component';
 import { ItemsComponent } from './main/items/items.component';
 import { DpDatePickerModule } from 'ng2-jalali-date-picker'
+import { LoadingBarModule } from '@ngx-loading-bar/core';
 
 @
   NgModule({
@@ -32,6 +33,7 @@ import { DpDatePickerModule } from 'ng2-jalali-date-picker'
       ItemsComponent
     ],
     imports: [
+      LoadingBarModule,
       ReactiveFormsModule,
       BrowserModule,
       AppRoutingModule,

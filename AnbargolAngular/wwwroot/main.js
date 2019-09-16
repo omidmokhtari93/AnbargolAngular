@@ -338,7 +338,7 @@ module.exports = "<div class=\"card\">\r\n  <div class=\"card-header bg-primary 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\">\r\n  <div class=\"card-header bg-primary text-white\">\r\n    برش خورده ها\r\n    <img src=\"/assets/images/loading.gif\" class=\"loading-md float-left\" *ngIf=\"loading\" />\r\n  </div>\r\n  <div class=\"card-body text-center\">\r\n    <app-flower-main-info [flowerid]=\"flowerId\"></app-flower-main-info>\r\n    <div>\r\n      <table class=\"table table-bordered\" *ngIf=\"data.length\">\r\n        <tr>\r\n          <th scope=\"col\">4</th>\r\n          <th scope=\"col\">3</th>\r\n          <th scope=\"col\">2</th>\r\n          <th scope=\"col\">آخرین تغییر</th>\r\n          <th scope=\"col\">مقدار تغییر</th>\r\n          <th scope=\"col\">نام آیتم</th>\r\n          <th scope=\"col\">برش خورده</th>\r\n          <th scope=\"col\">آیتم فله</th>\r\n          <th scope=\"col\">آیتم سرویسی</th>\r\n          <th scope=\"col\">موجودی کل</th>\r\n          <th scope=\"col\">توضیحات</th>\r\n          <th scope=\"col\">&nbsp;</th>\r\n        </tr>\r\n        <tr *ngFor=\"let d of data\">\r\n          <td [title]=\"d.changeTimeDate4\">{{d.record4}}</td>\r\n          <td [title]=\"d.changeTimeDate3\">{{d.record3}}</td>\r\n          <td [title]=\"d.changeTimeDate2\">{{d.record2}}</td>\r\n          <td [title]=\"d.changeTimeDate1\">{{d.record1}}</td>\r\n          <td>\r\n            <input type=\"button\" value=\"-\" (click)=\"minus(change.value , d.id)\" />\r\n            <input type=\"number\" class=\"text-center\" #change />\r\n            <input type=\"button\" value=\"+\" (click)=\"plus(change.value , d.id)\" />\r\n          </td>\r\n          <td>{{d.itemName}}</td>\r\n          <td>{{d.cuttedd}}</td>\r\n          <td>{{d.falleh}}</td>\r\n          <td>{{d.service}}</td>\r\n          <td>{{d.total}}</td>\r\n          <td>\r\n            <input type=\"text\" id=\"editfield\" [value]=\"d.comment\"\r\n                   (input)=\"btnSave.style.display = 'inline-block'\" #editData />\r\n            <a class=\"text-danger\" #btnSave style=\"display: none;\"\r\n               (click)=\"saveComment(d.id , editData.value);btnSave.style.display = 'none'\">ذخیره</a>\r\n          </td>\r\n          <td>\r\n            <a (click)=\"yes.style.display = 'inline-block';\r\n               no.style.display = 'inline-block';\r\n               delete.style.display = 'none'\" #delete>حذف</a>\r\n            <a (click)=\"yes.style.display = 'none';\r\n               no.style.display = 'none';delete.style.display = 'inline-block';deleteCutted(d.id);\" #yes\r\n               style=\"display: none;\" class=\"btn btn-primary p-1 text-white ml-1\">بله</a>\r\n            <a (click)=\"no.style.display = 'none';\r\n               yes.style.display = 'none';delete.style.display = 'inline-block'\" #no\r\n               style=\"display: none;\" class=\"btn btn-primary p-1 text-white\">خیر</a>\r\n          </td>\r\n        </tr>\r\n      </table>\r\n    </div>\r\n    <button class=\"btn btn-primary\" type=\"button\" [routerLink]=\"['/flowerinfo' , flowerId]\">بازگشت</button>\r\n  </div>\r\n</div>\r\n<notifier-container></notifier-container>\r\n"
+module.exports = "<ngx-loading-bar></ngx-loading-bar>\r\n<div class=\"card\">\r\n  <div class=\"card-header bg-primary text-white\">\r\n    برش خورده ها\r\n  </div>\r\n  <div class=\"card-body text-center\">\r\n    <app-flower-main-info [flowerid]=\"flowerId\"></app-flower-main-info>\r\n    <div>\r\n      <table class=\"table table-bordered\" *ngIf=\"data.length\">\r\n        <tr>\r\n          <th scope=\"col\">4</th>\r\n          <th scope=\"col\">3</th>\r\n          <th scope=\"col\">2</th>\r\n          <th scope=\"col\">آخرین تغییر</th>\r\n          <th scope=\"col\">مقدار تغییر</th>\r\n          <th scope=\"col\">نام آیتم</th>\r\n          <th scope=\"col\">برش خورده</th>\r\n          <th scope=\"col\">آیتم فله</th>\r\n          <th scope=\"col\">آیتم سرویسی</th>\r\n          <th scope=\"col\">موجودی کل</th>\r\n          <th scope=\"col\">توضیحات</th>\r\n          <th scope=\"col\">&nbsp;</th>\r\n        </tr>\r\n        <tr *ngFor=\"let d of data\">\r\n          <td [title]=\"d.changeTimeDate4\">{{d.record4}}</td>\r\n          <td [title]=\"d.changeTimeDate3\">{{d.record3}}</td>\r\n          <td [title]=\"d.changeTimeDate2\">{{d.record2}}</td>\r\n          <td [title]=\"d.changeTimeDate1\">{{d.record1}}</td>\r\n          <td>\r\n            <input type=\"button\" value=\"-\" (click)=\"minus(change.value , d.id)\" />\r\n            <input type=\"number\" class=\"text-center\" #change />\r\n            <input type=\"button\" value=\"+\" (click)=\"plus(change.value , d.id)\" />\r\n          </td>\r\n          <td>{{d.itemName}}</td>\r\n          <td>{{d.cuttedd}}</td>\r\n          <td>{{d.falleh}}</td>\r\n          <td>{{d.service}}</td>\r\n          <td>{{d.total}}</td>\r\n          <td>\r\n            <input type=\"text\" id=\"editfield\" [value]=\"d.comment\"\r\n                   (input)=\"btnSave.style.display = 'inline-block'\" #editData />\r\n            <a class=\"text-danger\" #btnSave style=\"display: none;\"\r\n               (click)=\"saveComment(d.id , editData.value);btnSave.style.display = 'none'\">ذخیره</a>\r\n          </td>\r\n          <td>\r\n            <a (click)=\"yes.style.display = 'inline-block';\r\n               no.style.display = 'inline-block';\r\n               delete.style.display = 'none'\" #delete>حذف</a>\r\n            <a (click)=\"yes.style.display = 'none';\r\n               no.style.display = 'none';delete.style.display = 'inline-block';deleteCutted(d.id);\" #yes\r\n               style=\"display: none;\" class=\"btn btn-primary p-1 text-white ml-1\">بله</a>\r\n            <a (click)=\"no.style.display = 'none';\r\n               yes.style.display = 'none';delete.style.display = 'inline-block'\" #no\r\n               style=\"display: none;\" class=\"btn btn-primary p-1 text-white\">خیر</a>\r\n          </td>\r\n        </tr>\r\n      </table>\r\n    </div>\r\n    <button class=\"btn btn-primary\" type=\"button\" [routerLink]=\"['/flowerinfo' , flowerId]\">بازگشت</button>\r\n  </div>\r\n</div>\r\n<notifier-container></notifier-container>\r\n"
 
 /***/ }),
 
@@ -349,7 +349,7 @@ module.exports = "<div class=\"card\">\r\n  <div class=\"card-header bg-primary 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"card\">\r\n  <div class=\"card-header bg-primary text-white\">\r\n    {{gol?.name}}\r\n    <img src=\"/assets/images/loading.gif\" class=\"loading-md float-left\" *ngIf=\"loading\" />\r\n  </div>\r\n  <div class=\"card-body\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-5\">\r\n        <p>کد : {{gol?.code}}</p>\r\n        <p>رنگ : {{gol?.color}}</p>\r\n        <p>نوع رنگ : {{gol?.colorType}}</p>\r\n        <p>قالب : {{gol?.format}}</p>\r\n      </div>\r\n      <div class=\"col-md-5 border-right\">\r\n        <p>تاریخ ورود به انبار : {{gol?.enterDate}}</p>\r\n        <p>مشتری : {{gol?.customer}}</p>\r\n        <p>شرکت : {{gol?.company}}</p>\r\n        <p>توضیحات : {{gol?.comment}}</p>\r\n      </div>\r\n      <div class=\"col-md-2\">\r\n        <a target=\"_blank\" [href]=\"gol?.imagePath\">\r\n          <img class=\"img-fluid float-left\" [src]=\"gol?.imagePath\" style=\"width: 115px; height: 115px;\" alt=\"بدون عکس\">\r\n        </a>\r\n      </div>\r\n    </div>\r\n    <div class=\"card bg-primary text-white mt-3 rounded-0 p-2\">فرم ها</div>\r\n    <select class=\"form-control mt-2 w-25 mx-auto\" (change)=\"changeFormAction($event)\">\r\n      <option *ngFor=\"let fo of formNumbers\" [value]=\"fo.id\">{{fo.name}}</option>\r\n    </select>\r\n    <div class=\"my-3 text-center\" id=\"forminfo\">\r\n      <label>نوع چیدمان : {{forms?.arrangeType}}</label>\r\n      <label>ابعاد : {{forms?.dimension}}</label>\r\n      <label>تعداد برگ : {{forms?.count}}</label>\r\n      <label>نوع مارک : {{forms?.mark}}</label>\r\n      <label>تاریخ ورود : {{forms?.date}}</label>\r\n      <label>توضیحات : {{forms?.comment}}</label>\r\n    </div>\r\n    <div class=\"text-center\">\r\n      <table class=\"table table-bordered\" *ngIf=\"formItems.length\">\r\n        <tr>\r\n          <th>نام آیتم</th>\r\n          <th>تعداد آیتم در برگ</th>\r\n          <th>تعداد لنت آیتم</th>\r\n          <th>مجموع\t</th>\r\n          <th>توضیحات</th>\r\n        </tr>\r\n        <tr *ngFor=\"let item of formItems\">\r\n          <td>{{item?.name}}</td>\r\n          <td>{{item?.itemInSheet}}</td>\r\n          <td>{{item?.lentInSheet}}</td>\r\n          <td>{{item?.sum}}</td>\r\n          <td>{{item?.comment}}</td>\r\n        </tr>\r\n      </table>\r\n    </div>\r\n    <div class=\"text-center\">\r\n      <button type=\"button\" class=\"btn btn-primary\" [routerLink]=\"['/cutted' , flowerId]\">برش خورده ها</button>\r\n      <button type=\"button\" class=\"btn btn-primary\">نیم برش ها</button>\r\n      <button type=\"button\" class=\"btn btn-primary\">فرم ها</button>\r\n      <button type=\"button\" class=\"btn btn-primary\">آیتم ها</button>\r\n    </div>\r\n    <div class=\"card bg-primary text-white mt-3 rounded-0 p-2\">سفارشات</div>\r\n    <div class=\"row mt-2\">\r\n      <div class=\"col-md-9\">\r\n        <table class=\"table table-bordered\" *ngIf=\"orders.length\">\r\n          <tr>\r\n            <th>نوع سفارش</th>\r\n            <th>تعداد سفارش</th>\r\n            <th>تاریخ سفارش</th>\r\n            <th>تاریخ تکمیل سفارش</th>\r\n            <th>باقیمانده</th>\r\n            <th>توضیحات</th>\r\n            <th></th>\r\n          </tr>\r\n          <tr *ngFor=\"let order of orders\">\r\n            <td>{{order?.orderType}}</td>\r\n            <td>{{order?.count}}</td>\r\n            <td>{{order?.orderDate}}</td>\r\n            <td>{{order?.orderCompleteDate}}</td>\r\n            <td>{{order?.remain}}</td>\r\n            <td>{{order?.comment}}</td>\r\n            <td><a (click)=\"showOrderForms(order.id)\">مشاهده فرم ها</a></td>\r\n          </tr>\r\n          <footer>\r\n            <span *ngFor=\"let page of pages\" (click)=\"paginateOrderTable(page.index , page.size , BtnPage);\" #BtnPage>{{page.index + 1}}</span>\r\n          </footer>\r\n        </table>\r\n      </div>\r\n      <div class=\"col-md-3\">\r\n        <p class=\"sans-small rtl\" *ngIf=\"orderId != 0 && !ordreForms.length\">در این سفارش فرمی ثبت نشده است.</p>\r\n        <table class=\"table table-bordered\" *ngIf=\"ordreForms.length\">\r\n          <tr>\r\n            <th>شماره فرم</th>\r\n            <th>تاریخ تحویل</th>\r\n            <th>تعداد برگ</th>\r\n          </tr>\r\n          <tr *ngFor=\"let orderForm of ordreForms\">\r\n            <td>{{orderForm?.formName}}</td>\r\n            <td>{{orderForm?.receiveDate}}</td>\r\n            <td>{{orderForm?.sheetCount}}</td>\r\n          </tr>\r\n        </table>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<ngx-loading-bar></ngx-loading-bar>\r\n<div class=\"card\">\r\n  <div class=\"card-header bg-primary text-white\">\r\n    {{gol?.name}}\r\n  </div>\r\n  <div class=\"card-body\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-5\">\r\n        <p>کد : {{gol?.code}}</p>\r\n        <p>رنگ : {{gol?.color}}</p>\r\n        <p>نوع رنگ : {{gol?.colorType}}</p>\r\n        <p>قالب : {{gol?.format}}</p>\r\n      </div>\r\n      <div class=\"col-md-5 border-right\">\r\n        <p>تاریخ ورود به انبار : {{gol?.enterDate}}</p>\r\n        <p>مشتری : {{gol?.customer}}</p>\r\n        <p>شرکت : {{gol?.company}}</p>\r\n        <p>توضیحات : {{gol?.comment}}</p>\r\n      </div>\r\n      <div class=\"col-md-2\">\r\n        <a target=\"_blank\" [href]=\"gol?.imagePath\">\r\n          <img class=\"img-fluid float-left\" [src]=\"gol?.imagePath\" style=\"width: 115px; height: 115px;\" alt=\"بدون عکس\">\r\n        </a>\r\n      </div>\r\n    </div>\r\n    <div class=\"card bg-primary text-white mt-3 rounded-0 p-2\">فرم ها</div>\r\n    <select class=\"form-control mt-2 w-25 mx-auto\" (change)=\"changeFormAction($event)\">\r\n      <option *ngFor=\"let fo of formNumbers\" [value]=\"fo.id\">{{fo.name}}</option>\r\n    </select>\r\n    <div class=\"my-3 text-center\" id=\"forminfo\">\r\n      <label>نوع چیدمان : {{forms?.arrangeType}}</label>\r\n      <label>ابعاد : {{forms?.dimension}}</label>\r\n      <label>تعداد برگ : {{forms?.count}}</label>\r\n      <label>نوع مارک : {{forms?.mark}}</label>\r\n      <label>تاریخ ورود : {{forms?.date}}</label>\r\n      <label>توضیحات : {{forms?.comment}}</label>\r\n    </div>\r\n    <div class=\"text-center\">\r\n      <table class=\"table table-bordered\" *ngIf=\"formItems.length\">\r\n        <tr>\r\n          <th>نام آیتم</th>\r\n          <th>تعداد آیتم در برگ</th>\r\n          <th>تعداد لنت آیتم</th>\r\n          <th>مجموع\t</th>\r\n          <th>توضیحات</th>\r\n        </tr>\r\n        <tr *ngFor=\"let item of formItems\">\r\n          <td>{{item?.name}}</td>\r\n          <td>{{item?.itemInSheet}}</td>\r\n          <td>{{item?.lentInSheet}}</td>\r\n          <td>{{item?.sum}}</td>\r\n          <td>{{item?.comment}}</td>\r\n        </tr>\r\n      </table>\r\n    </div>\r\n    <div class=\"text-center\">\r\n      <button type=\"button\" class=\"btn btn-primary\" [routerLink]=\"['/cutted' , flowerId]\">برش خورده ها</button>\r\n      <button type=\"button\" class=\"btn btn-primary\">نیم برش ها</button>\r\n      <button type=\"button\" class=\"btn btn-primary\">فرم ها</button>\r\n      <button type=\"button\" class=\"btn btn-primary\">آیتم ها</button>\r\n    </div>\r\n    <div class=\"card bg-primary text-white mt-3 rounded-0 p-2\">سفارشات</div>\r\n    <div class=\"row mt-2\">\r\n      <div class=\"col-md-9\">\r\n        <table class=\"table table-bordered\" *ngIf=\"orders.length\">\r\n          <tr>\r\n            <th>نوع سفارش</th>\r\n            <th>تعداد سفارش</th>\r\n            <th>تاریخ سفارش</th>\r\n            <th>تاریخ تکمیل سفارش</th>\r\n            <th>باقیمانده</th>\r\n            <th>توضیحات</th>\r\n            <th></th>\r\n          </tr>\r\n          <tr *ngFor=\"let order of orders\">\r\n            <td>{{order?.orderType}}</td>\r\n            <td>{{order?.count}}</td>\r\n            <td>{{order?.orderDate}}</td>\r\n            <td>{{order?.orderCompleteDate}}</td>\r\n            <td>{{order?.remain}}</td>\r\n            <td>{{order?.comment}}</td>\r\n            <td><a (click)=\"showOrderForms(order.id)\">مشاهده فرم ها</a></td>\r\n          </tr>\r\n          <footer>\r\n            <span *ngFor=\"let page of pages\" (click)=\"paginateOrderTable(page.index , page.size , BtnPage);\" #BtnPage>{{page.index + 1}}</span>\r\n          </footer>\r\n        </table>\r\n      </div>\r\n      <div class=\"col-md-3\">\r\n        <p class=\"sans-small rtl\" *ngIf=\"orderId != 0 && !ordreForms.length\">در این سفارش فرمی ثبت نشده است.</p>\r\n        <table class=\"table table-bordered\" *ngIf=\"ordreForms.length\">\r\n          <tr>\r\n            <th>شماره فرم</th>\r\n            <th>تاریخ تحویل</th>\r\n            <th>تعداد برگ</th>\r\n          </tr>\r\n          <tr *ngFor=\"let orderForm of ordreForms\">\r\n            <td>{{orderForm?.formName}}</td>\r\n            <td>{{orderForm?.receiveDate}}</td>\r\n            <td>{{orderForm?.sheetCount}}</td>\r\n          </tr>\r\n        </table>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -360,7 +360,7 @@ module.exports = "<div class=\"card\">\r\n  <div class=\"card-header bg-primary 
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "<ngx-loading-bar></ngx-loading-bar>\r\n<button (click)=\"startLoading()\">start</button>\r\n<button (click)=\"stopLoading()\">stop</button>\r\n"
 
 /***/ }),
 
@@ -371,7 +371,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container sans rtl\">\r\n  <nav class=\"navbar navbar-expand-sm grey lighten-5 py-1 px-1\">\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n      <ul class=\"navbar-nav pr-0 w-100\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" href=\"#\">برنامه</a>\r\n        </li>\r\n        <li class=\"nav-item dropdown mr-3\">\r\n          <a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n            ثبت\r\n          </a>\r\n          <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\r\n            <a class=\"dropdown-item\" [routerLink]=\"['/newflower']\">طرح جدید</a>\r\n            <a class=\"dropdown-item\" [routerLink]=\"['/items' , 3089]\">برگ خروج</a>\r\n            <a class=\"dropdown-item\" href=\"#\">سرویس ها</a>\r\n            <a class=\"dropdown-item\" href=\"#\">کپی آیتم ها</a>\r\n            <a class=\"dropdown-item\" href=\"#\">معادل سازی</a>\r\n          </div>\r\n        </li>\r\n        <li class=\"nav-item mr-3\">\r\n          <a class=\"nav-link\" href=\"#\">جستجوی طرح</a>\r\n        </li>\r\n        <li class=\"nav-item mr-3\">\r\n          <a class=\"nav-link\" href=\"#\">گزارشات</a>\r\n        </li>\r\n        <li class=\"nav-item mr-3\">\r\n          <a class=\"nav-link\" href=\"#\">ویرایش کنترل ها</a>\r\n        </li>\r\n        <li class=\"mr-5 my-auto\">\r\n          <app-search [config]=\"golSearchConfig\" (output)=\"createGolList($event)\"></app-search>\r\n        </li>\r\n        <li class=\"nav-item mr-auto\">\r\n          <a class=\"nav-link\" href=\"#\">خروج</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </nav>\r\n  <div class=\"card rounded-0\">\r\n    <div class=\"card-body rounded-0 rtl p-2 text-right bg-white\">\r\n      <router-outlet></router-outlet>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n"
+module.exports = "<div class=\"container sans rtl\">\r\n  <nav class=\"navbar navbar-expand-lg grey lighten-5 py-1 px-1\">\r\n    <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n      <ul class=\"navbar-nav pr-0 w-100\">\r\n        <li class=\"nav-item\">\r\n          <a class=\"nav-link\" href=\"#\">برنامه</a>\r\n        </li>\r\n        <li class=\"nav-item dropdown mr-3\">\r\n          <a class=\"nav-link dropdown-toggle\" href=\"#\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n            ثبت\r\n          </a>\r\n          <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">\r\n            <a class=\"dropdown-item\" [routerLink]=\"['/newflower']\">طرح جدید</a>\r\n            <a class=\"dropdown-item\" [routerLink]=\"['/items' , 3089]\">برگ خروج</a>\r\n            <a class=\"dropdown-item\" href=\"#\">سرویس ها</a>\r\n            <a class=\"dropdown-item\" href=\"#\">کپی آیتم ها</a>\r\n            <a class=\"dropdown-item\" href=\"#\">معادل سازی</a>\r\n          </div>\r\n        </li>\r\n        <li class=\"nav-item mr-3\">\r\n          <a class=\"nav-link\" href=\"#\">جستجوی طرح</a>\r\n        </li>\r\n        <li class=\"nav-item mr-3\">\r\n          <a class=\"nav-link\" href=\"#\">گزارشات</a>\r\n        </li>\r\n        <li class=\"nav-item mr-3\">\r\n          <a class=\"nav-link\" href=\"#\">ویرایش کنترل ها</a>\r\n        </li>\r\n        <li class=\"mr-5 my-auto\">\r\n          <app-search [config]=\"golSearchConfig\" (output)=\"createGolList($event)\"></app-search>\r\n        </li>\r\n        <li class=\"nav-item mr-auto\">\r\n          <a class=\"nav-link\" href=\"#\">خروج</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n  </nav>\r\n  <div class=\"card rounded-0\">\r\n    <div class=\"card-body rounded-0 rtl p-2 text-right bg-white\">\r\n      <router-outlet></router-outlet>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n"
 
 /***/ }),
 
@@ -526,6 +526,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _main_arranges_arranges_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./main/arranges/arranges.component */ "./src/app/main/arranges/arranges.component.ts");
 /* harmony import */ var _main_items_items_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./main/items/items.component */ "./src/app/main/items/items.component.ts");
 /* harmony import */ var ng2_jalali_date_picker__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ng2-jalali-date-picker */ "./node_modules/ng2-jalali-date-picker/ng2-jalali-date-picker.js");
+/* harmony import */ var _ngx_loading_bar_core__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @ngx-loading-bar/core */ "./node_modules/@ngx-loading-bar/core/fesm2015/ngx-loading-bar-core.js");
+
 
 
 
@@ -562,6 +564,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _main_items_items_component__WEBPACK_IMPORTED_MODULE_18__["ItemsComponent"]
         ],
         imports: [
+            _ngx_loading_bar_core__WEBPACK_IMPORTED_MODULE_20__["LoadingBarModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_3__["ReactiveFormsModule"],
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
             _app_routing_module__WEBPACK_IMPORTED_MODULE_4__["AppRoutingModule"],
@@ -736,33 +739,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm2015/http.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var angular_notifier__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! angular-notifier */ "./node_modules/angular-notifier/esm2015/angular-notifier.js");
+/* harmony import */ var _ngx_loading_bar_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ngx-loading-bar/core */ "./node_modules/@ngx-loading-bar/core/fesm2015/ngx-loading-bar-core.js");
+
 
 
 
 
 
 let CuttedComponent = class CuttedComponent {
-    constructor(http, route, notifier) {
+    constructor(http, route, notifier, loading) {
         this.http = http;
         this.route = route;
         this.notifier = notifier;
-        this.loading = false;
+        this.loading = loading;
         this.data = [];
     }
     ngOnInit() {
+        this.loading.start();
         this.getCuttedData(true);
     }
     getCuttedData(update) {
-        this.loading = true;
         this.routeSubscription = this.route.params.subscribe((p) => {
             this.flowerId = p['fid'];
             this.httpSubscription = this.http.get('/api/Cutted', { params: { flowerId: p['fid'], update: update } }).subscribe(e => {
                 this.data = e.json();
-                this.loading = false;
+                this.loading.complete();
+                ;
             });
         });
     }
     plus(change, id) {
+        this.loading.start();
         this.httpSubscription = this.http.get('/api/UpdateCutted', {
             params: { change: change, id: id, plus: true }
         }).subscribe(e => {
@@ -772,7 +779,7 @@ let CuttedComponent = class CuttedComponent {
         });
     }
     minus(change, id) {
-        console.log(id);
+        this.loading.start();
         this.httpSubscription = this.http.get('/api/UpdateCutted', {
             params: { change: change, id: id, plus: false }
         }).subscribe(e => {
@@ -787,13 +794,16 @@ let CuttedComponent = class CuttedComponent {
         });
     }
     saveComment(id, comment) {
+        this.loading.start();
         this.httpSubscription = this.http.get('/api/UpdateComment', {
             params: { id: id, comment: comment }
         }).subscribe(e => {
             this.notifier.notify('success', 'ذخیره شد');
+            this.getCuttedData(false);
         });
     }
     deleteCutted(id) {
+        this.loading.start();
         this.httpSubscription = this.http.get('/api/DeleteCutted', {
             params: { id: id }
         }).subscribe(e => {
@@ -806,7 +816,8 @@ let CuttedComponent = class CuttedComponent {
 CuttedComponent.ctorParameters = () => [
     { type: _angular_http__WEBPACK_IMPORTED_MODULE_2__["Http"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] },
-    { type: angular_notifier__WEBPACK_IMPORTED_MODULE_4__["NotifierService"] }
+    { type: angular_notifier__WEBPACK_IMPORTED_MODULE_4__["NotifierService"] },
+    { type: _ngx_loading_bar_core__WEBPACK_IMPORTED_MODULE_5__["LoadingBarService"] }
 ];
 CuttedComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -845,14 +856,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _angular_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/http */ "./node_modules/@angular/http/fesm2015/http.js");
+/* harmony import */ var _ngx_loading_bar_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ngx-loading-bar/core */ "./node_modules/@ngx-loading-bar/core/fesm2015/ngx-loading-bar-core.js");
+
 
 
 
 
 let FlowerInfoComponent = class FlowerInfoComponent {
-    constructor(router, http) {
+    constructor(router, http, loading) {
         this.router = router;
         this.http = http;
+        this.loading = loading;
         this.orderId = 0;
         this.pageSize = 10;
         this.pages = [];
@@ -860,10 +874,9 @@ let FlowerInfoComponent = class FlowerInfoComponent {
         this.ordreForms = [];
         this.formItems = [];
         this.formNumbers = [];
-        this.loading = false;
     }
     ngOnInit() {
-        this.loading = true;
+        this.loading.start();
         this.paramSubscription = this.router.params.subscribe((p) => {
             this.httpSubscription = this.http.get('/api/GetFlowerData', {
                 params: {
@@ -877,11 +890,11 @@ let FlowerInfoComponent = class FlowerInfoComponent {
                 this.formItems = data['formItems'];
                 this.formNumbers = data['formNumbers'];
                 this.orders = data['orders'];
-                this.loading = false;
                 this.flowerId = p['fid'];
                 this.ordreForms = [];
                 this.pageCountCalcualte(this.pageSize, p['fid']);
                 this.orderId = 0;
+                this.loading.complete();
             });
         });
     }
@@ -890,12 +903,12 @@ let FlowerInfoComponent = class FlowerInfoComponent {
         this.httpSubscription.unsubscribe();
     }
     changeFormAction(e) {
-        this.loading = true;
+        this.loading.start();
         this.httpSubscription = this.http.get('/api/GetFlowForm', { params: { formId: e.target.value } }).subscribe(e => {
             let data = e.json();
             this.formItems = data['formItems'];
             this.forms = data['form'];
-            this.loading = false;
+            this.loading.complete();
         });
     }
     pageCountCalcualte(pageSize, flowerId) {
@@ -937,7 +950,8 @@ let FlowerInfoComponent = class FlowerInfoComponent {
 };
 FlowerInfoComponent.ctorParameters = () => [
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
-    { type: _angular_http__WEBPACK_IMPORTED_MODULE_3__["Http"] }
+    { type: _angular_http__WEBPACK_IMPORTED_MODULE_3__["Http"] },
+    { type: _ngx_loading_bar_core__WEBPACK_IMPORTED_MODULE_4__["LoadingBarService"] }
 ];
 FlowerInfoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -975,18 +989,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _ngx_loading_bar_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ngx-loading-bar/core */ "./node_modules/@ngx-loading-bar/core/fesm2015/ngx-loading-bar-core.js");
+
 
 
 
 let ItemsComponent = class ItemsComponent {
-    constructor(http) {
+    constructor(http, loadingBar) {
         this.http = http;
+        this.loadingBar = loadingBar;
     }
     ngOnInit() {
     }
+    startLoading() {
+        this.loadingBar.start();
+    }
+    stopLoading() {
+        this.loadingBar.complete();
+    }
 };
 ItemsComponent.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },
+    { type: _ngx_loading_bar_core__WEBPACK_IMPORTED_MODULE_3__["LoadingBarService"] }
 ];
 ItemsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
